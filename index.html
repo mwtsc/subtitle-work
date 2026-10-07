@@ -194,6 +194,15 @@
     gap: 0;
     padding: 60px 40px;
     position: relative;
+    overflow: hidden;
+  }
+
+  .rename-from,
+  .rename-arrow,
+  .rename-to,
+  .rename-to-full {
+    will-change: transform;
+    transition: transform 0.08s linear;
   }
 
   .rename-from {
@@ -1965,6 +1974,46 @@
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
   document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+  // Hero parallax on mouse move
+  (function() {
+    const heroRight = document.querySelector('.hero-right');
+    if (!heroRight) return;
+
+    const layers = [
+      { el: document.querySelector('.rename-from'),    dx: 0.018, dy: 0.012 },
+      { el: document.querySelector('.rename-arrow'),   dx: 0.010, dy: 0.022 },
+      { el: document.querySelector('.rename-to'),      dx: 0.030, dy: 0.018 },
+      { el: document.querySelector('.rename-to-full'), dx: 0.014, dy: 0.028 },
+    ].filter(l => l.el);
+
+    let cx = 0, cy = 0;
+    let tx = 0, ty = 0;
+    let raf;
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function tick() {
+      cx = lerp(cx, tx, 0.09);
+      cy = lerp(cy, ty, 0.09);
+      layers.forEach(({ el, dx, dy }) => {
+        el.style.transform = `translate(${cx * dx}px, ${cy * dy}px)`;
+      });
+      raf = requestAnimationFrame(tick);
+    }
+
+    heroRight.addEventListener('mousemove', e => {
+      const rect = heroRight.getBoundingClientRect();
+      tx = (e.clientX - rect.left - rect.width  / 2);
+      ty = (e.clientY - rect.top  - rect.height / 2);
+    });
+
+    heroRight.addEventListener('mouseleave', () => {
+      tx = 0; ty = 0;
+    });
+
+    raf = requestAnimationFrame(tick);
+  })();
 </script>
 </body>
 </html>
