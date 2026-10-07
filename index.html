@@ -1218,7 +1218,29 @@
   }
 
   .gimg:hover img {
-    transform: scale(1.03);
+    transform: scale(1.06);
+  }
+
+  /* Caption overlay — appears on hover */
+  .gimg-caption {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(13,0,60,0.72) 0%, transparent 55%);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px 22px;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .gimg:hover .gimg-caption { opacity: 1; }
+  .gimg-caption span {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.4;
   }
 
   /* Placeholder gradient when no real image yet */
@@ -1446,6 +1468,46 @@
   <div class="context-cell fade">
     <div class="cell-label">Launch</div>
     <div class="cell-value">2024</div>
+  </div>
+</div>
+
+<!-- CAMPAIGN IMAGERY — moved here for visual impact mid-page -->
+<div class="campaign-gallery fade">
+  <div class="campaign-gallery-header">
+    <span class="campaign-gallery-label">From the launch.</span>
+    <span class="campaign-gallery-note">development.org · Live since September 2026</span>
+  </div>
+
+  <!-- Row 1: large left, two stacked right -->
+  <div class="gallery-grid-primary">
+    <div class="gimg gimg-16-10 img-main gfill-abyss">
+      <img src="https://images.ctfassets.net/ewsesumpfnew/home-hero-doorway-wide/0da6eb0736efd468d188ba19419aeef7/home-hero-doorway-wide.jpg" alt="IDEA homepage hero">
+      <div class="gimg-caption"><span>Homepage Hero</span></div>
+    </div>
+    <div class="gimg gimg-4-3 gfill-mid">
+      <img src="https://image.mux.com/HrTdwUPY1ldaLDoolvZrVeKFgLOqjADvOjnt62601xfs/thumbnail.webp?width=1200" alt="Ahmed Shehata, CEO of IDEA">
+      <div class="gimg-caption"><span>CEO Message · Ahmed Shehata</span></div>
+    </div>
+    <div class="gimg gimg-4-3 gfill-sky">
+      <img src="https://development.org/images/about/story/water-point.jpg" alt="IDEA field program: clean water access">
+      <div class="gimg-caption"><span>Clean Water Access · Field Program</span></div>
+    </div>
+  </div>
+
+  <!-- Row 2: three across -->
+  <div class="gallery-grid-secondary">
+    <div class="gimg gimg-3-2 gfill-ink">
+      <img src="https://development.org/images/home/emergency-response.jpg" alt="IDEA emergency response program">
+      <div class="gimg-caption"><span>Emergency Response</span></div>
+    </div>
+    <div class="gimg gimg-3-2 gfill-frost">
+      <img src="https://development.org/images/home/food-water.jpg" alt="IDEA food and water program">
+      <div class="gimg-caption"><span>Food &amp; Water Security</span></div>
+    </div>
+    <div class="gimg gimg-3-2 gfill-mid">
+      <img src="https://development.org/images/home/health.jpg" alt="IDEA health program">
+      <div class="gimg-caption"><span>Health Programs</span></div>
+    </div>
   </div>
 </div>
 
@@ -1693,42 +1755,6 @@
     <p class="module-num">05 / Launch Campaign</p>
     <h3>One name. Every channel. Zero ambiguity.</h3>
     <p>Creative strategy, asset production, distribution. The rebrand felt like a reveal, not a pivot.</p>
-  </div>
-</div>
-
-<!-- CAMPAIGN IMAGERY -->
-<div class="campaign-gallery fade">
-  <div class="campaign-gallery-header">
-    <span class="campaign-gallery-label">From the launch.</span>
-    <span class="campaign-gallery-note">development.org · Live since September 2026</span>
-  </div>
-
-  <!-- Row 1: large left, two stacked right -->
-  <div class="gallery-grid-primary">
-    <!-- Large hero image -->
-    <div class="gimg gimg-16-10 img-main gfill-abyss">
-      <img src="https://images.ctfassets.net/ewsesumpfnew/home-hero-doorway-wide/0da6eb0736efd468d188ba19419aeef7/home-hero-doorway-wide.jpg" alt="IDEA homepage hero">
-    </div>
-    <!-- Two stacked -->
-    <div class="gimg gimg-4-3 gfill-mid">
-      <img src="https://image.mux.com/HrTdwUPY1ldaLDoolvZrVeKFgLOqjADvOjnt62601xfs/thumbnail.webp?width=1200" alt="Ahmed Shehata, CEO of IDEA">
-    </div>
-    <div class="gimg gimg-4-3 gfill-sky">
-      <img src="https://development.org/images/about/story/water-point.jpg" alt="IDEA field program: clean water access">
-    </div>
-  </div>
-
-  <!-- Row 2: three across -->
-  <div class="gallery-grid-secondary">
-    <div class="gimg gimg-3-2 gfill-ink">
-      <img src="https://development.org/images/home/emergency-response.jpg" alt="IDEA emergency response program">
-    </div>
-    <div class="gimg gimg-3-2 gfill-frost">
-      <img src="https://development.org/images/home/food-water.jpg" alt="IDEA food and water program">
-    </div>
-    <div class="gimg gimg-3-2 gfill-mid">
-      <img src="https://development.org/images/home/health.jpg" alt="IDEA health program">
-    </div>
   </div>
 </div>
 
