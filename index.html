@@ -1286,6 +1286,12 @@
     overflow: hidden;
     background: #1a0a4a;
     display: block;
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gimg.img-revealed {
+    clip-path: inset(0% 0 0 0);
   }
 
   .gimg::after {
@@ -1307,11 +1313,16 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s ease;
+    transform: scale(1.08);
+    transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gimg.img-revealed img {
+    transform: scale(1.0);
   }
 
   .gimg:hover img {
-    transform: scale(1.06);
+    transform: scale(1.04);
   }
 
   /* Caption overlay — appears on hover */
@@ -1576,7 +1587,7 @@
 </div>
 
 <!-- CAMPAIGN IMAGERY — moved here for visual impact mid-page -->
-<div class="campaign-gallery fade">
+<div class="campaign-gallery">
   <div class="campaign-gallery-header">
     <span class="campaign-gallery-label">From the launch.</span>
     <span class="campaign-gallery-note">development.org · Live since September 2026</span>
@@ -1974,6 +1985,25 @@
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
   document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+  // Staggered gallery image reveal on scroll
+  (function() {
+    const grids = document.querySelectorAll('.gallery-grid-primary, .gallery-grid-secondary');
+    if (!grids.length) return;
+
+    const gridObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const imgs = entry.target.querySelectorAll('.gimg');
+        imgs.forEach((img, i) => {
+          setTimeout(() => img.classList.add('img-revealed'), i * 120);
+        });
+        gridObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.08 });
+
+    grids.forEach(g => gridObserver.observe(g));
+  })();
 
   // Hero parallax on mouse move
   (function() {
