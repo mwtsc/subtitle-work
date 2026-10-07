@@ -1134,92 +1134,133 @@
     border-radius: 100px;
   }
 
-  /* ── NEXT ────────────────────────────────────────────────── */
-  /* ── LIVE SITE EMBED ─────────────────────────────────────── */
-  .live-embed {
-    background: var(--gray-50);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+  /* ── CAMPAIGN IMAGERY ───────────────────────────────────── */
+  .campaign-gallery {
+    background: var(--ink);
+    padding: 64px 0 0;
   }
 
-  .live-embed-header {
+  .campaign-gallery-header {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 56px 40px 32px;
+    padding: 0 40px 40px;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: 24px;
   }
 
-  .live-embed-label {
+  .campaign-gallery-label {
     font-family: 'Instrument Serif', serif;
     font-size: clamp(22px, 3vw, 36px);
     font-weight: 400;
-    color: var(--ink);
+    color: var(--paper);
     font-style: italic;
   }
 
-  .live-embed-link {
-    font-size: 12px;
+  .campaign-gallery-note {
+    font-size: 11px;
     font-weight: 500;
-    color: var(--mute);
-    text-decoration: none;
-    letter-spacing: 0.04em;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     flex-shrink: 0;
-    transition: color 0.15s;
   }
-  .live-embed-link:hover { color: var(--ink); }
-  .live-embed-link::after { content: '↗'; font-size: 11px; }
 
-  .live-embed-frame-wrap {
+  /* Primary grid: large left + two stacked right */
+  .gallery-grid-primary {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: auto;
+    gap: 3px;
+    margin-bottom: 3px;
+  }
+
+  .gallery-grid-primary .img-main {
+    grid-row: 1 / 3;
+  }
+
+  /* Secondary grid: three across */
+  .gallery-grid-secondary {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3px;
+  }
+
+  /* Every image slot */
+  .gimg {
     position: relative;
-    width: 100%;
-    /* 16:10 ratio — tall enough to show the page hero */
-    padding-bottom: 62.5%;
-    background: var(--gray-50);
     overflow: hidden;
-    border-top: 1px solid var(--line);
-  }
-
-  .live-embed-frame-wrap iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    border: none;
+    background: #1a0a4a;
     display: block;
   }
 
-  /* Fallback overlay if iframe is blocked */
-  .live-embed-fallback {
-    display: none;
-    position: absolute;
-    inset: 0;
-    background: var(--gray-50);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    text-align: center;
-    padding: 40px;
-  }
-  .live-embed-fallback p {
-    font-size: 14px;
-    color: var(--mute);
-    max-width: 320px;
-    line-height: 1.6;
-  }
-  .live-embed-fallback a {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ink);
-    text-decoration: underline;
-    text-underline-offset: 3px;
+  .gimg::after {
+    content: '';
+    display: block;
   }
 
+  /* Aspect ratios */
+  .gimg-16-10::after { padding-top: 62.5%; }
+  .gimg-4-3::after   { padding-top: 75%; }
+  .gimg-1-1::after   { padding-top: 100%; }
+  .gimg-3-2::after   { padding-top: 66.67%; }
+  .gimg-9-16::after  { padding-top: 177.78%; }
+
+  .gimg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .gimg:hover img {
+    transform: scale(1.03);
+  }
+
+  /* Placeholder gradient when no real image yet */
+  .gimg-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gimg-placeholder span {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+    text-align: center;
+    padding: 12px;
+    line-height: 1.8;
+  }
+
+  /* IDEA palette swatches as placeholder fills */
+  .gfill-abyss   { background: #2B01BE; }
+  .gfill-sky     { background: #0190FF; }
+  .gfill-frost   { background: #D8EFFF; }
+  .gfill-ink     { background: #0D003C; }
+  .gfill-mid     { background: #160866; }
+
+  @media (max-width: 768px) {
+    .gallery-grid-primary {
+      grid-template-columns: 1fr;
+    }
+    .gallery-grid-primary .img-main {
+      grid-row: auto;
+    }
+    .gallery-grid-secondary {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* ── NEXT ────────────────────────────────────────────────── */
   .next {
     padding: 100px 40px;
     background: var(--paper);
@@ -1655,22 +1696,44 @@
   </div>
 </div>
 
-<!-- LIVE SITE EMBED -->
-<div class="live-embed fade">
-  <div class="live-embed-header">
-    <span class="live-embed-label">The site, live.</span>
-    <a class="live-embed-link" href="https://development.org/why-idea" target="_blank" rel="noopener">Visit development.org</a>
+<!-- CAMPAIGN IMAGERY -->
+<div class="campaign-gallery fade">
+  <div class="campaign-gallery-header">
+    <span class="campaign-gallery-label">From the launch.</span>
+    <span class="campaign-gallery-note">Replace placeholders with campaign assets</span>
   </div>
-  <div class="live-embed-frame-wrap">
-    <iframe
-      src="https://development.org/why-idea"
-      title="IDEA — Why IDEA (live site)"
-      loading="lazy"
-      sandbox="allow-scripts allow-same-origin allow-forms"
-    ></iframe>
-    <div class="live-embed-fallback" id="embedFallback">
-      <p>The live site is available at development.org/why-idea</p>
-      <a href="https://development.org/why-idea" target="_blank" rel="noopener">Open in new tab ↗</a>
+
+  <!-- Row 1: large left, two stacked right -->
+  <div class="gallery-grid-primary">
+    <!-- Large hero image -->
+    <div class="gimg gimg-16-10 img-main gfill-abyss">
+      <!-- <img src="images/idea-hero.jpg" alt="IDEA homepage hero"> -->
+      <div class="gimg-placeholder"><span>Hero / Homepage<br>Full width</span></div>
+    </div>
+    <!-- Two stacked -->
+    <div class="gimg gimg-4-3 gfill-mid">
+      <!-- <img src="images/idea-why-01.jpg" alt="Why IDEA page"> -->
+      <div class="gimg-placeholder"><span>Why IDEA<br>Page detail</span></div>
+    </div>
+    <div class="gimg gimg-4-3 gfill-sky">
+      <!-- <img src="images/idea-mobile-01.jpg" alt="IDEA mobile view"> -->
+      <div class="gimg-placeholder"><span>Mobile<br>View</span></div>
+    </div>
+  </div>
+
+  <!-- Row 2: three across -->
+  <div class="gallery-grid-secondary">
+    <div class="gimg gimg-3-2 gfill-ink">
+      <!-- <img src="images/idea-program-01.jpg" alt="IDEA programs page"> -->
+      <div class="gimg-placeholder"><span>Programs<br>Page</span></div>
+    </div>
+    <div class="gimg gimg-3-2 gfill-frost">
+      <!-- <img src="images/idea-brand-01.jpg" alt="IDEA identity system"> -->
+      <div class="gimg-placeholder"><span>Identity<br>System</span></div>
+    </div>
+    <div class="gimg gimg-3-2 gfill-mid">
+      <!-- <img src="images/idea-about-01.jpg" alt="IDEA about page"> -->
+      <div class="gimg-placeholder"><span>About<br>Page</span></div>
     </div>
   </div>
 </div>
