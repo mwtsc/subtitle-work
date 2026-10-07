@@ -255,17 +255,23 @@
 
   /* ── CONTEXT STRIP ────────────────────────────────────────── */
   .context {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    gap: 0;
+    padding: 40px;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
+    overflow-x: auto;
   }
 
   .context-cell {
-    padding: 32px 28px;
-    border-right: 1px solid var(--line);
+    padding: 8px 40px 8px 0;
+    flex: 1;
+    min-width: 120px;
   }
-  .context-cell:last-child { border-right: none; }
+  .context-cell + .context-cell {
+    padding-left: 40px;
+    border-left: 1px solid var(--line);
+  }
 
   .cell-label {
     font-size: 11px;
@@ -286,18 +292,19 @@
   /* ── NAME CHANGE SECTION ──────────────────────────────────── */
   .name-change {
     background: var(--ink);
-    padding: 100px 40px;
+    padding: 120px 0 0;
     position: relative;
     overflow: hidden;
   }
 
   .name-change-inner {
-    max-width: 1200px;
-    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    grid-template-columns: 5fr 4fr;
     align-items: center;
+  }
+
+  .name-change-left {
+    padding: 0 80px 120px 64px;
   }
 
   .name-change-left h2 {
@@ -307,7 +314,7 @@
     font-style: italic;
     color: var(--paper);
     line-height: 1.1;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     letter-spacing: -0.01em;
   }
 
@@ -316,22 +323,25 @@
     font-weight: 300;
     color: rgba(255,255,255,0.72);
     line-height: 1.75;
-    max-width: 420px;
+    max-width: 400px;
   }
 
   .name-change-right {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 0;
+    align-self: stretch;
+    border-left: 1px solid rgba(255,255,255,0.07);
   }
 
   .name-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 24px;
-    border: 1px solid rgba(255,255,255,0.08);
+    padding: 24px 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
+  .name-row:last-child { border-bottom: none; }
 
   .name-row-label {
     font-size: 10px;
@@ -363,9 +373,7 @@
   .identity-showcase {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    height: clamp(280px, 35vw, 480px);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    height: clamp(320px, 38vw, 520px);
     overflow: hidden;
   }
 
@@ -585,44 +593,54 @@
 
   .work-intro {
     background: var(--gray-50);
-    padding: 80px 40px 60px;
-    border-bottom: 1px solid var(--line);
+    padding: 96px 64px 72px;
   }
 
   .work-intro-inner {
-    max-width: 1200px;
-    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 3fr;
     gap: 80px;
     align-items: end;
   }
 
   .work-intro p {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--mute);
-    line-height: 1.75;
+    line-height: 1.8;
     padding-top: 20px;
   }
 
-  /* Module layout */
+  /* Module layout — varied, asymmetric */
   .module {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid var(--line);
+  }
+
+  /* Module 01: copy right, visual left */
+  .module.m-copy-right {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  /* Module 02: copy left wide */
+  .module.m-copy-left {
+    grid-template-columns: 2fr 3fr;
+  }
+
+  /* Module 03: copy right */
+  /* Module 04: copy left */
+  /* Module 05: copy right narrow */
+  .module.m-copy-right-narrow {
+    grid-template-columns: 4fr 3fr;
   }
 
   .module-copy {
-    padding: 72px 56px;
+    padding: 80px 64px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-right: 1px solid var(--line);
   }
 
   .module-copy.right {
-    border-right: none;
-    border-left: 1px solid var(--line);
     order: 2;
   }
 
@@ -664,9 +682,8 @@
   /* dark copy variant */
   .module-copy.dark {
     background: var(--ink);
-    border-color: rgba(255,255,255,0.08);
   }
-  .module-copy.dark .module-num { color: rgba(255,255,255,0.55); }
+  .module-copy.dark .module-num { color: rgba(255,255,255,0.45); }
   .module-copy.dark h3 { color: var(--paper); }
   .module-copy.dark p { color: rgba(255,255,255,0.68); }
 
@@ -1027,87 +1044,87 @@
   /* ── RESULTS ─────────────────────────────────────────────── */
   .results {
     background: var(--ink);
-    padding: 100px 40px;
-  }
-
-  .results-inner {
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 120px 64px 80px;
   }
 
   .results-inner .section-label-serif {
-    margin-bottom: 60px;
+    margin-bottom: 80px;
     display: block;
+    font-size: clamp(40px, 5.5vw, 72px);
   }
 
   .stats-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.06);
-    margin-bottom: 64px;
+    gap: 0;
+    margin-bottom: 96px;
+    border-top: 1px solid rgba(255,255,255,0.08);
   }
 
   .stat-cell {
-    background: var(--ink);
-    padding: 40px 32px;
+    background: transparent;
+    padding: 48px 0 48px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    padding-right: 48px;
+    padding-left: 0;
   }
+  .stat-cell:first-child { padding-left: 0; }
+  .stat-cell:last-child { border-right: none; padding-left: 48px; }
+  .stat-cell:nth-child(2) { padding-left: 48px; }
 
   .stat-num {
     font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: clamp(36px, 5vw, 56px);
-    font-weight: 300;
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 200;
     color: var(--paper);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     line-height: 1;
   }
 
   .stat-desc {
     font-size: 13px;
     font-weight: 300;
-    color: rgba(255,255,255,0.62);
-    line-height: 1.5;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.55;
+    max-width: 200px;
   }
 
   .quote-block {
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding-top: 52px;
+    padding-top: 0;
     display: grid;
-    grid-template-columns: 1fr 200px;
-    gap: 60px;
-    align-items: center;
+    grid-template-columns: 1fr auto;
+    gap: 80px;
+    align-items: start;
   }
 
   .quote-text {
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(18px, 2.5vw, 26px);
+    font-size: clamp(22px, 2.8vw, 32px);
     font-weight: 400;
     font-style: italic;
-    color: rgba(255,255,255,0.88);
-    line-height: 1.5;
-    letter-spacing: -0.005em;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
   }
 
-  .quote-text::before { content: '\201C'; color: rgba(255,255,255,0.45); }
-  .quote-text::after  { content: '\201D'; color: rgba(255,255,255,0.45); }
+  .quote-text::before { content: '\201C'; color: rgba(255,255,255,0.35); }
+  .quote-text::after  { content: '\201D'; color: rgba(255,255,255,0.35); }
 
-  .quote-attr { display: flex; flex-direction: column; gap: 4px; }
+  .quote-attr { display: flex; flex-direction: column; gap: 4px; padding-top: 8px; min-width: 200px; }
   .quote-name { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.85); }
-  .quote-role { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.55); }
+  .quote-role { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.45); line-height: 1.5; }
 
   /* ── TAGS ────────────────────────────────────────────────── */
   .tags-row {
-    padding: 48px 40px;
-    border-top: 1px solid var(--line);
+    padding: 56px 64px;
     border-bottom: 1px solid var(--line);
     display: flex;
     align-items: center;
     gap: 40px;
-    background: var(--gray-50);
+    background: var(--paper);
   }
 
   .tags-label {
@@ -1284,7 +1301,7 @@
 
   /* ── NEXT ────────────────────────────────────────────────── */
   .next {
-    padding: 100px 40px;
+    padding: 120px 64px 100px;
     background: var(--paper);
     display: flex;
     flex-direction: column;
@@ -1368,30 +1385,39 @@
     .hero-left { padding: 48px 20px 40px; border-right: none; border-bottom: 1px solid var(--line); }
     .hero-right { min-height: 320px; }
 
-    .context { grid-template-columns: 1fr 1fr; }
-    .context-cell:nth-child(3) { border-top: 1px solid var(--line); }
-    .context-cell:nth-child(4) { border-top: 1px solid var(--line); border-right: none; }
+    .context { flex-wrap: wrap; padding: 24px 20px; gap: 0; }
+    .context-cell { flex: 0 0 50%; min-width: 0; padding: 16px 20px 16px 0; }
+    .context-cell + .context-cell { border-left: none; }
+    .context-cell:nth-child(odd) { border-right: 1px solid var(--line); padding-right: 20px; }
+    .context-cell:nth-child(3),
+    .context-cell:nth-child(4) { border-top: 1px solid var(--line); padding-top: 16px; }
 
-    .name-change-inner { grid-template-columns: 1fr; gap: 48px; }
+    .name-change { padding: 72px 0 0; }
+    .name-change-inner { grid-template-columns: 1fr; }
+    .name-change-left { padding: 0 24px 48px; }
     .identity-showcase { grid-template-columns: 1fr 1fr; height: auto; }
     .id-panel { min-height: 200px; }
 
+    .work-intro { padding: 60px 24px 48px; }
     .work-intro-inner { grid-template-columns: 1fr; gap: 24px; }
-    .module { grid-template-columns: 1fr; }
-    .module-copy { border-right: none; border-bottom: 1px solid var(--line); }
-    .module-copy.right { order: 0; border-left: none; border-bottom: 1px solid var(--line); }
+    .module,
+    .module.m-copy-left,
+    .module.m-copy-right,
+    .module.m-copy-right-narrow { grid-template-columns: 1fr; }
+    .module-copy { padding: 56px 24px; }
+    .module-copy.right { order: 0; }
     .module-visual { min-height: 280px; }
     .vis-strategy { order: 0; }
 
-    .stats-row { grid-template-columns: 1fr; }
+    .results { padding: 72px 24px 60px; }
+    .stats-row { grid-template-columns: 1fr; border-top: 1px solid rgba(255,255,255,0.08); }
+    .stat-cell { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 36px 0 !important; }
+    .stat-cell:last-child { border-bottom: none; }
     .quote-block { grid-template-columns: 1fr; gap: 28px; }
 
-    .tags-row { flex-direction: column; align-items: flex-start; gap: 16px; padding: 40px 20px; }
+    .tags-row { flex-direction: column; align-items: flex-start; gap: 16px; padding: 40px 24px; }
 
-    .next { padding: 72px 20px; }
-    .results { padding: 72px 20px; }
-    .name-change { padding: 72px 20px; }
-    .work-intro { padding: 60px 20px 40px; }
+    .next { padding: 80px 24px; }
 
     .vis-campaign { min-height: 280px; }
 
@@ -1467,7 +1493,7 @@
   </div>
   <div class="context-cell fade">
     <div class="cell-label">Launch</div>
-    <div class="cell-value">2024</div>
+    <div class="cell-value">September 2026</div>
   </div>
 </div>
 
@@ -1610,12 +1636,12 @@
 <div class="work-intro">
   <div class="work-intro-inner">
     <h2 class="section-label-serif fade">The Work</h2>
-    <p class="fade">Five disciplines, one coherent launch. Everything in service of a name the world hadn't heard yet.</p>
+    <p class="fade">Four disciplines, one coherent launch. Everything in service of a name the world hadn't heard yet.</p>
   </div>
 </div>
 
 <!-- 01 STRATEGY -->
-<div class="module">
+<div class="module m-copy-right">
   <div class="vis-strategy">
     <div class="strat-card fade">
       <div class="strat-label">Brand Purpose</div>
@@ -1638,7 +1664,7 @@
 </div>
 
 <!-- 02 IDENTITY -->
-<div class="module">
+<div class="module m-copy-left">
   <div class="module-copy">
     <p class="module-num">02 / Identity System</p>
     <h3>Mark, palette, type, motion. Built to scale globally.</h3>
@@ -1659,7 +1685,7 @@
 </div>
 
 <!-- 03 CEO SCRIPT -->
-<div class="module">
+<div class="module m-copy-right">
   <div class="module-visual vis-script">
     <div class="script-card fade">
       <div class="script-chip">CEO Launch Remarks</div>
@@ -1691,7 +1717,7 @@
 </div>
 
 <!-- 04 WEBSITE -->
-<div class="module">
+<div class="module m-copy-left">
   <div class="module-copy">
     <p class="module-num">04 / Website</p>
     <h3>development.org, end to end.</h3>
@@ -1733,7 +1759,7 @@
 </div>
 
 <!-- 05 CAMPAIGN -->
-<div class="module">
+<div class="module m-copy-right-narrow">
   <div class="vis-campaign module-visual" style="min-height: 380px;">
     <div class="camp-tile">
       <div class="camp-stat">62M+</div>
@@ -1779,8 +1805,8 @@
     <div class="quote-block fade">
       <p class="quote-text">subtitle gave us the clarity to make this move. The name, the identity, the website, the campaign: everything pulled in the same direction.</p>
       <div class="quote-attr">
-        <div class="quote-name">Executive Leadership</div>
-        <div class="quote-role">IDEA (formerly IRUSA)</div>
+        <div class="quote-name">Ahmed Shehata</div>
+        <div class="quote-role">Chief Executive Officer, IDEA</div>
       </div>
     </div>
   </div>
