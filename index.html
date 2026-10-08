@@ -4,1248 +4,750 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IDEA / subtitle</title>
+<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Instrument+Serif:ital@1&display=swap">
 <style>
-
-:root {
-  --paper: #f8f7f5;
-  --ink: #0e0e0e;
-  --mute: #6b6b6b;
-  --gray-100: #efefed;
-  --gray-200: #e0dfdc;
-  --line: rgba(0,0,0,0.1);
-  --nav-h: 58px;
-  --idea-abyss: #2B01BE;
-  --idea-ink:   #0D003C;
-  --idea-sky:   #0190FF;
-  --idea-frost: #D8EFFF;
-  --r: 4px;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
-button { font: inherit; background: none; border: none; cursor: pointer; }
-
-/* ── NAV ─────────────────────────────────────────────── */
-.nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: var(--nav-h);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 32px;
-  border-bottom: 1px solid var(--line);
-  background: var(--paper);
-  z-index: 200;
-}
-
-.nav-wordmark {
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  list-style: none;
-}
-
-.nav-links a {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--mute);
-  transition: color 0.2s;
-  letter-spacing: 0.02em;
-}
-
-.nav-links a:hover { color: var(--ink); }
-
-/* ── HERO ────────────────────────────────────────────── */
-.hero {
-  padding-top: calc(var(--nav-h) + 80px);
-  padding-bottom: 80px;
-  padding-left: 32px;
-  padding-right: 32px;
-  max-width: 1440px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 80px;
-  align-items: end;
-}
-
-.hero-breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--mute);
-  margin-bottom: 28px;
-}
-
-.hero-breadcrumb span { color: var(--ink); }
-
-.hero-title {
-  font-size: clamp(64px, 8.5vw, 128px);
-  font-weight: 600;
-  line-height: 0.92;
-  letter-spacing: -0.06em;
-  margin-bottom: 0;
-}
-
-.hero-title-line2 {
-  font-size: clamp(64px, 8.5vw, 128px);
-  font-weight: 600;
-  line-height: 0.92;
-  letter-spacing: -0.06em;
-  color: var(--idea-abyss);
-  margin-bottom: 36px;
-}
-
-.hero-descriptor {
-  font-size: clamp(16px, 1.3vw, 19px);
-  line-height: 1.6;
-  color: var(--mute);
-  max-width: 420px;
-  margin-bottom: 32px;
-  font-weight: 400;
-}
-
-.hero-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.hero-tag {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  border: 1px solid var(--gray-200);
-  border-radius: 100px;
-  color: var(--mute);
-}
-
-/* Hero right: rename panel */
-.hero-right {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.rename-panel {
-  background: var(--idea-abyss);
-  border-radius: 8px;
-  padding: 52px 48px;
-  color: white;
-  overflow: hidden;
-  cursor: default;
-}
-
-.rename-from {
-  font-size: clamp(36px, 4.5vw, 72px);
-  font-weight: 600;
-  letter-spacing: -0.05em;
-  line-height: 1;
-  opacity: 0.5;
-  transition: opacity 0.4s, transform 0.4s;
-}
-
-.rename-arrow {
-  font-size: 32px;
-  margin: 16px 0;
-  opacity: 0.4;
-  transition: opacity 0.4s;
-}
-
-.rename-to {
-  font-size: clamp(52px, 6.5vw, 100px);
-  font-weight: 600;
-  letter-spacing: -0.06em;
-  line-height: 1;
-  transition: transform 0.4s;
-}
-
-.rename-to-full {
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  opacity: 0;
-  margin-top: 12px;
-  color: rgba(255,255,255,0.7);
-  transform: translateY(4px);
-  transition: opacity 0.4s 0.1s, transform 0.4s 0.1s;
-  line-height: 1.4;
-}
-
-.rename-panel:hover .rename-from { opacity: 0.2; transform: translateY(-4px); }
-.rename-panel:hover .rename-arrow { opacity: 0.2; }
-.rename-panel:hover .rename-to-full { opacity: 1; transform: translateY(0); }
-
-.idea-color-bar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  height: 8px;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.idea-color-bar div { height: 100%; }
-
-/* ── CONTEXT STRIP ───────────────────────────────────── */
-.context-strip {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 0 32px;
-}
-
-.context-strip-inner {
-  max-width: 1440px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.context-cell {
-  padding: 20px 0;
-  border-right: 1px solid var(--line);
-}
-
-.context-cell:last-child { border-right: none; }
-.context-cell:not(:first-child) { padding-left: 24px; }
-
-.context-label {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--mute);
-  margin-bottom: 4px;
-}
-
-.context-value {
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-/* ── EDITORIAL OPENING ───────────────────────────────── */
-.editorial {
-  padding: 120px 32px;
-  max-width: 1440px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 80px;
-  align-items: start;
-}
-
-.editorial-meta {
-  padding-top: 8px;
-}
-
-.editorial-meta-label {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--mute);
-  margin-bottom: 20px;
-}
-
-.editorial-meta-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.editorial-meta-list li {}
-
-.editorial-meta-category {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--mute);
-  margin-bottom: 3px;
-}
-
-.editorial-meta-item {
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.editorial-body {}
-
-.editorial-headline {
-  font-size: clamp(40px, 5vw, 78px);
-  font-weight: 600;
-  letter-spacing: -0.05em;
-  line-height: 1.05;
-  margin-bottom: 36px;
-}
-
-.editorial-lede {
-  font-size: clamp(18px, 1.6vw, 22px);
-  line-height: 1.65;
-  color: var(--ink);
-  max-width: 640px;
-  margin-bottom: 20px;
-  font-weight: 400;
-}
-
-.editorial-lede-fade {
-  font-size: clamp(18px, 1.6vw, 22px);
-  line-height: 1.65;
-  max-width: 640px;
-  font-weight: 400;
-  /* Fade text from ink to transparent */
-  background: linear-gradient(to bottom, var(--ink) 0%, transparent 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Read full story section */
-.story-expand {
-  max-width: 640px;
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.story-expand.open { max-height: 600px; }
-
-.story-expand-inner {
-  padding-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.story-expand-inner p {
-  font-size: clamp(16px, 1.3vw, 18px);
-  line-height: 1.7;
-  color: var(--mute);
-  max-width: 640px;
-}
-
-.story-toggle-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 28px;
-  padding: 11px 20px;
-  border: 1px solid var(--gray-200);
-  border-radius: 100px;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  transition: background 0.2s, border-color 0.2s;
-  background: var(--paper);
-}
-
-.story-toggle-btn:hover {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
-}
-
-.story-toggle-icon {
-  font-size: 14px;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  display: inline-block;
-}
-
-.story-toggle-btn[aria-expanded="true"] .story-toggle-icon {
-  transform: rotate(180deg);
-}
-
-/* ── CAMPAIGN GALLERY ────────────────────────────────── */
-.gallery-section {
-  padding: 0 32px 120px;
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-.gallery-label-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  padding-bottom: 28px;
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 24px;
-}
-
-.gallery-section-label {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-
-.gallery-count {
-  font-size: 10px;
-  font-weight: 400;
-  color: var(--mute);
-  letter-spacing: 0.05em;
-}
-
-/* Primary gallery: 3-col asymmetric */
-.gallery-primary {
-  display: grid;
-  grid-template-columns: 1.4fr 0.8fr 0.8fr;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-/* Secondary gallery: 3-col even */
-.gallery-secondary {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.gallery-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--r);
-  background: var(--gray-100);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: scale(1.04) translateY(24px);
-  opacity: 0;
-}
-
-.gallery-item.revealed img {
-  transform: scale(1) translateY(0);
-  opacity: 1;
-}
-
-/* Staggered delay per item */
-.gallery-item:nth-child(1) img { transition-delay: 0s; }
-.gallery-item:nth-child(2) img { transition-delay: 0.07s; }
-.gallery-item:nth-child(3) img { transition-delay: 0.14s; }
-
-.gallery-item-aspect-tall  { aspect-ratio: 3/4; }
-.gallery-item-aspect-sq    { aspect-ratio: 1/1; }
-.gallery-item-aspect-wide  { aspect-ratio: 4/3; }
-.gallery-item-aspect-video { aspect-ratio: 16/9; }
-.gallery-item-aspect-banner { aspect-ratio: 3/2; }
-
-.gallery-item-caption {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 48px 16px 16px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.4));
-  font-size: 11px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.85);
-  letter-spacing: 0.02em;
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-}
-
-.gallery-item:hover .gallery-item-caption { opacity: 1; }
-
-/* Explore overlay (Collins-style) */
-.gallery-item-explore {
-  position: absolute;
-  top: 12px; right: 12px;
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.25s, transform 0.25s;
-  cursor: zoom-in;
-}
-
-.gallery-item:hover .gallery-item-explore {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Image lightbox */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.92);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
-}
-
-.lightbox.open {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.lightbox-img {
-  max-width: 90vw;
-  max-height: 90vh;
-  object-fit: contain;
-  border-radius: 4px;
-  transform: scale(0.94);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.lightbox.open .lightbox-img { transform: scale(1); }
-
-.lightbox-close {
-  position: absolute;
-  top: 24px; right: 24px;
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.12);
-  color: white;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-  cursor: pointer;
-}
-
-.lightbox-close:hover { background: rgba(255,255,255,0.22); }
-
-.lightbox-caption {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 12px;
-  color: rgba(255,255,255,0.5);
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-}
-
-/* ── MORE WORK SECTION ───────────────────────────────── */
-.more-work {
-  padding: 0 32px 120px;
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-.more-work-header {
-  display: flex;
-  align-items: baseline;
-  gap: 20px;
-  border-top: 1px solid var(--line);
-  padding-top: 28px;
-  margin-bottom: 32px;
-}
-
-.more-work-label {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-
-.more-work-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-/* Collapsed card */
-.work-card {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-  background: var(--gray-100);
-}
-
-.work-card-thumb {
-  aspect-ratio: 3/2;
-  position: relative;
-  overflow: hidden;
-}
-
-.work-card-thumb-fill {
-  position: absolute;
-  inset: 0;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.work-card:hover .work-card-thumb-fill { transform: scale(1.04); }
-
-/* Thumb backgrounds */
-.work-card-thumb-fill.theseus { background: linear-gradient(145deg, #0b0b1a, #1a1a3a); }
-.work-card-thumb-fill.adc     { background: linear-gradient(145deg, #1a0a0a, #3a1010); }
-.work-card-thumb-fill.brand   { background: linear-gradient(145deg, #0a0f1a, #0d1f3a); }
-
-.work-card-thumb-label {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: clamp(28px, 3vw, 44px);
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  color: white;
-  opacity: 0.18;
-  pointer-events: none;
-}
-
-.work-card-meta {
-  padding: 16px;
-}
-
-.work-card-client {
-  font-size: 13px;
-  font-weight: 500;
-  margin-bottom: 3px;
-}
-
-.work-card-scope {
-  font-size: 11px;
-  color: var(--mute);
-  font-weight: 400;
-}
-
-.work-card-hint {
-  position: absolute;
-  top: 12px; right: 12px;
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  color: white;
-  opacity: 0;
-  transition: opacity 0.25s;
-}
-
-.work-card:hover .work-card-hint { opacity: 1; }
-
-/* Expanded drawer */
-.work-card-drawer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-  background: var(--paper);
-}
-
-.work-card.expanded .work-card-drawer { max-height: 480px; }
-
-.work-card-drawer-inner {
-  padding: 24px;
-  border-top: 1px solid var(--line);
-}
-
-.work-card-drawer-close {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 16px;
-}
-
-.work-card-close-btn {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  color: var(--mute);
-  transition: background 0.2s, color 0.2s;
-}
-
-.work-card-close-btn:hover {
-  background: var(--ink);
-  color: var(--paper);
-}
-
-.work-card-drawer-title {
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  margin-bottom: 10px;
-}
-
-.work-card-drawer-body {
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--mute);
-  margin-bottom: 20px;
-}
-
-.work-card-drawer-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.work-card-drawer-tag {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  padding: 4px 9px;
-  border: 1px solid var(--gray-200);
-  border-radius: 100px;
-  color: var(--mute);
-}
-
-/* ── CTA BAR ─────────────────────────────────────────── */
-.cta-bar {
-  background: var(--idea-abyss);
-  padding: 80px 32px;
-}
-
-.cta-bar-inner {
-  max-width: 1440px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-}
-
-.cta-bar-prompt {
-  font-size: clamp(28px, 3.5vw, 52px);
-  font-weight: 600;
-  letter-spacing: -0.05em;
-  color: white;
-  line-height: 1.1;
-}
-
-.cta-bar-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 28px;
-  border: 1.5px solid rgba(255,255,255,0.35);
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 500;
-  color: white;
-  white-space: nowrap;
-  transition: background 0.25s, border-color 0.25s;
-  flex-shrink: 0;
-}
-
-.cta-bar-link:hover {
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.7);
-}
-
-.cta-arrow {
-  font-size: 16px;
-  transition: transform 0.25s;
-}
-
-.cta-bar-link:hover .cta-arrow { transform: translate(2px, -2px); }
-
-/* ── FOOTER ──────────────────────────────────────────── */
-.footer {
-  border-top: 1px solid var(--line);
-  padding: 28px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.footer-wordmark {
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.footer-meta {
-  font-size: 11px;
-  color: var(--mute);
-  letter-spacing: 0.03em;
-}
-
-/* ── SCROLL FADE-IN ──────────────────────────────────── */
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.fade.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.fade-delay-1 { transition-delay: 0.1s; }
-.fade-delay-2 { transition-delay: 0.2s; }
-.fade-delay-3 { transition-delay: 0.3s; }
-
-/* ── RESPONSIVE ──────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .hero { grid-template-columns: 1fr; gap: 48px; }
-  .editorial { grid-template-columns: 1fr; gap: 40px; }
-  .editorial-meta { display: grid; grid-template-columns: repeat(3, 1fr); }
-  .gallery-primary { grid-template-columns: 1fr 1fr; }
-  .gallery-primary .gallery-item:nth-child(3) { display: none; }
-}
-
-@media (max-width: 768px) {
-  .nav { padding: 0 20px; }
-  .hero { padding-left: 20px; padding-right: 20px; padding-top: calc(var(--nav-h) + 48px); }
-  .context-strip { padding: 0 20px; }
-  .context-strip-inner { grid-template-columns: 1fr 1fr; }
-  .context-cell:nth-child(3) { border-top: 1px solid var(--line); }
-  .context-cell:nth-child(4) { border-top: 1px solid var(--line); }
-  .editorial { padding: 64px 20px; }
-  .gallery-section { padding: 0 20px 80px; }
-  .gallery-primary,
-  .gallery-secondary { grid-template-columns: 1fr; }
-  .more-work { padding: 0 20px 80px; }
-  .more-work-grid { grid-template-columns: 1fr; }
-  .cta-bar { padding: 60px 20px; }
-  .cta-bar-inner { flex-direction: column; align-items: flex-start; }
-  .footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; gap: 8px; }
+:root{
+  --ink:#0A0A0A; --grey-700:#404040; --grey-600:#525252; --grey-200:#E5E5E5;
+  --paper:#F7F7F5; --white:#FFFFFF;
+  --idea-midnight:#0D003C; --idea-abyss:#2B01BE; --idea-sky:#0190FF; --idea-frost:#D8EFFF;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --gutter:clamp(20px,3.4vw,48px);
+  --peek:min(240px,30vw);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Be Vietnam Pro',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+.serif{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+.label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey-600)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--idea-abyss);outline-offset:3px}
+
+/* ── NAV ───────────────────────── */
+.nav{position:fixed;top:0;left:0;right:0;height:72px;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;z-index:40;pointer-events:none;transition:color .4s var(--ease)}
+.nav>*{pointer-events:auto}
+.nav-logo{position:relative;height:34px;width:66px}
+.nav-logo img{position:absolute;inset:0;height:34px;width:auto;transition:opacity .4s var(--ease)}
+.nav-logo .on-dark{opacity:0}
+.nav.on-blue .nav-logo .on-dark{opacity:1}
+.nav.on-blue .nav-logo .on-light{opacity:0}
+.nav-crumb{font-size:14px;color:var(--grey-600);transition:color .4s var(--ease)}
+.nav.on-blue .nav-crumb{color:var(--idea-frost)}
+.nav.hidden{opacity:0;pointer-events:none}
+.nav{transition:opacity .4s var(--ease)}
+
+/* ── HERO ──────────────────────── */
+.hero{position:relative;height:330vh;background:var(--paper)}
+.hero-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;transition:transform .8s var(--ease)}
+.hero-stage.shift{transform:translateX(-6vw)}
+.hero-count{position:absolute;top:22vh;left:var(--gutter);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey-600)}
+.ceil{position:absolute;top:26vh;height:4px;background:var(--idea-midnight);will-change:transform}
+.ceil.l{left:-1vw;width:47vw;transform-origin:right center}
+.ceil.r{right:-1vw;width:47vw;transform-origin:left center}
+.ceil.m{left:46vw;width:8vw}
+.old{position:absolute;top:calc(26vh + 4px);left:0;right:0;height:42vh;overflow:hidden}
+.old-word{display:flex;padding-left:2.4vw;margin-top:-9vw;font-size:27vw;font-weight:600;letter-spacing:-.07em;line-height:1;color:var(--idea-midnight);white-space:nowrap}
+.old-word span{display:inline-block;will-change:transform,opacity,filter}
+.beam{position:absolute;top:0;left:44vw;width:12vw;height:62vh;background:var(--idea-sky);opacity:0;clip-path:polygon(44% 0,56% 0,100% 100%,0 100%);pointer-events:none}
+.pressed-copy{position:absolute;left:var(--gutter);bottom:8vh;font-size:clamp(26px,2.8vw,40px);line-height:1.1;letter-spacing:-.04em;max-width:640px}
+.pressed-copy .serif{font-size:1.15em}
+.scroll-cue{position:absolute;right:var(--gutter);bottom:8vh;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--grey-600)}
+.scroll-cue i{display:block;width:1px;height:48px;background:var(--ink)}
+.blue{position:absolute;inset:0;background:var(--idea-abyss);clip-path:polygon(0 100%,46% 100%,54% 100%,100% 100%,100% 100%,0 100%);will-change:clip-path}
+.new-word{position:absolute;left:1.6vw;bottom:23vh;font-size:30vw;font-weight:600;letter-spacing:-.075em;line-height:.8;color:var(--white);white-space:nowrap;will-change:transform}
+.floor{position:absolute;left:0;right:0;bottom:19vh;height:2px;background:var(--white);transform:scaleX(0);transform-origin:left center}
+.value{position:absolute;top:18vh;right:var(--gutter);text-align:right;color:var(--white);font-size:clamp(30px,3.6vw,52px);line-height:1.05;letter-spacing:-.045em;max-width:640px;opacity:0}
+.value .serif{font-size:1.15em}
+.meta{position:absolute;left:var(--gutter);right:var(--gutter);bottom:5vh;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;color:var(--white);font-size:14px;line-height:1.4;opacity:0}
+.meta b{display:block;font-weight:400;color:var(--idea-frost);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+
+/* ── MARK PANEL (peek + reveal) ─ */
+.mark{position:fixed;top:0;left:0;width:100vw;height:100vh;height:100svh;z-index:60;background:var(--white);border-radius:24px 0 0 24px;box-shadow:-24px 0 60px rgba(13,0,60,.35);transform:translateX(110%);visibility:hidden;transition:transform .9s var(--ease),visibility 0s linear .9s;overflow:hidden}
+.mark.peek,.mark.open{visibility:visible;transition:transform .9s var(--ease),visibility 0s}
+.mark.peek{transform:translateX(calc(100vw - var(--peek)))}
+.mark.open{transform:translateX(40px)}
+.mark-inner{position:absolute;inset:0;right:40px}
+.mark-sliver{position:absolute;top:0;left:0;width:var(--peek);height:100%;transition:opacity .4s var(--ease)}
+.mark.open .mark-sliver{opacity:0;pointer-events:none}
+.mark-sliver .peek-logo{position:absolute;top:28vh;left:16%;height:44vh;width:auto;max-width:none}
+.peek-btn{position:absolute;left:20px;bottom:6vh;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;border-radius:100px;background:var(--ink);color:var(--white);font-size:15px;white-space:nowrap;transition:transform .3s var(--ease)}
+.peek-btn:hover{transform:translateX(-4px)}
+.mark-full{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+.mark.open .mark-full{opacity:1;pointer-events:auto}
+.mark-top{position:absolute;top:0;left:0;right:0;height:72px;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--ink);display:inline-flex;align-items:center;justify-content:center;font-size:18px;background:var(--white);transition:background .2s,color .2s}
+.icon-btn:hover{background:var(--ink);color:var(--white)}
+.mark-logo{position:absolute;top:50%;left:50%;width:min(860px,78vw);transform:translate(-50%,-58%)}
+.mark-logo svg{width:100%;height:auto;display:block;overflow:visible}
+.mark-logo .em,.mark-logo .wm{transition:transform .9s var(--ease),opacity .6s var(--ease)}
+.mark-nums{position:absolute;left:0;right:0;bottom:16vh;display:flex;justify-content:center;gap:40px;font-size:14px;color:var(--grey-600)}
+.mark-nums span{opacity:.3;transition:opacity .5s var(--ease)}
+.mark-nums span.on{opacity:1}
+.mark-nums b{color:var(--idea-abyss);font-weight:600}
+.mark-cue{position:absolute;left:0;right:0;bottom:5vh;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:13px;color:var(--grey-600)}
+.mark-cue i{display:block;width:1px;height:32px;background:var(--ink)}
+
+/* ── RAIL ──────────────────────── */
+.rail-wrap{padding:96px 0 0}
+.rail-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;padding:0 var(--gutter) 20px}
+.rail-head p{margin:0;font-size:13px;color:var(--grey-600)}
+.rail{display:flex;gap:16px;overflow-x:auto;padding:0 var(--gutter) 24px;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch}
+.rail::-webkit-scrollbar{display:none}
+.rail.dragging{cursor:grabbing;scroll-snap-type:none}
+.rail.dragging .card{pointer-events:none}
+.card{position:relative;flex:0 0 auto;height:min(560px,62vw);border-radius:16px;overflow:hidden;background:var(--grey-200);scroll-snap-align:start;cursor:zoom-in}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.card:hover img{transform:scale(1.03)}
+.pill{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.92);color:var(--ink);font-size:13px;padding:8px 14px;border-radius:100px}
+.card .plus{position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;font-size:18px;opacity:0;transform:scale(.85);transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.card:hover .plus,.card:focus-visible .plus{opacity:1;transform:none}
+
+/* ── LIGHTBOX ──────────────────── */
+.lightbox{position:fixed;inset:0;z-index:80;background:rgba(10,10,10,.94);display:flex;align-items:center;justify-content:center;padding:72px 24px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lightbox img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;transform:scale(.97);transition:transform .45s var(--ease)}
+.lightbox.open img{transform:none}
+.lb-close{position:absolute;top:20px;right:20px;width:48px;height:48px;border-radius:50%;background:var(--white);color:var(--ink);font-size:20px}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.14);color:var(--white);font-size:20px}
+.lb-nav:hover{background:rgba(255,255,255,.26)}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lb-cap{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:#D4D4D4;font-size:14px}
+
+/* ── STORY ─────────────────────── */
+.story{max-width:1440px;margin:0 auto;padding:120px var(--gutter);display:flex;flex-wrap:wrap;gap:64px}
+.story-meta{flex:1 1 220px;max-width:280px;display:flex;flex-direction:column;gap:20px;font-size:14px;line-height:1.4}
+.story-meta div div:last-child{color:var(--grey-600)}
+.story-body{flex:999 1 560px;min-width:0;max-width:860px}
+.story-lede{margin:0;font-size:clamp(28px,3vw,42px);line-height:1.2;letter-spacing:-.04em;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 55%,transparent 100%);transition:-webkit-mask-image .4s}
+.story.open .story-lede{-webkit-mask-image:none;mask-image:none}
+.story-lede .serif{font-size:1.1em}
+.story-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.story.open .story-more{grid-template-rows:1fr}
+.story-more>div{overflow:hidden}
+.story-more p{margin:0 0 20px;font-size:18px;line-height:1.65;color:var(--grey-700);max-width:680px}
+.story-more>div>p:first-child{margin-top:40px}
+.pill-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 22px;border:1px solid var(--ink);border-radius:100px;font-size:14px;margin-top:36px;transition:background .2s,color .2s}
+.pill-btn:hover{background:var(--ink);color:var(--white)}
+.pill-btn .arr{transition:transform .4s var(--ease)}
+.story.open .pill-btn .arr{transform:rotate(180deg)}
+
+/* ── STATEMENT ─────────────────── */
+.statement{max-width:1440px;margin:0 auto;padding:0 var(--gutter) 120px}
+.statement h2{margin:0;font-weight:400;font-size:clamp(48px,7vw,104px);line-height:1;letter-spacing:-.06em;max-width:1200px}
+.statement h2 .serif{font-size:1.1em}
+.blues{display:flex;flex-wrap:wrap;margin-top:56px;border-radius:16px;overflow:hidden}
+.blues figure{flex:1 1 320px;margin:0;display:flex;flex-direction:column}
+.blues img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.blues figcaption{padding:32px 40px}
+.blues figcaption span{display:block;font-size:13px}
+.blues figcaption strong{display:block;font-size:32px;letter-spacing:-.04em;font-weight:500}
+.blues .relief{background:var(--idea-sky);color:var(--ink)}
+.blues .dev{background:var(--idea-abyss);color:var(--white)}
+.blues .dev figcaption span{color:var(--idea-frost)}
+.statement>p{font-size:18px;line-height:1.6;color:var(--grey-700);max-width:560px;margin:28px 0 0}
+
+/* ── CHAPTERS ──────────────────── */
+.chapters{max-width:1440px;margin:0 auto;padding:0 clamp(12px,2vw,24px) 120px;display:flex;flex-direction:column;gap:24px}
+.chapter{background:var(--white);border-radius:20px;padding:clamp(32px,6vw,96px) clamp(20px,5vw,80px)}
+.chapter h2{font-size:clamp(36px,4vw,56px);font-weight:400;letter-spacing:-.05em;line-height:1.05;margin:20px 0 16px}
+.chapter h2 .serif{font-size:1.1em}
+.chapter p.sub{font-size:16px;line-height:1.6;color:var(--grey-600);margin:0;max-width:440px}
+.split{display:flex;flex-wrap:wrap;gap:56px;align-items:center}
+.split>*{flex:1 1 360px;min-width:0}
+.centered{text-align:center;max-width:640px;margin:0 auto 56px}
+.centered p.sub{margin:0 auto}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grid3 img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px}
+.grid3.brand img{aspect-ratio:16/10;object-fit:contain;background:var(--white);border:1px solid var(--grey-200)}
+.grid3.brand img.dark{background:#000;border-color:#000}
+.acronym div{display:flex;align-items:baseline;gap:20px;border-bottom:1px solid var(--grey-200);padding:10px 0}
+.acronym div:last-child{border-bottom:0}
+.acronym b{font-size:64px;font-weight:600;color:var(--idea-abyss);width:64px;letter-spacing:-.05em}
+.acronym span{font-size:22px;letter-spacing:-.03em}
+.tall{aspect-ratio:4/5;width:100%;object-fit:cover;border-radius:12px}
+.screens{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.site-link{position:relative;display:block;text-decoration:none;border-radius:12px}
+.site-link .scroll-box{height:640px;overflow-y:auto;border-radius:12px;border:1px solid var(--grey-200)}
+.site-link .scroll-box img{width:100%}
+.hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(13,0,60,.35);opacity:0;transition:opacity .3s var(--ease);pointer-events:none;border-radius:12px}
+.hint span{background:var(--white);color:var(--ink);font-size:15px;padding:14px 22px;border-radius:100px;box-shadow:0 12px 32px rgba(0,0,0,.18);transform:translateY(8px);transition:transform .3s var(--ease)}
+.site-link:hover .hint,.site-link:focus-visible .hint{opacity:1}
+.site-link:hover .hint span,.site-link:focus-visible .hint span{transform:none}
+@media (hover:none){.hint{opacity:1;background:transparent;align-items:flex-end;padding-bottom:16px}}
+.web-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-end;margin-bottom:48px}
+.web-head h2{margin-bottom:0}
+.web-head p{margin:0;font-size:14px;color:var(--grey-600)}
+
+/* ── MORE WORK ─────────────────── */
+.more{padding:0 var(--gutter) 140px;text-align:center}
+.more h2{font-size:clamp(36px,4vw,56px);font-weight:400;letter-spacing:-.05em;margin:0}
+.more h2 .serif{font-size:1.1em}
+.more>p{font-size:15px;color:var(--grey-600);margin:12px 0 48px}
+.stack{position:relative;height:500px;max-width:520px;margin:0 auto}
+.stack-card{position:absolute;top:0;left:0;right:0;height:460px;display:flex;flex-direction:column;padding:16px;background:var(--white);border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.12);text-align:left;transition:transform .6s var(--ease),opacity .6s var(--ease)}
+.stack-card .ph{flex:1;display:flex;align-items:center;justify-content:center;background:var(--grey-200);color:var(--grey-600);font-size:14px;border-radius:12px}
+.stack-card .t{font-size:16px;padding-top:16px}
+.stack-ctrl{display:flex;gap:12px;justify-content:center;margin-top:32px}
+.work-modal{position:fixed;inset:0;z-index:80;background:rgba(10,10,10,.5);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.work-modal.open{opacity:1;pointer-events:auto}
+.work-card{position:relative;width:min(1100px,100%);max-height:100%;overflow-y:auto;background:var(--white);border-radius:20px;padding:clamp(24px,4vw,56px);display:flex;flex-wrap:wrap;gap:40px;text-align:left;transform:translateY(24px) scale(.98);transition:transform .5s var(--ease)}
+.work-modal.open .work-card{transform:none}
+.work-card .ph{flex:1 1 420px;min-height:360px;background:var(--grey-200);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--grey-600);font-size:14px}
+.work-card .info{flex:1 1 300px;display:flex;flex-direction:column;gap:16px}
+.work-card .info h3{font-size:40px;font-weight:400;letter-spacing:-.05em;line-height:1.05;margin:0}
+.work-card .info p{font-size:16px;line-height:1.6;color:var(--grey-600);margin:0}
+.work-card .icon-btn{position:absolute;top:16px;right:16px}
+
+/* ── CTA + FOOTER ──────────────── */
+.cta{background:var(--ink);color:var(--white);padding:clamp(64px,8vw,120px) var(--gutter);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:32px}
+.cta h2{margin:0;font-weight:400;font-size:clamp(44px,6vw,88px);letter-spacing:-.06em;line-height:1}
+.cta h2 .serif{font-size:1.1em}
+.cta a{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 28px;border:1px solid var(--white);border-radius:100px;text-decoration:none;font-size:16px;transition:background .25s,color .25s}
+.cta a:hover{background:var(--white);color:var(--ink)}
+.footer{padding:28px var(--gutter);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;font-size:13px;color:var(--grey-600)}
+.footer img{height:28px;width:auto}
+
+/* ── REVEAL ────────────────────── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:760px){
+  .meta{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;font-size:12px}
+  .value{top:14vh;left:var(--gutter);text-align:left}
+  .new-word{bottom:30vh}
+  .floor{bottom:27vh}
+  .grid2{grid-template-columns:1fr}
+  .site-link .scroll-box{height:480px}
+  .mark-nums{gap:20px;font-size:13px}
+  :root{--peek:min(240px,46vw)}
+  .scroll-cue{display:none}
+  .peek-btn{left:16px;padding:0 16px;font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .hero{height:100vh}
+  .reveal{opacity:1;transform:none}
 }
-
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <a href="https://wearesubtitle.com" class="nav-wordmark">subtitle</a>
-  <ul class="nav-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="https://wearesubtitle.com/about">About</a></li>
-    <li><a href="mailto:hello@wearesubtitle.com">Contact</a></li>
-  </ul>
-</nav>
+<header class="nav" id="nav">
+  <a class="nav-logo" href="https://wearesubtitle.com" aria-label="subtitle home">
+    <img class="on-light" src="assets/subtitle-logo-black.svg" alt="">
+    <img class="on-dark" src="assets/subtitle-logo-white.svg" alt="">
+  </a>
+  <span class="nav-crumb">Case Study / IDEA</span>
+</header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-breadcrumb">
-      <a href="https://wearesubtitle.com/work">Work</a>
-      <span>/</span>
-      <span>IDEA</span>
+<main>
+  <!-- HERO: Breaking the ceiling -->
+  <section class="hero" id="hero" aria-label="IRUSA became IDEA">
+    <h1 class="sr-only">IRUSA became IDEA. A name as big as the mission.</h1>
+    <div class="hero-stage" id="stage" aria-hidden="true">
+      <div class="hero-count" id="count">01 / 03</div>
+      <div class="beam" id="beam"></div>
+      <div class="old"><div class="old-word"><span>I</span><span id="oR">R</span><span id="oU">U</span><span id="oS">S</span><span>A</span></div></div>
+      <div class="ceil l" id="ceilL"></div>
+      <div class="ceil m" id="ceilM"></div>
+      <div class="ceil r" id="ceilR"></div>
+      <div class="pressed-copy" id="pressed">Three decades of trust.<br>One name holding it <span class="serif">down.</span></div>
+      <div class="scroll-cue" id="cue"><span>Scroll to break through</span><i></i></div>
+      <div class="blue" id="blue"></div>
+      <div class="new-word" id="newWord">IDEA.</div>
+      <div class="floor" id="floor"></div>
+      <div class="value" id="value">A name as big<br>as <span class="serif">the mission.</span></div>
+      <div class="meta" id="meta">
+        <div><b>Client</b>Islamic Development &amp; Empowerment in America</div>
+        <div><b>Formerly</b>Islamic Relief USA</div>
+        <div><b>Scope</b>Strategy, Identity, Messaging, Web, Campaign</div>
+        <div><b>Program</b>Rename and relaunch</div>
+      </div>
     </div>
-    <h1 class="hero-title">IRUSA became</h1>
-    <p class="hero-title-line2">IDEA.</p>
-    <p class="hero-descriptor">A name change is the hardest brief in branding. We led the strategy, built the identity, wrote the words, launched the site, and ran the campaign.</p>
-    <div class="hero-tags">
-      <span class="hero-tag">Brand Strategy</span>
-      <span class="hero-tag">Identity</span>
-      <span class="hero-tag">Messaging</span>
-      <span class="hero-tag">Web</span>
-      <span class="hero-tag">Campaign</span>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="rename-panel">
-      <div class="rename-from">IRUSA</div>
-      <div class="rename-arrow">↓</div>
-      <div class="rename-to">IDEA.</div>
-      <div class="rename-to-full">Islamic Development &amp; Empowerment in America</div>
-    </div>
-    <div class="idea-color-bar">
-      <div style="background: var(--idea-ink);"></div>
-      <div style="background: var(--idea-abyss);"></div>
-      <div style="background: var(--idea-sky);"></div>
-      <div style="background: var(--idea-frost);"></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- CONTEXT STRIP -->
-<div class="context-strip">
-  <div class="context-strip-inner">
-    <div class="context-cell">
-      <div class="context-label">Client</div>
-      <div class="context-value">Islamic Development &amp; Empowerment in America</div>
+  <!-- IMAGE RAIL -->
+  <section class="rail-wrap" aria-label="Explore the work">
+    <div class="rail-head reveal">
+      <span class="label">Explore the work</span>
+      <p>Drag to scroll. Click any card to open it.</p>
     </div>
-    <div class="context-cell">
-      <div class="context-label">Sector</div>
-      <div class="context-value">Nonprofit / Humanitarian</div>
+    <div class="rail" id="rail">
+      <button class="card" style="width:min(860px,82vw)" data-cap="Winter relief"><img src="assets/winter-relief.jpg" alt="Winter relief distribution in a mountain village" loading="lazy"><span class="pill">Winter relief</span><span class="plus" aria-hidden="true">+</span></button>
+      <button class="card" style="width:min(760px,82vw)" data-cap="Her own shop"><img src="assets/shop.jpg" alt="Shop owner behind her counter" loading="lazy"><span class="pill">Her own shop</span><span class="plus" aria-hidden="true">+</span></button>
+      <button class="card" style="width:min(860px,82vw)" data-cap="Room to grow"><img src="assets/town.jpg" alt="A man looks out over a growing town with a school and market" loading="lazy"><span class="pill">Room to grow</span><span class="plus" aria-hidden="true">+</span></button>
+      <button class="card" style="width:min(420px,82vw)" data-cap="Families first"><img src="assets/families.jpg" alt="Mother and children with an aid package" loading="lazy"><span class="pill">Families first</span><span class="plus" aria-hidden="true">+</span></button>
+      <button class="card" style="width:min(760px,82vw)" data-cap="Water for a village"><img src="assets/water-village.jpg" alt="Solar powered water point on a hillside" loading="lazy"><span class="pill">Water for a village</span><span class="plus" aria-hidden="true">+</span></button>
+      <button class="card" style="width:min(740px,82vw)" data-cap="Clean water"><img src="assets/clean-water.jpg" alt="Children laughing under a water tap" loading="lazy"><span class="pill">Clean water</span><span class="plus" aria-hidden="true">+</span></button>
+      <button class="card" style="width:min(760px,82vw)" data-cap="Back to school"><img src="assets/school.jpg" alt="Children reading together" loading="lazy"><span class="pill">Back to school</span><span class="plus" aria-hidden="true">+</span></button>
+      <button class="card" style="width:min(680px,82vw)" data-cap="Livelihoods"><img src="assets/livelihoods.jpg" alt="Woman at her sewing machine" loading="lazy"><span class="pill">Livelihoods</span><span class="plus" aria-hidden="true">+</span></button>
+      <button class="card" style="width:min(560px,82vw)" data-cap="Access to water"><img src="assets/access-water.jpg" alt="Girl washing her hands at a tap" loading="lazy"><span class="pill">Access to water</span><span class="plus" aria-hidden="true">+</span></button>
     </div>
-    <div class="context-cell">
-      <div class="context-label">Deliverables</div>
-      <div class="context-value">Strategy, Identity, Web, Campaign</div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story" id="story">
+    <div class="story-meta reveal">
+      <div><div>Program</div><div>Rename, Identity, Messaging, Web, Campaign</div></div>
+      <div><div>Sector</div><div>Nonprofit, humanitarian and development</div></div>
+      <div><div>Stage</div><div>Established organization, new chapter</div></div>
     </div>
-    <div class="context-cell">
-      <div class="context-label">Year</div>
-      <div class="context-value">2025</div>
+    <div class="story-body reveal">
+      <p class="story-lede">For three decades, Islamic Relief USA answered the world's emergencies. But the work had already moved past them, into schools, livelihoods and long term development. The name hadn't. It still said relief, and <span class="serif">only relief.</span></p>
+      <div class="story-more" id="storyMore"><div>
+        <p>The brief came down to one line: give the organization a name that matches the work it actually does, without putting three decades of donor trust at risk.</p>
+        <p>We led the rename from strategy to launch. IDEA, Islamic Development and Empowerment in America, keeps the faith in the name and makes room for everything the organization had grown into.</p>
+        <p>Then we built everything the name needed to live: the identity system, the messaging, the website and the launch campaign. One brief. One shot. No soft rollout.</p>
+      </div></div>
+      <button class="pill-btn" id="storyBtn" aria-expanded="false" aria-controls="storyMore"><span id="storyLbl">Read the full story</span> <span class="arr" aria-hidden="true">&#8595;</span></button>
+    </div>
+  </section>
+
+  <!-- STATEMENT -->
+  <section class="statement">
+    <h2 class="reveal">Relief is a response.<br>Development is <span class="serif">a promise.</span></h2>
+    <div class="blues reveal">
+      <figure class="relief"><img src="assets/relief.jpg" alt="Aid worker hands food to a mother and child in a camp" loading="lazy"><figcaption><span>Light blue</span><strong>Relief work</strong></figcaption></figure>
+      <figure class="dev"><img src="assets/farm.jpg" alt="Farmers fitting drip irrigation beside a solar powered water tank" loading="lazy"><figcaption><span>Dark blue</span><strong>Development work</strong></figcaption></figure>
+    </div>
+    <p class="reveal">The shift the organization made is built straight into the palette. Two blues, one direction.</p>
+  </section>
+
+  <!-- CHAPTERS -->
+  <section class="chapters" aria-label="The work">
+    <article class="chapter split reveal">
+      <div>
+        <div class="label">01 Strategy</div>
+        <h2>A name that holds <span class="serif">the whole mission.</span></h2>
+        <p class="sub">Rename strategy, narrative and rollout plan. Faith stays in the name. The scope finally fits it.</p>
+      </div>
+      <div class="acronym">
+        <div><b>I</b><span>Islamic</span></div>
+        <div><b>D</b><span>Development</span></div>
+        <div><b>E</b><span>Empowerment</span></div>
+        <div><b>A</b><span>in America</span></div>
+      </div>
+    </article>
+
+    <article class="chapter reveal">
+      <div class="centered">
+        <div class="label">02 Identity</div>
+        <h2>Every number <span class="serif">means something.</span></h2>
+        <p class="sub">The emblem is built from 7, the number of abundance, 5, the structure of faith, and 12, complete cycles.</p>
+      </div>
+      <div class="grid3 brand">
+        <img class="dark" src="assets/idea-logo-dark.jpg" alt="IDEA emblem and wordmark" loading="lazy">
+        <img src="assets/emblem-system.jpg" alt="Emblem construction and color meaning" loading="lazy">
+        <img src="assets/layout-system.jpg" alt="IDEA dynamic layout system" loading="lazy">
+      </div>
+    </article>
+
+    <article class="chapter split reveal">
+      <div>
+        <div class="label">03 Messaging</div>
+        <h2>Read in a second. <span class="serif">Felt for longer.</span></h2>
+        <p class="sub">Brand story, voice, and the CEO announcement that introduced IDEA to supporters.</p>
+      </div>
+      <div class="grid2">
+        <a class="site-link" href="https://development.org/why-idea" target="_blank" rel="noopener" aria-label="Watch the CEO message on development.org, opens in a new tab"><img class="tall" src="assets/ceo.jpg" alt="IDEA CEO video message" loading="lazy"><span class="hint"><span>Watch the CEO message &#8599;</span></span></a>
+        <img class="tall" src="assets/post-2023.jpg" alt="IDEA social post on children's reading skills" loading="lazy">
+      </div>
+    </article>
+
+    <article class="chapter reveal">
+      <div class="web-head">
+        <div style="max-width:640px">
+          <div class="label">04 Web</div>
+          <h2>A front door <span class="serif">for the new name.</span></h2>
+        </div>
+        <p>Scroll inside each screen. Click to visit the live site.</p>
+      </div>
+      <div class="screens">
+        <a class="site-link" href="https://development.org/" target="_blank" rel="noopener" aria-label="Visit the live IDEA homepage, opens in a new tab"><div class="scroll-box"><img src="assets/site-home.jpg" alt="IDEA homepage" loading="lazy"></div><span class="hint"><span>Visit development.org &#8599;</span></span></a>
+        <a class="site-link" href="https://development.org/why-idea" target="_blank" rel="noopener" aria-label="Visit the Why IDEA page, opens in a new tab"><div class="scroll-box"><img src="assets/site-why-idea.jpg" alt="IDEA Why IDEA page" loading="lazy"></div><span class="hint"><span>Visit development.org &#8599;</span></span></a>
+      </div>
+    </article>
+
+    <article class="chapter reveal">
+      <div class="centered">
+        <div class="label">05 Campaign</div>
+        <h2>People first. <span class="serif">Logo second.</span></h2>
+      </div>
+      <div class="grid3">
+        <img src="assets/shop.jpg" alt="Shop owner behind her counter" loading="lazy">
+        <img src="assets/school.jpg" alt="Children reading together" loading="lazy">
+        <img src="assets/livelihoods.jpg" alt="Woman at her sewing machine" loading="lazy">
+      </div>
+    </article>
+  </section>
+
+  <!-- MORE WORK -->
+  <section class="more" aria-label="More work">
+    <h2 class="reveal">More <span class="serif">work.</span></h2>
+    <p class="reveal">Click the card to open it.</p>
+    <div class="stack" id="stack">
+      <button class="stack-card" data-i="0"><span class="ph">[Project image]</span><span class="t">[Project 01]</span></button>
+      <button class="stack-card" data-i="1"><span class="ph">[Project image]</span><span class="t">[Project 02]</span></button>
+      <button class="stack-card" data-i="2"><span class="ph">[Project image]</span><span class="t">[Project 03]</span></button>
+    </div>
+    <div class="stack-ctrl">
+      <button class="icon-btn" id="stackPrev" aria-label="Previous project">&#8592;</button>
+      <button class="icon-btn" id="stackNext" aria-label="Next project">&#8594;</button>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <h2>What are you <span class="serif">building?</span></h2>
+    <a href="mailto:info@wearesubtitle.com">Start a conversation &#8599;</a>
+  </section>
+</main>
+
+<footer class="footer">
+  <img src="assets/subtitle-logo-black.svg" alt="subtitle">
+  <span>Creative digital innovation company</span>
+</footer>
+
+<!-- MARK PANEL -->
+<div class="mark" id="mark" aria-hidden="true">
+  <div class="mark-sliver">
+    <img class="peek-logo" src="assets/idea-logo.svg" alt="">
+    <button class="peek-btn" id="peekBtn">See the mark &#8594;</button>
+  </div>
+  <div class="mark-full" role="dialog" aria-modal="true" aria-label="The IDEA mark">
+    <div class="mark-inner">
+      <div class="mark-top">
+        <span class="label">The mark</span>
+        <button class="icon-btn" id="markClose" aria-label="Close the mark">&#10005;</button>
+      </div>
+      <div class="mark-logo" id="markLogo"><svg viewBox="0 0 499 229" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="IDEA logo">
+<path class="wm" d="M275.78 171.32H257.16V57.7197H275.78V171.32Z" fill="#2B01BE"/>
+<path class="wm" d="M321.2 171.32H289.22V57.7197H321.36C332.97 57.7197 341.38 59.8397 346.58 64.0797C351.78 68.3197 354.48 75.2697 354.69 84.9197C355.01 95.4697 355.17 105.3 355.17 114.39C355.17 123.48 355.01 133.34 354.69 143.94C354.48 153.7 351.77 160.7 346.58 164.94C341.38 169.18 332.92 171.3 321.2 171.3V171.32ZM307.84 74.5897V154.46H321.2C330.96 154.46 335.92 151.7 336.08 146.19C336.77 125.08 336.77 103.92 336.08 82.7097C335.92 77.2997 331.02 74.5997 321.36 74.5997H307.84V74.5897Z" fill="#2B01BE"/>
+<path class="wm" d="M421.28 171.32H365.67V57.7197H421.28V74.5797H384.29V105.21H419.13V122.08H384.29V154.46H421.28V171.32Z" fill="#2B01BE"/>
+<path class="wm" d="M447.35 171.32H428.18L447.43 57.7197H479.73L498.98 171.32H479.89L475.83 145.86H451.49L447.35 171.32ZM456.65 103.94L453.15 129H474.07L470.65 103.94L466.51 74.5897H460.78L456.64 103.94H456.65Z" fill="#2B01BE"/>
+<path class="em" d="M114.33 11.48L140.97 38.12C141.82 38.97 142.28 40.09 142.28 41.29C142.28 42.49 141.81 43.61 140.97 44.46L131.82 53.61L134.25 62.66L146.72 50.19C149.1 47.81 150.41 44.65 150.41 41.28C150.41 37.91 149.1 34.75 146.72 32.37L114.33 0L91.8201 22.51L100.87 24.94L114.32 11.49H114.33V11.48Z" fill="#2B01BE"/>
+<path class="em" d="M78.26 41.2802C78.26 44.6402 79.57 47.8102 81.95 50.1902L114.33 82.5702L124.3 72.6002L121.87 63.5502L114.33 71.0902L87.69 44.4502C86.84 43.6002 86.38 42.4802 86.38 41.2802C86.38 40.0802 86.85 38.9602 87.69 38.1102L90.93 34.8702L81.88 32.4502C79.54 34.8202 78.25 37.9502 78.25 41.2902H78.26V41.2802Z" fill="#2B01BE"/>
+<path class="em" d="M118.36 42.5904L130.21 86.8204L174.44 74.9704C177.69 74.1004 180.41 72.0204 182.09 69.1004C183.76 66.2104 184.21 62.8604 183.37 59.6304L174.32 57.2104L175.51 61.6404C175.82 62.8004 175.66 64.0004 175.06 65.0404C174.46 66.0804 173.5 66.8204 172.34 67.1304L135.95 76.8804L126.2 40.4904C125.56 38.1004 126.98 35.6404 129.37 35.0004L133.8 33.8104L127.18 27.1904C120.53 29.0304 116.57 35.9104 118.36 42.5904Z" fill="#0190FF"/>
+<path class="em" d="M170.68 43.6403L179.73 46.0603L171.5 15.3203L140.75 23.5503L147.38 30.1803L165.76 25.2603L170.68 43.6403Z" fill="#0190FF"/>
+<path class="em" d="M193.66 99.3002C193.12 101.3 191.31 102.62 189.33 102.62C188.95 102.62 188.56 102.57 188.18 102.47L151.79 92.7202L154.55 82.4102L146.19 84.6502L145.49 84.8401L141.84 98.4602L186.07 110.31C187.16 110.6 188.25 110.74 189.33 110.74C194.86 110.74 199.93 107.06 201.47 101.49L194.85 94.8702L193.66 99.3002Z" fill="#2B01BE"/>
+<path class="em" d="M161.53 56.3199C161.84 55.1599 162.58 54.1999 163.62 53.5999C164.31 53.1999 165.08 52.9999 165.85 52.9999C166.24 52.9999 166.63 53.0499 167.01 53.1499L203.4 62.8999L198.48 81.2799L205.11 87.9099L213.35 57.1699L169.12 45.3199C168.03 45.0299 166.93 44.8799 165.84 44.8799C163.66 44.8799 161.5 45.4499 159.56 46.5699C156.65 48.2499 154.56 50.9699 153.69 54.2199L149.13 71.2499L158.18 68.8199L161.53 56.3199Z" fill="#2B01BE"/>
+<path class="em" d="M187.38 142.28C186.23 142.28 185.09 141.84 184.21 140.97L157.57 114.33L165.11 106.79L156.06 104.36L146.09 114.33L178.47 146.71C180.93 149.17 184.15 150.39 187.38 150.39C190.61 150.39 193.77 149.18 196.22 146.76L193.8 137.72L190.55 140.97C189.68 141.84 188.53 142.28 187.38 142.28Z" fill="#0190FF"/>
+<path class="em" d="M175.06 96.8503L184.21 87.7003C185.08 86.8303 186.23 86.3903 187.38 86.3903C188.53 86.3903 189.67 86.8303 190.55 87.7003L217.19 114.34L203.74 127.79L206.17 136.84L228.68 114.34L196.3 81.9603C193.84 79.5003 190.62 78.2803 187.39 78.2803C184.16 78.2803 180.94 79.5103 178.48 81.9603L166.01 94.4303L175.06 96.8503Z" fill="#0190FF"/>
+<path class="em" d="M165.85 175.67C165.07 175.67 164.31 175.47 163.62 175.07C162.58 174.47 161.84 173.51 161.53 172.35L151.78 135.96L162.08 133.2L155.46 126.58L141.84 130.23L153.69 174.46C154.56 177.71 156.64 180.43 159.56 182.11C161.5 183.23 163.65 183.8 165.84 183.8C166.9 183.8 167.97 183.66 169.03 183.38L171.45 174.33L167.02 175.52C166.63 175.62 166.24 175.67 165.85 175.67Z" fill="#2B01BE"/>
+<path class="em" d="M175.67 129.56L188.17 126.21C188.55 126.11 188.94 126.06 189.32 126.06C191.3 126.06 193.12 127.38 193.65 129.38L203.4 165.77L185.02 170.69L182.59 179.74L213.33 171.5L201.48 127.27C200.61 124.02 198.53 121.3 195.61 119.62C193.67 118.5 191.52 117.93 189.34 117.93C188.25 117.93 187.14 118.07 186.06 118.37L169.03 122.93L175.65 129.55H175.67V129.56Z" fill="#2B01BE"/>
+<path class="em" d="M159.84 158.18L172.34 161.53C174.73 162.17 176.15 164.63 175.51 167.02L165.76 203.41L147.38 198.49L140.75 205.12L171.49 213.36L183.34 169.13C185.14 162.42 181.14 155.5 174.43 153.7L157.4 149.14L159.83 158.19L159.84 158.18Z" fill="#0190FF"/>
+<path class="em" d="M130.21 141.84L118.36 186.07C116.57 192.75 120.53 199.63 127.18 201.47L133.8 194.85L129.37 193.66C126.98 193.02 125.56 190.56 126.2 188.17L135.95 151.78L146.26 154.54L143.83 145.49L130.21 141.84Z" fill="#0190FF"/>
+<path class="em" d="M114.33 146.1L81.95 178.48C79.57 180.86 78.26 184.02 78.26 187.39C78.26 190.76 79.55 193.86 81.89 196.23L90.94 193.81L87.69 190.57C86.84 189.72 86.38 188.6 86.38 187.4C86.38 186.2 86.85 185.08 87.69 184.23L114.33 157.59L121.87 165.13L124.3 156.08L114.33 146.11V146.1Z" fill="#0190FF"/>
+<path class="em" d="M140.97 184.22C141.82 185.07 142.28 186.19 142.28 187.39C142.28 188.59 141.81 189.71 140.97 190.56L114.33 217.2L100.88 203.75L91.8301 206.18L114.34 228.69L146.72 196.31C149.1 193.93 150.41 190.77 150.41 187.4C150.41 184.03 149.1 180.87 146.72 178.49L134.25 166.02L131.82 175.07L140.97 184.22Z" fill="#0190FF"/>
+<path class="em" d="M62.83 183.79C65.01 183.79 67.17 183.22 69.11 182.1C72.02 180.42 74.11 177.7 74.98 174.45L86.83 130.22L73.2099 126.57L66.58 133.2L76.8799 135.96L67.1299 172.35C66.8199 173.51 66.08 174.47 65.04 175.07C64.35 175.47 63.58 175.67 62.81 175.67C62.42 175.67 62.0299 175.62 61.6399 175.51L57.2 174.32L59.6199 183.37C60.6799 183.65 61.75 183.79 62.81 183.79H62.83Z" fill="#2B01BE"/>
+<path class="em" d="M25.2601 165.76L35.0101 129.37C35.3201 128.21 36.0601 127.25 37.1001 126.65C37.7901 126.25 38.5601 126.05 39.3401 126.05C39.7301 126.05 40.1201 126.1 40.5001 126.2L53.0001 129.55L59.6301 122.92L42.6001 118.36C41.5101 118.07 40.4101 117.93 39.3201 117.93C37.1401 117.93 34.9901 118.5 33.0501 119.62C30.1401 121.3 28.0501 124.02 27.1801 127.27L15.3301 171.5L46.0701 179.74L43.6401 170.69L25.2701 165.77H25.2601V165.76Z" fill="#2B01BE"/>
+<path class="em" d="M11.48 114.33L38.12 87.6898C38.99 86.8198 40.14 86.3798 41.29 86.3798C42.44 86.3798 43.58 86.8198 44.46 87.6898L53.61 96.8398L62.66 94.4098L50.19 81.9398C47.73 79.4798 44.51 78.2598 41.28 78.2598C38.05 78.2598 34.83 79.4898 32.37 81.9398L0 114.33L22.51 136.83L24.94 127.78L11.49 114.33H11.48Z" fill="#0190FF"/>
+<path class="em" d="M41.2799 150.4C44.6399 150.4 47.8099 149.09 50.1899 146.71L82.5699 114.33L72.5999 104.36L63.5499 106.79L71.0899 114.34L44.4499 140.98C43.5999 141.83 42.4399 142.25 41.2799 142.25C40.1199 142.25 38.9599 141.83 38.1099 140.98L34.8599 137.73L32.4399 146.78C34.8099 149.12 37.9399 150.41 41.2799 150.41V150.4Z" fill="#0190FF"/>
+<path class="em" d="M39.34 110.73C40.42 110.73 41.5099 110.59 42.5999 110.3L86.83 98.4504L83.18 84.8304L74.1299 82.4004L76.8899 92.7104L40.5 102.46C40.11 102.56 39.72 102.61 39.34 102.61C37.36 102.61 35.5499 101.29 35.0099 99.2904L33.82 94.8604L27.2 101.48C28.74 107.05 33.81 110.73 39.34 110.73Z" fill="#2B01BE"/>
+<path class="em" d="M25.2601 62.9096L61.6501 53.1596C62.0401 53.0596 62.4301 53.0096 62.8201 53.0096C63.6001 53.0096 64.3601 53.2097 65.0501 53.6096C66.0901 54.2097 66.8301 55.1697 67.1401 56.3297L70.4901 68.8297L79.5401 71.2597L74.9801 54.2296C74.1101 50.9796 72.0301 48.2597 69.1101 46.5797C67.1701 45.4597 65.0201 44.8896 62.8301 44.8896C61.7401 44.8896 60.6301 45.0296 59.5501 45.3196L15.3201 57.1696L23.5601 87.9097L30.1901 81.2796L25.2701 62.8997H25.2601V62.9096Z" fill="#2B01BE"/>
+<path class="em" d="M62.8999 25.2603L99.2899 35.0103C100.45 35.3203 101.41 36.0603 102.01 37.1003C102.61 38.1403 102.77 39.3403 102.46 40.5003L99.1099 53.0003L105.74 59.6303L110.3 42.6003C111.17 39.3503 110.73 35.9603 109.04 33.0403C107.35 30.1203 104.64 28.0403 101.39 27.1703L57.1599 15.3203L48.9199 46.0603L57.9699 43.6303L62.8899 25.2503H62.8999V25.2603Z" fill="#0190FF"/>
+<path class="em" d="M46.5701 69.1C48.2501 72.01 50.9701 74.1 54.2201 74.97L98.4501 86.82L102.1 73.2L95.4701 66.57L92.7101 76.88L56.3201 67.13C55.1601 66.82 54.2001 66.08 53.6001 65.04C53.0001 64 52.8401 62.8 53.1501 61.64L54.3401 57.21L45.2901 59.63C44.4501 62.85 44.9001 66.21 46.5701 69.1Z" fill="#0190FF"/>
+<path class="em" d="M102.46 188.17C102.77 189.33 102.61 190.53 102.01 191.57C101.41 192.6 100.45 193.35 99.29 193.66L62.9 203.41L53.15 167.02C52.84 165.86 53 164.66 53.6 163.62C54.2 162.58 55.16 161.84 56.32 161.53L68.82 158.18L71.25 149.13L54.22 153.69C50.97 154.56 48.25 156.64 46.57 159.56C44.89 162.47 44.44 165.87 45.31 169.12L57.16 213.35L101.39 201.5C104.64 200.63 107.36 198.55 109.04 195.63C110.72 192.72 111.17 189.32 110.3 186.07L105.74 169.04L99.11 175.67L102.46 188.17Z" fill="#0190FF"/>
+<path class="em" d="M92.7099 151.78L95.4699 162.09L102.1 155.46L98.4499 141.84L84.8299 145.49L82.4099 154.54L92.7099 151.78Z" fill="#0190FF"/>
+<path class="wm" d="M488.37 64.0897V58.7597H486.34V57.7197H491.62V58.7597H489.58V64.0897H488.37Z" fill="#2B01BE"/>
+<path class="wm" d="M492.55 64.0897V57.7197H494.45L495.45 61.2697C495.49 61.3897 495.52 61.5297 495.56 61.6897C495.6 61.8397 495.63 61.9897 495.67 62.1397C495.7 62.2797 495.73 62.4097 495.75 62.5097H495.82C495.83 62.4197 495.85 62.2997 495.88 62.1697C495.9 62.0297 495.93 61.8897 495.97 61.7297C496 61.5697 496.04 61.4197 496.09 61.2697L497.09 57.7297H498.97V64.0997H497.76V60.8797C497.76 60.5997 497.76 60.3097 497.76 60.0297C497.76 59.7497 497.77 59.4997 497.78 59.2997C497.78 59.0997 497.79 58.9697 497.79 58.9397H497.72C497.71 58.9997 497.68 59.1197 497.63 59.2997C497.58 59.4897 497.53 59.6897 497.47 59.8997C497.41 60.1097 497.36 60.2997 497.32 60.4597L496.27 64.1097H495.16L494.11 60.4697C494.07 60.3397 494.03 60.1797 493.98 59.9997C493.93 59.8197 493.89 59.6297 493.84 59.4397C493.79 59.2497 493.75 59.0797 493.71 58.9397H493.64C493.64 59.1097 493.65 59.3097 493.66 59.5397C493.66 59.7697 493.67 60.0097 493.68 60.2497C493.69 60.4897 493.68 60.6997 493.68 60.8997V64.1197H492.52L492.55 64.0897Z" fill="#2B01BE"/>
+</svg></div>
+      <div class="mark-nums"><span id="n7"><b>7</b> abundance</span><span id="n5"><b>5</b> faith</span><span id="n12"><b>12</b> complete cycles</span></div>
+      <div class="mark-cue"><span>Scroll to continue</span><i></i></div>
     </div>
   </div>
 </div>
 
-<!-- EDITORIAL SECTION -->
-<section class="editorial">
-  <div class="editorial-meta fade">
-    <div class="editorial-meta-label">Program</div>
-    <ul class="editorial-meta-list">
-      <li>
-        <div class="editorial-meta-category">Scope</div>
-        <div class="editorial-meta-item">Full brand transformation</div>
-      </li>
-      <li>
-        <div class="editorial-meta-category">Focus</div>
-        <div class="editorial-meta-item">Rename, identity, messaging</div>
-      </li>
-      <li>
-        <div class="editorial-meta-category">Stage</div>
-        <div class="editorial-meta-item">Launch</div>
-      </li>
-    </ul>
-  </div>
-
-  <div class="editorial-body">
-    <h2 class="editorial-headline fade">The name was<br>the ceiling.</h2>
-
-    <p class="editorial-lede fade fade-delay-1">Thirty years of credibility. Operations across 40+ countries. A mission that was always universal. But the name said otherwise: too narrow for the scope, too easy to misread.</p>
-
-    <p class="editorial-lede-fade fade fade-delay-2">The organization needed a name that could carry the weight of what it had become. Not just what it responded to, but what it was building toward.</p>
-
-    <div class="story-expand" id="story-full" aria-hidden="true">
-      <div class="story-expand-inner">
-        <p>Islamic Relief USA had spent three decades building trust through humanitarian work around the world. But the moment had arrived to signal something larger: a shift from emergency response toward long-term development and empowerment. A name that opened doors instead of narrowing them.</p>
-        <p>Subtitle led the complete strategic rename. We worked with leadership to stress-test every option, build the narrative rationale, and land on IDEA: Islamic Development and Empowerment in America. A name with meaning at every level, clear without being hollow.</p>
-        <p>From there we built the full identity system: visual language, typography, color, motion principles. Then came the messaging architecture, the new website, and a launch campaign. One brief. One shot. No soft rollout.</p>
-      </div>
-    </div>
-
-    <button class="story-toggle-btn fade fade-delay-3" id="story-toggle" aria-expanded="false" aria-controls="story-full">
-      <span id="story-toggle-label">Read the full story</span>
-      <span class="story-toggle-icon">↓</span>
-    </button>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section class="gallery-section" id="work">
-  <div class="gallery-label-row">
-    <span class="gallery-section-label">Identity &amp; Expression</span>
-    <span class="gallery-count">06 assets</span>
-  </div>
-
-  <div class="gallery-primary" id="gallery-primary">
-    <div class="gallery-item gallery-item-aspect-tall fade" data-src="assets/IDEA logo.svg" data-caption="IDEA identity mark">
-      <img src="assets/IDEA logo.svg" alt="IDEA identity mark" loading="lazy">
-      <div class="gallery-item-caption">IDEA identity mark</div>
-      <div class="gallery-item-explore">↗</div>
-    </div>
-    <div class="gallery-item gallery-item-aspect-sq fade fade-delay-1" data-src="assets/IDEA Instagram post - 1.svg" data-caption="Social campaign creative">
-      <img src="assets/IDEA Instagram post - 1.svg" alt="IDEA social creative" loading="lazy">
-      <div class="gallery-item-caption">Social campaign creative</div>
-      <div class="gallery-item-explore">↗</div>
-    </div>
-    <div class="gallery-item gallery-item-aspect-wide fade fade-delay-2" data-src="assets/IDEA Slide 16_9 - 4.svg" data-caption="Campaign presentation">
-      <img src="assets/IDEA Slide 16_9 - 4.svg" alt="IDEA campaign presentation" loading="lazy">
-      <div class="gallery-item-caption">Campaign presentation</div>
-      <div class="gallery-item-explore">↗</div>
-    </div>
-  </div>
-
-  <div class="gallery-secondary" id="gallery-secondary">
-    <div class="gallery-item gallery-item-aspect-banner fade" data-src="assets/IDEA 01 Free Outdoor Roll-Up Banner Mockup with Leaf Shadow 3.svg" data-caption="Outdoor rollout">
-      <img src="assets/IDEA 01 Free Outdoor Roll-Up Banner Mockup with Leaf Shadow 3.svg" alt="IDEA outdoor banner" loading="lazy">
-      <div class="gallery-item-caption">Outdoor rollout</div>
-      <div class="gallery-item-explore">↗</div>
-    </div>
-    <div class="gallery-item gallery-item-aspect-wide fade fade-delay-1" data-src="assets/Frame.svg" data-caption="Dynamic layout system">
-      <img src="assets/Frame.svg" alt="IDEA dynamic layout system" loading="lazy">
-      <div class="gallery-item-caption">Dynamic layout system</div>
-      <div class="gallery-item-explore">↗</div>
-    </div>
-    <div class="gallery-item gallery-item-aspect-video fade fade-delay-2" data-src="assets/Home Page.svg" data-caption="Homepage design">
-      <img src="assets/Home Page.svg" alt="IDEA homepage" loading="lazy">
-      <div class="gallery-item-caption">Homepage design</div>
-      <div class="gallery-item-explore">↗</div>
-    </div>
-  </div>
-</section>
-
-<!-- MORE WORK -->
-<section class="more-work">
-  <div class="more-work-header">
-    <span class="more-work-label">More work</span>
-  </div>
-  <div class="more-work-grid">
-
-    <div class="work-card fade" data-card="theseus">
-      <div class="work-card-thumb">
-        <div class="work-card-thumb-fill theseus"></div>
-        <div class="work-card-thumb-label">Theseus</div>
-        <div class="work-card-hint">↗</div>
-      </div>
-      <div class="work-card-meta">
-        <div class="work-card-client">Theseus Robotics</div>
-        <div class="work-card-scope">Web, Brand, 3D</div>
-      </div>
-      <div class="work-card-drawer">
-        <div class="work-card-drawer-inner">
-          <div class="work-card-drawer-close">
-            <button class="work-card-close-btn" aria-label="Close">✕</button>
-          </div>
-          <div class="work-card-drawer-title">Theseus Robotics</div>
-          <p class="work-card-drawer-body">A robotics company entering a market that needed a reason to believe. We built the site, developed brand illustrations, and created the interactive 3D hero experience that makes the product visceral before you ever touch it.</p>
-          <div class="work-card-drawer-tags">
-            <span class="work-card-drawer-tag">Website</span>
-            <span class="work-card-drawer-tag">Brand</span>
-            <span class="work-card-drawer-tag">3D / Interactive</span>
-            <span class="work-card-drawer-tag">Illustration</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="work-card fade fade-delay-1" data-card="adc">
-      <div class="work-card-thumb">
-        <div class="work-card-thumb-fill adc"></div>
-        <div class="work-card-thumb-label">ADC</div>
-        <div class="work-card-hint">↗</div>
-      </div>
-      <div class="work-card-meta">
-        <div class="work-card-client">ADC</div>
-        <div class="work-card-scope">Identity, Campaign</div>
-      </div>
-      <div class="work-card-drawer">
-        <div class="work-card-drawer-inner">
-          <div class="work-card-drawer-close">
-            <button class="work-card-close-btn" aria-label="Close">✕</button>
-          </div>
-          <div class="work-card-drawer-title">ADC</div>
-          <p class="work-card-drawer-body">Identity and campaign work for an organization with decades of history and a mandate to stay relevant. Brand thinking that respects a legacy while making room for what comes next.</p>
-          <div class="work-card-drawer-tags">
-            <span class="work-card-drawer-tag">Identity</span>
-            <span class="work-card-drawer-tag">Campaign</span>
-            <span class="work-card-drawer-tag">Strategy</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="work-card fade fade-delay-2" data-card="brand">
-      <div class="work-card-thumb">
-        <div class="work-card-thumb-fill brand"></div>
-        <div class="work-card-thumb-label">Brand</div>
-        <div class="work-card-hint">↗</div>
-      </div>
-      <div class="work-card-meta">
-        <div class="work-card-client">Available</div>
-        <div class="work-card-scope">Your next project</div>
-      </div>
-      <div class="work-card-drawer">
-        <div class="work-card-drawer-inner">
-          <div class="work-card-drawer-close">
-            <button class="work-card-close-btn" aria-label="Close">✕</button>
-          </div>
-          <div class="work-card-drawer-title">What are you building?</div>
-          <p class="work-card-drawer-body">Rename. Relaunch. Enter a new market. Build from nothing. Whatever the brief, get in touch and let's find out if it's a fit.</p>
-          <div class="work-card-drawer-tags">
-            <span class="work-card-drawer-tag">hello@wearesubtitle.com</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CTA BAR -->
-<section class="cta-bar">
-  <div class="cta-bar-inner">
-    <p class="cta-bar-prompt">What are you<br>building?</p>
-    <a href="mailto:hello@wearesubtitle.com" class="cta-bar-link">
-      Start a conversation <span class="cta-arrow">↗</span>
-    </a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <span class="footer-wordmark">subtitle</span>
-  <span class="footer-meta">IDEA case study · 2025 · subtitle LLC</span>
-</footer>
-
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-  <img class="lightbox-img" id="lightbox-img" src="" alt="">
-  <button class="lightbox-close" id="lightbox-close" aria-label="Close image">✕</button>
-  <div class="lightbox-caption" id="lightbox-caption"></div>
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+  <img id="lbImg" alt="">
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous image">&#8592;</button>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next image">&#8594;</button>
+  <button class="lb-close" id="lbClose" aria-label="Close image">&#10005;</button>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<!-- WORK MODAL -->
+<div class="work-modal" id="wm" role="dialog" aria-modal="true" aria-label="Project" aria-hidden="true">
+  <div class="work-card">
+    <div class="ph">[Project image or video]</div>
+    <div class="info">
+      <span class="label">Case study</span>
+      <h3 id="wmTitle">[Project 01]</h3>
+      <p>[One or two lines on what subtitle did and why it mattered]</p>
+    </div>
+    <button class="icon-btn" id="wmClose" aria-label="Close project">&#10005;</button>
+  </div>
 </div>
 
 <script>
-(function() {
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(id){ return document.getElementById(id); };
+  var clamp = function(v){ return v < 0 ? 0 : v > 1 ? 1 : v; };
+  var ease = function(t){ return 1 - Math.pow(1 - t, 3); };
 
-  /* ── Scroll fade-in ────────────────────────────────── */
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
+  /* ── HERO SCRUB ─────────────────── */
+  var hero = $('hero'), stage = $('stage'), nav = $('nav');
+  var el = { R:$('oR'), U:$('oU'), S:$('oS'), L:$('ceilL'), M:$('ceilM'), Rr:$('ceilR'), beam:$('beam'),
+    pressed:$('pressed'), cue:$('cue'), blue:$('blue'), word:$('newWord'), floor:$('floor'),
+    value:$('value'), meta:$('meta'), count:$('count') };
+  var lastP = -1, ticking = false;
+
+  function render(p){
+    var t1 = clamp((p - 0.03) / 0.35);          // crack
+    var t2 = ease(clamp((p - 0.22) / 0.40));    // blue rises, IDEA rises
+    var t3 = ease(clamp((p - 0.62) / 0.18));    // settle
+
+    // ceiling splits
+    el.L.style.transform = 'translateX(' + (-3 * t1) + 'vw) rotate(' + (-3 * t1) + 'deg)';
+    el.Rr.style.transform = 'translateX(' + (3 * t1) + 'vw) rotate(' + (4 * t1) + 'deg)';
+    el.M.style.opacity = String(1 - clamp(t1 * 4));
+    el.L.style.opacity = el.Rr.style.opacity = String(1 - t2);
+
+    // R, U, S soften, fade and drift gently down
+    [[el.R, .55, 1], [el.U, .75, 1.5], [el.S, .88, 2]].forEach(function(a){
+      a[0].style.opacity = String(1 - t1 * a[1]);
+      a[0].style.transform = 'translateY(' + (t1 * 3 * a[2]) + 'vh)';
+      a[0].style.filter = 'blur(' + (t1 * a[2] * 1.5) + 'px)';
     });
-  }, { threshold: 0.08 });
 
-  document.querySelectorAll('.fade').forEach(function(el) {
-    observer.observe(el);
-  });
+    el.beam.style.opacity = String(0.22 * t1 * (1 - t2));
+    var fade = String(1 - clamp(t1 * 2.5));
+    el.pressed.style.opacity = fade; el.cue.style.opacity = fade;
 
-  /* ── Gallery reveal on scroll ──────────────────────── */
-  var galleryObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (!entry.isIntersecting) return;
-      var items = entry.target.querySelectorAll('.gallery-item');
-      items.forEach(function(item, i) {
-        setTimeout(function() { item.classList.add('revealed'); }, i * 90);
-      });
-      galleryObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.1 });
+    // blue floods up through the crack
+    var side = 100 - 14 * t1 - 86 * t2;
+    var peak = Math.max(0, side - 22 * (1 - t2) * clamp(t1 * 2));
+    var edge = side + 4 * (1 - t2), sh = edge + (peak - edge) * 0.4;
+    if (t1 === 0) { edge = sh = peak = 101; }
+    el.blue.style.clipPath = 'polygon(0% ' + edge + '%, 30% ' + sh + '%, 46% ' + peak + '%, 54% ' + peak + '%, 70% ' + sh + '%, 100% ' + edge + '%, 100% 100%, 0% 100%)';
 
-  ['gallery-primary', 'gallery-secondary'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) galleryObserver.observe(el);
-  });
+    el.word.style.transform = 'translateY(' + ((1 - t2) * 75) + 'vh)';
+    el.floor.style.transform = 'scaleX(' + t3 + ')';
+    el.value.style.opacity = String(t3);
+    el.value.style.transform = 'translateY(' + ((1 - t3) * 16) + 'px)';
+    el.meta.style.opacity = String(t3);
 
-  /* ── Story expand ──────────────────────────────────── */
-  var btn = document.getElementById('story-toggle');
-  var full = document.getElementById('story-full');
-  var label = document.getElementById('story-toggle-label');
-
-  if (btn && full) {
-    btn.addEventListener('click', function() {
-      var expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!expanded));
-      full.setAttribute('aria-hidden', String(expanded));
-      full.classList.toggle('open', !expanded);
-      label.textContent = expanded ? 'Read the full story' : 'Close';
-    });
+    el.count.textContent = t2 > 0.95 ? '03 / 03' : t1 > 0.15 ? '02 / 03' : '01 / 03';
+    el.count.style.color = t2 > 0.6 ? '#D8EFFF' : '';
+    nav.classList.toggle('on-blue', t2 > 0.55 && heroVisible());
   }
 
-  /* ── Lightbox ──────────────────────────────────────── */
-  var lightbox = document.getElementById('lightbox');
-  var lightboxImg = document.getElementById('lightbox-img');
-  var lightboxCaption = document.getElementById('lightbox-caption');
-  var lightboxClose = document.getElementById('lightbox-close');
-
-  document.querySelectorAll('.gallery-item').forEach(function(item) {
-    item.addEventListener('click', function() {
-      var src = item.getAttribute('data-src');
-      var cap = item.getAttribute('data-caption') || '';
-      lightboxImg.src = src;
-      lightboxImg.alt = cap;
-      lightboxCaption.textContent = cap;
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  function closeLightbox() {
-    lightbox.classList.remove('open');
-    document.body.style.overflow = '';
-    setTimeout(function() { lightboxImg.src = ''; }, 350);
+  function heroVisible(){
+    var r = hero.getBoundingClientRect();
+    return r.bottom > 72;
   }
 
-  lightboxClose.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', function(e) {
-    if (e.target === lightbox) closeLightbox();
-  });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-  });
-
-  /* ── More work cards expand ────────────────────────── */
-  document.querySelectorAll('.work-card').forEach(function(card) {
-    var thumb = card.querySelector('.work-card-thumb');
-    var closeBtn = card.querySelector('.work-card-close-btn');
-
-    function expandCard() {
-      // Collapse any other open card
-      document.querySelectorAll('.work-card.expanded').forEach(function(c) {
-        if (c !== card) c.classList.remove('expanded');
-      });
-      card.classList.toggle('expanded');
-    }
-
-    function collapseCard(e) {
-      e.stopPropagation();
-      card.classList.remove('expanded');
-    }
-
-    if (thumb) thumb.addEventListener('click', expandCard);
-    if (closeBtn) closeBtn.addEventListener('click', collapseCard);
-  });
-
-  /* ── Hero parallax ─────────────────────────────────── */
-  var heroRight = document.querySelector('.hero-right');
-  if (heroRight && window.matchMedia('(hover: hover)').matches) {
-    var tX = 0, tY = 0, cX = 0, cY = 0;
-    var raf;
-
-    document.addEventListener('mousemove', function(e) {
-      var cx = window.innerWidth / 2;
-      var cy = window.innerHeight / 2;
-      tX = (e.clientX - cx) / cx * 8;
-      tY = (e.clientY - cy) / cy * 5;
-    });
-
-    function lerp(a, b, t) { return a + (b - a) * t; }
-
-    function tick() {
-      cX = lerp(cX, tX, 0.07);
-      cY = lerp(cY, tY, 0.07);
-      heroRight.style.transform = 'translate(' + cX.toFixed(2) + 'px, ' + cY.toFixed(2) + 'px)';
-      raf = requestAnimationFrame(tick);
-    }
-
-    tick();
+  function progress(){
+    if (reduce) return 1;
+    var r = hero.getBoundingClientRect();
+    var span = r.height - window.innerHeight;
+    return span > 0 ? clamp(-r.top / span) : 1;
   }
 
+  /* ── PEEK + MARK ────────────────── */
+  var mark = $('mark'), peekTimer = null, state = 'hidden';
+  function setState(s){
+    state = s;
+    mark.classList.toggle('peek', s === 'peek');
+    mark.classList.toggle('open', s === 'open');
+    stage.classList.toggle('shift', s === 'peek');
+    mark.setAttribute('aria-hidden', s === 'hidden' ? 'true' : 'false');
+    nav.classList.toggle('hidden', s === 'open');
+  }
+  function updatePeek(p){
+    var r = hero.getBoundingClientRect();
+    var atEnd = p > 0.82 && r.bottom > window.innerHeight * 0.6;
+    if (state === 'open') return;
+    if (atEnd && state === 'hidden' && !peekTimer){
+      peekTimer = setTimeout(function(){ peekTimer = null; var q = progress(); if (q > 0.82 && hero.getBoundingClientRect().bottom > window.innerHeight * 0.6) setState('peek'); }, 900);
+    }
+    if (!atEnd){
+      if (peekTimer){ clearTimeout(peekTimer); peekTimer = null; }
+      if (state === 'peek') setState('hidden');
+    }
+  }
+
+  // emblem build
+  var svg = $('markLogo').querySelector('svg');
+  var pieces = svg ? Array.prototype.slice.call(svg.querySelectorAll('.em')) : [];
+  var words = svg ? Array.prototype.slice.call(svg.querySelectorAll('.wm')) : [];
+  var cx = 114.5, cy = 114.5, buildTimers = [];
+  pieces.forEach(function(p){
+    var b = p.getBBox(), x = b.x + b.width / 2, y = b.y + b.height / 2;
+    p._dx = (x - cx) * 0.6; p._dy = (y - cy) * 0.6;
+    p._a = (Math.atan2(y - cy, x - cx) + Math.PI * 2.5) % (Math.PI * 2);
+  });
+  pieces.sort(function(a, b){ return a._a - b._a; });
+
+  function resetMark(){
+    buildTimers.forEach(clearTimeout); buildTimers = [];
+    pieces.forEach(function(p){ p.style.transition = 'none'; p.style.opacity = '0'; p.style.transform = 'translate(' + p._dx + 'px,' + p._dy + 'px) scale(.9)'; });
+    words.forEach(function(w){ w.style.transition = 'none'; w.style.opacity = '0'; w.style.transform = 'translateX(-12px)'; });
+    ['n7','n5','n12'].forEach(function(id){ $(id).classList.remove('on'); });
+  }
+  function buildMark(){
+    resetMark();
+    void svg.getBoundingClientRect();
+    var step = reduce ? 0 : 60, start = reduce ? 0 : 450;
+    pieces.forEach(function(p, i){
+      buildTimers.push(setTimeout(function(){ p.style.transition = ''; p.style.opacity = '1'; p.style.transform = 'none'; }, start + i * step));
+    });
+    var end = start + pieces.length * step;
+    buildTimers.push(setTimeout(function(){ $('n7').classList.add('on'); }, start));
+    buildTimers.push(setTimeout(function(){ $('n5').classList.add('on'); }, start + end * 0.45));
+    buildTimers.push(setTimeout(function(){ $('n12').classList.add('on'); }, end));
+    buildTimers.push(setTimeout(function(){ words.forEach(function(w){ w.style.transition = ''; w.style.opacity = '1'; w.style.transform = 'none'; }); }, end + 250));
+  }
+
+  function openMark(){
+    setState('open');
+    document.documentElement.style.overflow = 'hidden';
+    buildMark();
+    setTimeout(function(){ $('markClose').focus({ preventScroll: true }); }, 500);
+  }
+  function closeMark(){
+    if (state !== 'open') return;
+    document.documentElement.style.overflow = '';
+    setState('peek');
+    $('peekBtn').focus({ preventScroll: true });
+  }
+  $('peekBtn').addEventListener('click', openMark);
+  $('markClose').addEventListener('click', closeMark);
+  // first bit of scroll closes the drawer
+  window.addEventListener('wheel', function(e){ if (state === 'open'){ e.preventDefault(); closeMark(); } }, { passive: false });
+  var touchY = null;
+  mark.addEventListener('touchstart', function(e){ touchY = e.touches[0].clientY; }, { passive: true });
+  mark.addEventListener('touchmove', function(e){ if (state === 'open' && touchY !== null && Math.abs(e.touches[0].clientY - touchY) > 24){ touchY = null; closeMark(); } }, { passive: true });
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      ticking = false;
+      var p = progress();
+      if (p !== lastP){ render(p); lastP = p; }
+      updatePeek(p);
+      if (!heroVisible()) nav.classList.remove('on-blue');
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', function(){ lastP = -1; onScroll(); });
+  render(progress()); onScroll();
+
+  /* ── RAIL DRAG ──────────────────── */
+  var rail = $('rail'), down = false, sx = 0, sl = 0, moved = 0;
+  rail.addEventListener('pointerdown', function(e){
+    if (e.pointerType !== 'mouse') return;
+    down = true; moved = 0; sx = e.clientX; sl = rail.scrollLeft;
+  });
+  window.addEventListener('pointermove', function(e){
+    if (!down) return;
+    var dx = e.clientX - sx; moved = Math.max(moved, Math.abs(dx));
+    if (moved > 6){ rail.classList.add('dragging'); rail.scrollLeft = sl - dx; }
+  });
+  window.addEventListener('pointerup', function(){
+    if (!down) return; down = false;
+    setTimeout(function(){ rail.classList.remove('dragging'); }, 0);
+  });
+
+  /* ── LIGHTBOX ───────────────────── */
+  var cards = Array.prototype.slice.call(rail.querySelectorAll('.card'));
+  var lb = $('lb'), lbImg = $('lbImg'), lbCap = $('lbCap'), lbIdx = 0, lastFocus = null;
+  function showLb(i){
+    lbIdx = (i + cards.length) % cards.length;
+    var img = cards[lbIdx].querySelector('img');
+    lbImg.src = img.getAttribute('src'); lbImg.alt = img.alt;
+    lbCap.textContent = cards[lbIdx].getAttribute('data-cap');
+  }
+  cards.forEach(function(c, i){
+    c.addEventListener('click', function(){
+      if (moved > 6) return;
+      lastFocus = c; showLb(i);
+      lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false');
+      document.documentElement.style.overflow = 'hidden';
+      $('lbClose').focus({ preventScroll: true });
+    });
+  });
+  function closeLb(){
+    lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = '';
+    if (lastFocus) lastFocus.focus({ preventScroll: true });
+  }
+  $('lbClose').addEventListener('click', closeLb);
+  $('lbPrev').addEventListener('click', function(){ showLb(lbIdx - 1); });
+  $('lbNext').addEventListener('click', function(){ showLb(lbIdx + 1); });
+  lb.addEventListener('click', function(e){ if (e.target === lb) closeLb(); });
+
+  /* ── STORY ──────────────────────── */
+  var story = $('story'), sBtn = $('storyBtn');
+  sBtn.addEventListener('click', function(){
+    var open = !story.classList.contains('open');
+    story.classList.toggle('open', open);
+    sBtn.setAttribute('aria-expanded', String(open));
+    $('storyLbl').textContent = open ? 'Close the story' : 'Read the full story';
+  });
+
+  /* ── MORE WORK STACK ────────────── */
+  var stackCards = Array.prototype.slice.call(document.querySelectorAll('.stack-card'));
+  var sIdx = 0, wm = $('wm');
+  function layoutStack(){
+    var n = stackCards.length;
+    stackCards.forEach(function(c, i){
+      var pos = (i - sIdx + n) % n;
+      c.style.transform = 'translateX(' + (pos * 48) + 'px) scale(' + (1 - pos * 0.07) + ')';
+      c.style.zIndex = String(10 - pos);
+      c.tabIndex = pos === 0 ? 0 : -1;
+      c.setAttribute('aria-hidden', pos === 0 ? 'false' : 'true');
+    });
+  }
+  $('stackNext').addEventListener('click', function(){ sIdx = (sIdx + 1) % stackCards.length; layoutStack(); });
+  $('stackPrev').addEventListener('click', function(){ sIdx = (sIdx - 1 + stackCards.length) % stackCards.length; layoutStack(); });
+  stackCards.forEach(function(c, i){
+    c.addEventListener('click', function(){
+      sIdx = i; layoutStack(); lastFocus = c;
+      $('wmTitle').textContent = c.querySelector('.t').textContent;
+      wm.classList.add('open'); wm.setAttribute('aria-hidden', 'false');
+      document.documentElement.style.overflow = 'hidden';
+      $('wmClose').focus({ preventScroll: true });
+    });
+  });
+  function closeWm(){
+    wm.classList.remove('open'); wm.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = '';
+    if (lastFocus) lastFocus.focus({ preventScroll: true });
+  }
+  $('wmClose').addEventListener('click', closeWm);
+  wm.addEventListener('click', function(e){ if (e.target === wm) closeWm(); });
+  layoutStack();
+
+  /* ── KEYS ───────────────────────── */
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){
+      if (lb.classList.contains('open')) closeLb();
+      else if (wm.classList.contains('open')) closeWm();
+      else closeMark();
+    }
+    if (lb.classList.contains('open')){
+      if (e.key === 'ArrowLeft') showLb(lbIdx - 1);
+      if (e.key === 'ArrowRight') showLb(lbIdx + 1);
+    }
+    if (state === 'open' && ['ArrowDown','PageDown',' ','ArrowUp','PageUp'].indexOf(e.key) > -1){ e.preventDefault(); closeMark(); }
+  });
+
+  /* ── REVEALS ────────────────────── */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(n){ io.observe(n); });
 })();
 </script>
-
 </body>
 </html>
