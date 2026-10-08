@@ -1511,6 +1511,162 @@
     .vis-campaign { min-height: 280px; }
 
     footer { padding: 20px; flex-direction: column; gap: 16px; }
+
+    .story-section { padding: 80px 24px 72px; }
+    .story-headline { font-size: 42px; }
+    .story-body { margin-top: 32px; }
+    .story-full p { font-size: 16px; }
+
+    .cta-bar { padding: 72px 24px; }
+    .cta-bar-prompt { font-size: clamp(36px, 10vw, 52px); }
+    .cta-bar-link { font-size: 14px; padding: 14px 28px; }
+  }
+</style>
+
+<style>
+  /* ── STORY SECTION ───────────────────────────────────────── */
+  .story-section {
+    padding: 100px 64px 90px;
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .story-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 8%;
+    align-items: start;
+  }
+
+  .story-headline {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: clamp(40px, 5.5vw, 80px);
+    font-weight: 300;
+    letter-spacing: -0.045em;
+    line-height: 1.02;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .story-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .story-preview p,
+  .story-full p {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: clamp(16px, 1.4vw, 20px);
+    font-weight: 300;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+    color: var(--mute);
+    margin: 0 0 18px 0;
+  }
+
+  .story-full {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s ease 0.1s;
+  }
+  .story-full.open {
+    max-height: 600px;
+    opacity: 1;
+  }
+  .story-full p { margin-top: 18px; }
+
+  .story-toggle {
+    margin-top: 28px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 4px;
+    transition: color 0.15s;
+  }
+  .story-toggle:hover { color: var(--mute); }
+  .story-toggle-arrow {
+    display: inline-block;
+    transition: transform 0.35s ease;
+  }
+  .story-toggle[aria-expanded="true"] .story-toggle-arrow {
+    transform: rotate(180deg);
+  }
+  .story-toggle[aria-expanded="true"]::first-line {
+    content: "Close";
+  }
+
+  /* ── CTA BAR ─────────────────────────────────────────────── */
+  .cta-bar {
+    background: var(--idea-abyss, #1a0a5e);
+    padding: 100px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  .cta-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 48px;
+  }
+
+  .cta-bar-prompt {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: clamp(40px, 5.5vw, 80px);
+    font-weight: 300;
+    letter-spacing: -0.045em;
+    line-height: 1;
+    color: #fff;
+    margin: 0;
+  }
+
+  .cta-bar-link {
+    flex-shrink: 0;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s, border-color 0.2s;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .cta-bar-link:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.6);
+  }
+  .cta-arrow { font-size: 16px; }
+
+  @media (max-width: 900px) {
+    .story-inner { grid-template-columns: 1fr; gap: 32px; }
+    .cta-bar-inner { flex-direction: column; align-items: flex-start; }
+    .cta-bar-prompt { font-size: clamp(36px, 9vw, 56px); }
   }
 </style>
 </head>
@@ -1601,7 +1757,7 @@
     </div>
     <div class="gimg gimg-4-3 gfill-mid">
       <img src="https://image.mux.com/HrTdwUPY1ldaLDoolvZrVeKFgLOqjADvOjnt62601xfs/thumbnail.webp?width=1200" alt="Ahmed Shehata, CEO of IDEA">
-      <div class="gimg-caption"><span>CEO Message · Ahmed Shehata</span></div>
+      <div class="gimg-caption"><span>CEO Message</span></div>
     </div>
     <div class="gimg gimg-4-3 gfill-sky">
       <img src="https://development.org/images/about/story/water-point.jpg" alt="IDEA field program: clean water access">
@@ -1626,40 +1782,27 @@
   </div>
 </div>
 
-<!-- NAME CHANGE CONTEXT -->
-<section class="name-change">
-  <div class="name-change-inner">
-    <div class="name-change-left">
-      <h2 class="fade">The name was the ceiling.</h2>
-      <p class="fade">Thirty years of credibility. Operations in 40+ countries. A mission that was always universal. But the name said otherwise, too narrow for the scope, too easy to misread in a polarized climate. One brief, one shot, no soft rollout.</p>
-    </div>
-    <div class="name-change-right">
-      <div class="name-row fade">
-        <span class="name-row-label">Before</span>
-        <span class="name-row-value">Islamic Relief USA</span>
+<!-- STORY SECTION -->
+<section class="story-section">
+  <div class="story-inner">
+    <h2 class="story-headline fade">The name was the ceiling.</h2>
+    <div class="story-body">
+      <div class="story-preview fade">
+        <p>Thirty years of credibility. Operations in 40+ countries. A mission that was always universal. But the name said otherwise, too narrow for the scope, too easy to misread.</p>
       </div>
-      <div class="name-row fade">
-        <span class="name-row-label">The problem</span>
-        <span class="name-row-value">Regional. Limiting. Misread.</span>
+      <div class="story-full" id="story-full" aria-hidden="true">
+        <p>One brief, one shot, no soft rollout. Islamic Relief USA had spent three decades building trust through humanitarian work across the globe. The organization needed a name that could hold what it had become: not a relief operation, but a development and empowerment platform rooted in American civic life.</p>
+        <p>Subtitle led the strategic rename, developed the full identity system, wrote all brand messaging, designed and built the new site, and ran the launch campaign. IDEA, Islamic Development and Empowerment in America, was introduced publicly in September 2026. The name is an argument, the initialism is a gift, and the organization now has language to match its scale.</p>
       </div>
-      <div class="name-row fade">
-        <span class="name-row-label">The mandate</span>
-        <span class="name-row-value">Universal mission, new name</span>
-      </div>
-      <div class="name-row highlight fade">
-        <span class="name-row-label">After</span>
-        <span class="name-row-value">Islamic Development &amp; Empowerment in America</span>
-      </div>
-      <div class="name-row highlight fade">
-        <span class="name-row-label">Acronym</span>
-        <span class="name-row-value" style="font-size:22px; letter-spacing:0.06em;">IDEA</span>
-      </div>
+      <button class="story-toggle fade" id="story-toggle" aria-expanded="false" aria-controls="story-full">
+        Read the full story <span class="story-toggle-arrow">↓</span>
+      </button>
     </div>
   </div>
 </section>
 
-<!-- IDENTITY SHOWCASE -->
-<div class="identity-showcase" aria-hidden="true">
+<!-- IDENTITY SHOWCASE (hidden — kept for asset reference) -->
+<div class="identity-showcase" aria-hidden="true" style="display:none">
 
   <!-- Panel 1: Mark / Ink -->
   <div class="id-panel id-p1">
@@ -1958,10 +2101,12 @@
   </div>
 </div>
 
-<!-- NEXT -->
-<section class="next">
-  <p class="next-label">Next</p>
-  <a href="#" class="next-link">See all work →</a>
+<!-- CTA BAR -->
+<section class="cta-bar">
+  <div class="cta-bar-inner">
+    <p class="cta-bar-prompt">What are you building?</p>
+    <a href="mailto:hello@wearesubtitle.com" class="cta-bar-link">Start a conversation <span class="cta-arrow">↗</span></a>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -2043,6 +2188,20 @@
     });
 
     raf = requestAnimationFrame(tick);
+  })();
+
+  // Story expand (Collins pattern)
+  (function() {
+    const btn = document.getElementById('story-toggle');
+    const full = document.getElementById('story-full');
+    if (!btn || !full) return;
+    btn.addEventListener('click', function() {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      full.setAttribute('aria-hidden', String(expanded));
+      full.classList.toggle('open', !expanded);
+      btn.childNodes[0].textContent = expanded ? 'Read the full story ' : 'Close ';
+    });
   })();
 </script>
 </body>
