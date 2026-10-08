@@ -89,81 +89,6 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .mark-cue{position:absolute;left:0;right:0;bottom:5vh;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:13px;color:var(--grey-600)}
 .mark-cue i{display:block;width:1px;height:32px;background:var(--ink)}
 
-/* ── RAIL ──────────────────────── */
-.rail-wrap{padding:96px 0 0}
-.rail-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;padding:0 var(--gutter) 20px}
-.rail-head p{margin:0;font-size:13px;color:var(--grey-600)}
-.rail{display:flex;gap:16px;overflow-x:auto;padding:0 var(--gutter) 24px;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch}
-.rail::-webkit-scrollbar{display:none}
-.rail.dragging{cursor:grabbing;scroll-snap-type:none}
-.rail.dragging .card{pointer-events:none}
-.card{position:relative;flex:0 0 auto;height:min(560px,62vw);margin:0;border-radius:16px;overflow:hidden;background:var(--grey-200);scroll-snap-align:start}
-.card img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.pill{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.92);color:var(--ink);font-size:13px;padding:8px 14px;border-radius:100px}
-
-/* ── STORY ─────────────────────── */
-.story{max-width:1440px;margin:0 auto;padding:120px var(--gutter);display:flex;flex-wrap:wrap;gap:64px}
-.story-meta{flex:1 1 220px;max-width:280px;display:flex;flex-direction:column;gap:20px;font-size:14px;line-height:1.4}
-.story-meta div div:last-child{color:var(--grey-600)}
-.story-body{flex:999 1 560px;min-width:0;max-width:860px}
-.story-lede{margin:0;font-size:clamp(24px,2.4vw,34px);line-height:1.2;letter-spacing:-.04em;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 55%,transparent 100%);transition:-webkit-mask-image .4s}
-.story.open .story-lede{-webkit-mask-image:none;mask-image:none}
-.story-lede .serif{font-size:1.1em}
-.story-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
-.story.open .story-more{grid-template-rows:1fr}
-.story-more>div{overflow:hidden}
-.story-more p{margin:0 0 20px;font-size:18px;line-height:1.65;color:var(--grey-700);max-width:680px}
-.story-more>div>p:first-child{margin-top:40px}
-.pill-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 22px;border:1px solid var(--ink);border-radius:100px;font-size:14px;margin-top:36px;transition:background .2s,color .2s}
-.pill-btn:hover{background:var(--ink);color:var(--white)}
-.pill-btn .arr{transition:transform .4s var(--ease)}
-.story.open .pill-btn .arr{transform:rotate(180deg)}
-
-/* ── STATEMENT ─────────────────── */
-.statement{max-width:1440px;margin:0 auto;padding:0 var(--gutter) 120px}
-.statement h2{margin:0;font-weight:400;font-size:clamp(30px,3.4vw,48px);line-height:1.1;letter-spacing:-.045em;max-width:900px}
-.statement h2 .serif{font-size:1.1em}
-.blues{display:flex;flex-wrap:wrap;margin-top:56px;border-radius:16px;overflow:hidden}
-.blues figure{flex:1 1 320px;margin:0;display:flex;flex-direction:column}
-.blues img{width:100%;aspect-ratio:16/10;object-fit:cover}
-.blues figcaption{padding:32px 40px}
-.blues figcaption span{display:block;font-size:13px}
-.blues figcaption strong{display:block;font-size:32px;letter-spacing:-.04em;font-weight:500}
-.blues .relief{background:var(--idea-sky);color:var(--ink)}
-.blues .dev{background:var(--idea-abyss);color:var(--white)}
-.blues .dev figcaption span{color:var(--idea-frost)}
-.statement>p{font-size:18px;line-height:1.6;color:var(--grey-700);max-width:560px;margin:28px 0 0}
-
-/* ── CHAPTERS ──────────────────── */
-.chapters{max-width:1440px;margin:0 auto;padding:0 clamp(12px,2vw,24px) 120px;display:flex;flex-direction:column;gap:24px}
-.chapter{background:var(--white);border-radius:20px;padding:clamp(32px,6vw,96px) clamp(20px,5vw,80px)}
-.ch-title{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(34px,3.4vw,48px);letter-spacing:-.01em;line-height:1.1;margin:0 0 14px}
-.service-head{padding:56px clamp(8px,2vw,24px) 8px;display:flex;flex-direction:column;gap:10px}
-.sec-title{margin:0;font-weight:400;font-size:clamp(28px,2.6vw,36px);letter-spacing:-.04em;line-height:1.15}
-.cos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;padding-top:40px}
-.cos p{margin:10px 0 0;font-size:16px;line-height:1.6;color:var(--grey-700)}
-.grid3 figure{margin:0}
-.grid3 figcaption{display:flex;align-items:baseline;gap:12px;padding-top:14px;font-size:15px;color:var(--grey-700)}
-.grid3 figcaption b{font-size:28px;font-weight:600;color:var(--idea-abyss);letter-spacing:-.04em;min-width:36px}
-.chapter .acronym{max-width:520px;margin:0 auto}
-@media (max-width:760px){.cos{grid-template-columns:1fr;gap:20px}}
-.chapter p.sub{font-size:16px;line-height:1.6;color:var(--grey-600);margin:0;max-width:520px}
-.ch-title.left{text-align:left}
-.split{display:flex;flex-wrap:wrap;gap:56px;align-items:center}
-.split>*{flex:1 1 360px;min-width:0}
-.centered{text-align:center;max-width:640px;margin:0 auto 56px}
-.centered p.sub{margin:0 auto}
-.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.grid3 img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px}
-.grid3.brand img{aspect-ratio:16/10;object-fit:contain;background:var(--white);border:1px solid var(--grey-200)}
-.grid3.brand img.dark{background:#000;border-color:#000}
-.acronym div{display:flex;align-items:baseline;gap:20px;border-bottom:1px solid var(--grey-200);padding:10px 0}
-.acronym div:last-child{border-bottom:0}
-.acronym b{font-size:64px;font-weight:600;color:var(--idea-abyss);width:64px;letter-spacing:-.05em}
-.acronym span{font-size:22px;letter-spacing:-.03em}
-.tall{aspect-ratio:4/5;width:100%;object-fit:cover;border-radius:12px}
-.screens{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
 .site-link{position:relative;display:block;text-decoration:none;border-radius:12px}
 .site-link .scroll-box{height:640px;overflow-y:auto;border-radius:12px;border:1px solid var(--grey-200)}
 .site-link .scroll-box img{width:100%}
@@ -172,20 +97,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .site-link:hover .hint,.site-link:focus-visible .hint{opacity:1}
 .site-link:hover .hint span,.site-link:focus-visible .hint span{transform:none}
 @media (hover:none){.hint{opacity:1;background:transparent;align-items:flex-end;padding-bottom:16px}}
-.web-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-end;margin-bottom:48px}
-.web-head h2{margin-bottom:0}
-.web-head p{margin:0;font-size:14px;color:var(--grey-600)}
-
-/* ── MORE WORK ─────────────────── */
-.more{padding:0 var(--gutter) 140px;text-align:center}
-.more h2{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(34px,3.4vw,48px);font-weight:400;letter-spacing:-.01em;margin:0}
-.more h2 .serif{font-size:1.1em}
-.more>p{font-size:15px;color:var(--grey-600);margin:12px 0 48px}
-.stack{position:relative;height:500px;max-width:520px;margin:0 auto}
-.stack-card{position:absolute;top:0;left:0;right:0;height:460px;display:flex;flex-direction:column;padding:16px;background:var(--white);border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.12);text-align:left;transition:transform .6s var(--ease),opacity .6s var(--ease)}
-.stack-card .ph{flex:1;display:flex;align-items:center;justify-content:center;background:var(--grey-200);color:var(--grey-600);font-size:14px;border-radius:12px}
-.stack-card .t{font-size:16px;padding-top:16px}
-.stack-ctrl{display:flex;gap:12px;justify-content:center;margin-top:32px}
+.site-link .scroll-box{overflow-y:auto}
 .work-modal{position:fixed;inset:0;z-index:80;background:rgba(10,10,10,.5);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
 .work-modal.open{opacity:1;pointer-events:auto}
 .work-card{position:relative;width:min(1100px,100%);max-height:100%;overflow-y:auto;background:var(--white);border-radius:20px;padding:clamp(24px,4vw,56px);display:flex;flex-wrap:wrap;gap:40px;text-align:left;transform:translateY(24px) scale(.98);transition:transform .5s var(--ease)}
@@ -195,6 +107,112 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .work-card .info h3{font-size:40px;font-weight:400;letter-spacing:-.05em;line-height:1.05;margin:0}
 .work-card .info p{font-size:16px;line-height:1.6;color:var(--grey-600);margin:0}
 .work-card .icon-btn{position:absolute;top:16px;right:16px}
+/* ── CASE STUDY (Collins / Bose structure) ── */
+:root{--w:min(1230px,calc(100vw - 2 * var(--gutter)));--edge:calc((100vw - var(--w)) / 2);--cs-grey:#5E5855}
+.cs-wrap{width:var(--w);margin:0 auto}
+.cs-title{font-weight:400;font-size:36px;line-height:1.05;letter-spacing:-.035em;margin:0;color:#140700}
+.cs-body{font-size:16px;line-height:1.3;letter-spacing:-.01em;color:var(--cs-grey)}
+.cs-pill{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border:1px solid #140700;border-radius:100px;font-size:14px;color:#140700;background:transparent;transition:background .25s,color .25s}
+.cs-pill:hover{background:#140700;color:var(--white)}
+.cs-pill svg{width:12px;height:12px}
+
+.cs-head{display:grid;grid-template-columns:40% 60%;align-items:end;padding:160px 0 64px}
+.cs-head small{font-size:18px;color:var(--cs-grey);padding-bottom:4px}
+.cs-head h1{font-weight:400;font-size:clamp(48px,5.6vw,72px);line-height:1;letter-spacing:-.045em;margin:0;color:#140700}
+.cs-head p{font-size:18px;color:var(--cs-grey);margin:14px 0 0}
+
+.cs-gallery{position:relative}
+.cs-track{display:flex;gap:14px;overflow-x:auto;padding:0 var(--edge);scroll-snap-type:x proximity;scroll-padding-left:var(--edge);scrollbar-width:none;cursor:grab}
+.cs-track::-webkit-scrollbar{display:none}
+.cs-track.dragging{cursor:grabbing;scroll-snap-type:none}
+.cs-track.dragging .cs-shot{pointer-events:none}
+.cs-shot{flex:0 0 auto;height:clamp(300px,29vw,560px);border-radius:12px;overflow:hidden;background:var(--grey-200);scroll-snap-align:start;padding:0;cursor:pointer}
+.cs-shot.wide{aspect-ratio:3/2}.cs-shot.tall{aspect-ratio:3/4}
+.cs-shot img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.cs-shot:hover img{transform:scale(1.025)}
+.cs-gallery-cta{width:var(--w);margin:24px auto 0}
+
+.cs-grid{display:grid;grid-template-columns:40% 60%;padding:120px 0}
+.cs-meta{margin:0;padding-left:25%;display:flex;flex-direction:column;gap:26px;font-size:16px;line-height:1.3;letter-spacing:-.01em}
+.cs-meta dt{font-weight:500;color:#140700}
+.cs-meta dd{margin:0;color:var(--cs-grey)}
+.cs-story p{margin:0 0 36px;max-width:620px;font-size:clamp(26px,2.4vw,36px);line-height:1.05;letter-spacing:-.035em;color:#000;-webkit-mask-image:linear-gradient(180deg,#000 35%,rgba(0,0,0,.22) 100%);mask-image:linear-gradient(180deg,#000 35%,rgba(0,0,0,.22) 100%)}
+.cs-story p .serif{font-size:1.08em}
+
+.cs-cards{display:flex;flex-direction:column;gap:24px;padding-bottom:40px}
+.cs-card{width:min(1002px,calc(100vw - 2 * var(--gutter)));margin:0 auto;background:var(--white);border-radius:16px;padding:80px 24px 64px;text-align:center}
+.cs-card .cs-body{max-width:330px;margin:20px auto 0}
+.fan{position:relative;width:min(540px,80vw);aspect-ratio:540/360;margin:56px auto 48px;cursor:pointer}
+.fan>*{position:absolute;inset:0;border-radius:14px;overflow:hidden;background:#F1F1EF;box-shadow:0 18px 40px rgba(0,0,0,.10);transition:transform .7s var(--ease)}
+.fan img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.fan img.fit{object-fit:contain;background:var(--white)}
+.press-card{text-decoration:none}
+.fan .f3{transform:translate(17%,9%) rotate(2deg) scale(.92)}
+.fan .f2{transform:translate(9%,5%) rotate(1deg) scale(.96)}
+.fan .f1{transform:rotate(-2deg)}
+.fan:hover .f3{transform:translate(22%,11%) rotate(4deg) scale(.92)}
+.fan:hover .f2{transform:translate(12%,6%) rotate(2deg) scale(.96)}
+.fan:hover .f1{transform:rotate(-3deg) translateX(-2%)}
+
+.cs-row-sec{padding:120px 0 0}
+.cs-row-sec .cs-title{width:var(--w);margin:0 auto 32px;padding-left:calc(var(--w) * .082)}
+.cs-row{display:flex;gap:14px;overflow-x:auto;padding:0 var(--edge) 8px calc(var(--edge) + var(--w) * .082);scrollbar-width:none}
+.cs-row::-webkit-scrollbar{display:none}
+.impact-card{flex:0 0 auto;width:295px;min-height:420px;background:var(--white);border-radius:12px;padding:26px;display:flex;flex-direction:column;justify-content:space-between}
+.impact-card .glyph{font-size:72px;font-weight:300;line-height:1;letter-spacing:-.04em;color:#000;height:72px}
+.impact-card .glyph svg{width:66px;height:66px}
+.impact-card h3{font-size:16px;font-weight:400;letter-spacing:-.025em;margin:0 0 12px;color:#000}
+.impact-card p{margin:0}
+.press-card{flex:0 0 auto;width:295px}
+.press-card .tile{height:197px;border-radius:12px;background:var(--white);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:600;letter-spacing:-.03em;color:#9e9e9e}
+.press-card .pt{display:flex;justify-content:space-between;align-items:center;margin:14px 4px 10px;font-size:18px;font-weight:500;letter-spacing:-.01em;color:#140700}
+.press-card p{margin:0 4px}
+
+.cs-more{padding:140px 0 160px;text-align:center}
+.cs-more .cs-body{margin:16px 0 48px}
+.flip{position:relative;width:min(326px,72vw);aspect-ratio:326/435;margin:0 auto;touch-action:pan-y}
+.flip-card{position:absolute;inset:0;border-radius:12px;overflow:hidden;background:#E9E8E5;box-shadow:0 16px 40px rgba(0,0,0,.12);transition:transform .7s var(--ease),opacity .5s var(--ease);display:flex;align-items:center;justify-content:center;color:var(--cs-grey);font-size:14px;cursor:pointer;padding:0}
+.flip-label{margin-top:30px;font-size:16px;color:#140700;letter-spacing:-.01em}
+.flip-ctrl{display:flex;gap:10px;justify-content:center;margin-top:20px}
+
+/* ── SHEETS ── */
+.sheet-bg{position:fixed;inset:0;z-index:85;background:rgba(10,10,10,.35);opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}
+body.sheet-open .sheet-bg{opacity:1;pointer-events:auto}
+main,.footer{transition:transform .6s var(--ease),border-radius .6s var(--ease)}
+body.sheet-open main{transform:scale(.965);border-radius:16px;overflow:hidden}
+body.sheet-open .nav{opacity:0;pointer-events:none}
+.sheet{position:fixed;left:0;right:0;bottom:0;top:28px;z-index:90;background:var(--white);border-radius:16px 16px 0 0;transform:translateY(102%);visibility:hidden;transition:transform .65s var(--ease),visibility 0s linear .65s;overflow-y:auto;overscroll-behavior:contain}
+.sheet.open{transform:none;visibility:visible;transition:transform .65s var(--ease),visibility 0s}
+.sheet-x{position:sticky;top:16px;float:right;margin:16px 16px 0 0;width:40px;height:40px;border-radius:50%;background:var(--white);box-shadow:0 2px 12px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center;font-size:15px;z-index:2}
+.sheet-in{width:min(600px,calc(100vw - 48px));margin:0 auto;padding:72px 0 120px;clear:both}
+.sheet-in.wide{width:min(1040px,calc(100vw - 48px))}
+.story-sheet .lead-p{font-size:clamp(26px,2.4vw,34px);line-height:1.08;letter-spacing:-.035em;color:#000;margin:0 0 48px}
+.story-sheet h4{font-size:16px;font-weight:500;color:#140700;margin:36px 0 8px;letter-spacing:-.01em}
+.story-sheet p.cs-body{margin:0}
+.gal-sheet img{width:100%;border-radius:12px;margin-bottom:16px;background:var(--grey-200)}
+.svc-sheet .cs-body.intro{margin:20px 0 80px;max-width:330px}
+.svc-item{display:grid;grid-template-columns:34% 66%;gap:0;margin-bottom:28px}
+.svc-item h4{font-size:15px;font-weight:500;margin:0;color:#140700;letter-spacing:-.01em}
+.svc-item p{margin:0}
+.svc-media{background:#F3F3F1;border-radius:12px;padding:clamp(20px,5vw,56px);margin-bottom:96px;display:grid;gap:12px}
+.svc-media.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.svc-media img{width:100%;border-radius:8px}
+.svc-media .acr{display:flex;justify-content:center;gap:clamp(16px,4vw,40px);font-size:clamp(48px,8vw,88px);font-weight:600;letter-spacing:-.05em;color:var(--idea-abyss);line-height:1}
+.svc-media .acr span{display:flex;flex-direction:column;align-items:center;gap:10px}
+.svc-media .acr small{font-size:12px;font-weight:400;letter-spacing:0;color:var(--cs-grey)}
+.svc-media .scroll-box{height:520px;overflow-y:auto;border-radius:8px;background:var(--white)}
+.svc-media .site-link{border-radius:8px}
+
+@media (max-width:860px){
+  .cs-head,.cs-grid{grid-template-columns:1fr;gap:24px}
+  .cs-head{padding-top:120px}
+  .cs-meta{padding-left:0;flex-direction:row;flex-wrap:wrap;gap:20px 32px}
+  .cs-row-sec .cs-title,.cs-row{padding-left:var(--edge)}
+  .svc-item{grid-template-columns:1fr;gap:8px}
+  .svc-media.two{grid-template-columns:1fr}
+  .fan{width:64vw}
+  .cs-card{overflow:hidden}
+}
 
 /* ── CTA + FOOTER ──────────────── */
 .cta{background:var(--ink);color:var(--white);padding:clamp(72px,9vw,140px) var(--gutter)}
@@ -301,136 +319,102 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     </div>
   </section>
 
-  <!-- IMAGE RAIL -->
-  <section class="rail-wrap" aria-label="Explore the work">
-    <div class="rail-head reveal">
-      <span class="label">Explore the work</span>
-      <p>Drag to scroll.</p>
+  <!-- CASE STUDY HEAD -->
+  <div class="cs-wrap cs-head">
+    <small>Case Study</small>
+    <div>
+      <h1>IDEA</h1>
+      <p>Helping a trusted name grow into its mission.</p>
     </div>
-    <div class="rail" id="rail">
-      <figure class="card" style="width:min(860px,82vw)"><img src="assets/winter-relief.jpg" alt="Winter relief distribution in a mountain village" loading="lazy"><span class="pill">Winter relief</span></figure>
-      <figure class="card" style="width:min(760px,82vw)"><img src="assets/shop.jpg" alt="Shop owner behind her counter" loading="lazy"><span class="pill">Her own shop</span></figure>
-      <figure class="card" style="width:min(860px,82vw)"><img src="assets/town.jpg" alt="A man looks out over a growing town with a school and market" loading="lazy"><span class="pill">Development</span></figure>
-      <figure class="card" style="width:min(420px,82vw)"><img src="assets/families.jpg" alt="Mother and children with an aid package" loading="lazy"><span class="pill">Families first</span></figure>
-      <figure class="card" style="width:min(680px,82vw)"><img src="assets/livelihoods.jpg" alt="Woman at her sewing machine" loading="lazy"><span class="pill">Livelihoods</span></figure>
-      <figure class="card" style="width:min(560px,82vw)"><img src="assets/access-water.jpg" alt="Girl washing her hands at a tap" loading="lazy"><span class="pill">Access to water</span></figure>
+  </div>
+
+  <!-- GALLERY -->
+  <section class="cs-gallery" aria-label="Gallery">
+    <div class="cs-track" id="track">
+      <button class="cs-shot wide" data-g="0"><img src="assets/winter-relief.jpg" alt="Winter relief distribution in a mountain village" loading="lazy"></button>
+      <button class="cs-shot tall" data-g="1"><img src="assets/shop.jpg" alt="Shop owner behind her counter" loading="lazy"></button>
+      <button class="cs-shot wide" data-g="2"><img src="assets/town.jpg" alt="A man looks out over a growing town" loading="lazy"></button>
+      <button class="cs-shot tall" data-g="3"><img src="assets/families.jpg" alt="Mother and children with an aid package" loading="lazy"></button>
+      <button class="cs-shot wide" data-g="4"><img src="assets/farm.jpg" alt="Farmers fitting drip irrigation beside a solar water tank" loading="lazy"></button>
+      <button class="cs-shot tall" data-g="5"><img src="assets/access-water.jpg" alt="Girl washing her hands at a tap" loading="lazy"></button>
+      <button class="cs-shot wide" data-g="6"><img src="assets/livelihoods.jpg" alt="Woman at her sewing machine" loading="lazy"></button>
     </div>
+    <div class="cs-gallery-cta"><button class="cs-pill" data-open="galSheet">Explore the gallery <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M7 1h4v4M11 1 7 5M5 11H1V7M1 11l4-4"/></svg></button></div>
   </section>
 
-  <!-- STORY -->
-  <section class="story" id="story">
-    <div class="story-meta reveal">
-      <div><div>Services</div><div>Rebranding, Website Build</div></div>
-      <div><div>Sector</div><div>Nonprofit, humanitarian and development</div></div>
-      <div><div>Stage</div><div>Established organization, new chapter</div></div>
+  <!-- META + STORY -->
+  <div class="cs-wrap cs-grid">
+    <dl class="cs-meta reveal">
+      <div><dt>Services</dt><dd>Rebranding<br>Website Build</dd></div>
+      <div><dt>Sector</dt><dd>Nonprofit</dd></div>
+      <div><dt>Stage</dt><dd>Established organization</dd></div>
+    </dl>
+    <div class="cs-story reveal">
+      <p>Islamic Relief USA spent decades earning trust by responding to emergencies. Over time, its work grew into education, livelihoods and long term development, and the name no longer reflected <span class="serif">that range.</span></p>
+      <button class="cs-pill" data-open="storySheet">Read the full story <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M7 1h4v4M11 1 7 5M5 11H1V7M1 11l4-4"/></svg></button>
     </div>
-    <div class="story-body reveal">
-      <p class="story-lede">Islamic Relief USA spent decades earning trust by responding to emergencies. Over time, its work grew into education, livelihoods and long term development, and the name no longer reflected that range.</p>
-      <div class="story-more" id="storyMore"><div>
-        <div class="cos">
-          <div><span class="label">Challenge</span><p>The name pointed to relief, while much of the work had moved toward long term development. Changing it carried real risk to the trust donors had built over many years.</p></div>
-          <div><span class="label">Opportunity</span><p>A new name could hold the full scope of the mission and invite supporters into what comes next, with its faith and history still in view.</p></div>
-          <div><span class="label">Solution</span><p>Subtitle led the rebrand and the website build: the rename to IDEA, Islamic Development and Empowerment in America, a new identity system and messaging, and a site shaped around the organization's development work.</p></div>
-        </div>
-      </div></div>
-      <button class="pill-btn" id="storyBtn" aria-expanded="false" aria-controls="storyMore"><span id="storyLbl">Read the full story</span> <span class="arr" aria-hidden="true">&#8595;</span></button>
-    </div>
-  </section>
-
-  <!-- STATEMENT -->
-  <section class="statement">
-    <h2 class="reveal">Relief responds. <span class="serif">Development endures.</span></h2>
-    <div class="blues reveal">
-      <figure class="relief"><img src="assets/relief.jpg" alt="Aid worker hands food to a mother and child in a camp" loading="lazy"><figcaption><span>Light blue</span><strong>Relief work</strong></figcaption></figure>
-      <figure class="dev"><img src="assets/farm.jpg" alt="Farmers fitting drip irrigation beside a solar powered water tank" loading="lazy"><figcaption><span>Dark blue</span><strong>Development work</strong></figcaption></figure>
-    </div>
-    <p class="reveal">The palette carries the shift the organization made. Two blues, one direction.</p>
-  </section>
+  </div>
 
   <!-- SERVICES -->
-  <section class="chapters" aria-label="The work">
-    <div class="service-head reveal">
-      <span class="label">Service 01</span>
-      <h2 class="sec-title">Rebranding</h2>
+  <section class="cs-cards" aria-label="Services">
+    <article class="cs-card reveal">
+      <h2 class="cs-title">Rebranding</h2>
+      <p class="cs-body">A new name, an identity built on meaning, and messaging that speaks to the organization's full mission.</p>
+      <div class="fan" data-open="rebrandSheet" role="button" tabindex="0" aria-label="Explore Rebranding">
+        <div class="f3"><img src="assets/post-2023.jpg" alt="" loading="lazy"></div>
+        <div class="f2"><img class="fit" src="assets/emblem-system.jpg" alt="" loading="lazy"></div>
+        <div class="f1"><img class="fit" src="assets/layout-system.jpg" alt="" loading="lazy"></div>
+      </div>
+      <button class="cs-pill" data-open="rebrandSheet">Explore Rebranding <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M7 1h4v4M11 1 7 5M5 11H1V7M1 11l4-4"/></svg></button>
+    </article>
+
+    <article class="cs-card reveal">
+      <h2 class="cs-title">Website Build</h2>
+      <p class="cs-body">A new development.org, shaped around the organization's development work and the people it serves.</p>
+      <div class="fan" data-open="webSheet" role="button" tabindex="0" aria-label="Explore Website Build">
+        <div class="f3"><img src="assets/site-why-idea.jpg" alt="" loading="lazy"></div>
+        <div class="f2"><img src="assets/site-why-idea.jpg" alt="" loading="lazy" style="object-position:center 40%"></div>
+        <div class="f1"><img src="assets/site-home.jpg" alt="" loading="lazy"></div>
+      </div>
+      <button class="cs-pill" data-open="webSheet">Explore Website Build <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M7 1h4v4M11 1 7 5M5 11H1V7M1 11l4-4"/></svg></button>
+    </article>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="cs-row-sec" aria-label="Impact">
+    <h2 class="cs-title reveal">Impact</h2>
+    <div class="cs-row">
+      <div class="impact-card"><div class="glyph"><svg viewBox="0 0 66 66" fill="none" stroke="#000" stroke-width="3"><path d="M64 33H4M30 7 4 33l26 26"/></svg></div><div><h3>From relief to development</h3><p class="cs-body">One name now holds the emergency response and the long term work.</p></div></div>
+      <div class="impact-card"><div class="glyph"><svg viewBox="0 0 66 66" fill="none" stroke="#000" stroke-width="3"><path d="M10 56 56 10M22 10h34v34"/></svg></div><div><h3>A mark with meaning</h3><p class="cs-body">7, 5 and 12 built into the emblem: abundance, faith and complete cycles.</p></div></div>
+      <div class="impact-card"><div class="glyph"><svg viewBox="0 0 66 66" fill="none" stroke="#000" stroke-width="3"><path d="M33 64V4M7 30 33 4l26 26"/></svg></div><div><h3>A new front door</h3><p class="cs-body">development.org relaunched around the organization's development work.</p></div></div>
+      <div class="impact-card"><div class="glyph">2</div><div><h3>Blues, one direction</h3><p class="cs-body">Light blue for relief work, dark blue for development work.</p></div></div>
     </div>
+  </section>
 
-    <article class="chapter reveal">
-      <div class="centered">
-        <h3 class="ch-title">Naming</h3>
-        <p class="sub">IDEA keeps faith at the center of the name and gives the organization's development work room to grow.</p>
-      </div>
-      <div class="acronym">
-        <div><b>I</b><span>Islamic</span></div>
-        <div><b>D</b><span>Development</span></div>
-        <div><b>E</b><span>Empowerment</span></div>
-        <div><b>A</b><span>in America</span></div>
-      </div>
-    </article>
-
-    <article class="chapter reveal">
-      <div class="centered">
-        <h3 class="ch-title">Identity</h3>
-        <p class="sub">The emblem is built on three numbers.</p>
-      </div>
-      <div class="grid3 brand">
-        <figure><img class="dark" src="assets/idea-logo-dark.jpg" alt="IDEA emblem and wordmark" loading="lazy"><figcaption><b>7</b>The number of abundance</figcaption></figure>
-        <figure><img src="assets/emblem-system.jpg" alt="Emblem construction and color meaning" loading="lazy"><figcaption><b>5</b>The structure of faith</figcaption></figure>
-        <figure><img src="assets/layout-system.jpg" alt="IDEA dynamic layout system" loading="lazy"><figcaption><b>12</b>Complete cycles</figcaption></figure>
-      </div>
-    </article>
-
-    <article class="chapter split reveal">
-      <div>
-        <h3 class="ch-title left">Messaging</h3>
-        <p class="sub">We wrote from the people the work serves, in plain and hopeful language. A CEO message introduced the new name to supporters in the organization's own voice.</p>
-      </div>
-      <div class="grid2">
-        <a class="site-link" href="https://development.org/why-idea" target="_blank" rel="noopener" aria-label="Watch the CEO message on development.org, opens in a new tab"><img class="tall" src="assets/ceo.jpg" alt="IDEA CEO video message" loading="lazy"><span class="hint"><span>Watch the CEO message &#8599;</span></span></a>
-        <img class="tall" src="assets/post-2023.jpg" alt="IDEA social post on children's reading skills" loading="lazy">
-      </div>
-    </article>
-
-    <article class="chapter reveal">
-      <div class="centered">
-        <h3 class="ch-title">Social</h3>
-        <p class="sub">Social content that leads with people and lets the brand support the story.</p>
-      </div>
-      <div class="grid3">
-        <img src="assets/shop.jpg" alt="Shop owner behind her counter" loading="lazy">
-        <img src="assets/school.jpg" alt="Children reading together" loading="lazy">
-        <img src="assets/livelihoods.jpg" alt="Woman at her sewing machine" loading="lazy">
-      </div>
-    </article>
-
-    <div class="service-head reveal">
-      <span class="label">Service 02</span>
-      <h2 class="sec-title">Website Build</h2>
+  <!-- PRESS -->
+  <section class="cs-row-sec" aria-label="Press">
+    <h2 class="cs-title reveal">Press</h2>
+    <div class="cs-row">
+      <a class="press-card" href="#"><div class="tile">[Publication]</div><div class="pt">[Publication] <span aria-hidden="true">&#8599;</span></div><p class="cs-body">[Headline]</p></a>
+      <a class="press-card" href="#"><div class="tile">[Publication]</div><div class="pt">[Publication] <span aria-hidden="true">&#8599;</span></div><p class="cs-body">[Headline]</p></a>
+      <a class="press-card" href="#"><div class="tile">[Publication]</div><div class="pt">[Publication] <span aria-hidden="true">&#8599;</span></div><p class="cs-body">[Headline]</p></a>
+      <a class="press-card" href="#"><div class="tile">[Publication]</div><div class="pt">[Publication] <span aria-hidden="true">&#8599;</span></div><p class="cs-body">[Headline]</p></a>
     </div>
-
-    <article class="chapter reveal">
-      <div class="centered">
-        <h3 class="ch-title">development.org</h3>
-        <p class="sub">A site shaped around development work, with clear paths to give and to see where support goes. Scroll inside each screen, or click to visit the live site.</p>
-      </div>
-      <div class="screens">
-        <a class="site-link" href="https://development.org/" target="_blank" rel="noopener" aria-label="Visit the live IDEA homepage, opens in a new tab"><div class="scroll-box"><img src="assets/site-home.jpg" alt="IDEA homepage" loading="lazy"></div><span class="hint"><span>Visit development.org &#8599;</span></span></a>
-        <a class="site-link" href="https://development.org/why-idea" target="_blank" rel="noopener" aria-label="Visit the Why IDEA page, opens in a new tab"><div class="scroll-box"><img src="assets/site-why-idea.jpg" alt="IDEA Why IDEA page" loading="lazy"></div><span class="hint"><span>Visit development.org &#8599;</span></span></a>
-      </div>
-    </article>
   </section>
 
   <!-- CASE STUDIES -->
-  <section class="more" aria-label="Case studies">
-    <h2 class="reveal">Case Studies</h2>
-    <p class="reveal">See other work from subtitle.</p>
-    <div class="stack" id="stack">
-      <button class="stack-card" data-i="0"><span class="ph">[Project image]</span><span class="t">[Project 01]</span></button>
-      <button class="stack-card" data-i="1"><span class="ph">[Project image]</span><span class="t">[Project 02]</span></button>
-      <button class="stack-card" data-i="2"><span class="ph">[Project image]</span><span class="t">[Project 03]</span></button>
+  <section class="cs-more" aria-label="Case studies">
+    <h2 class="cs-title">Case Studies</h2>
+    <p class="cs-body">See others we've helped.</p>
+    <div class="flip" id="flip">
+      <button class="flip-card" data-t="[Project 01]">[Project image]</button>
+      <button class="flip-card" data-t="[Project 02]">[Project image]</button>
+      <button class="flip-card" data-t="[Project 03]">[Project image]</button>
     </div>
-    <div class="stack-ctrl">
-      <button class="icon-btn" id="stackPrev" aria-label="Previous project">&#8592;</button>
-      <button class="icon-btn" id="stackNext" aria-label="Next project">&#8594;</button>
+    <div class="flip-label" id="flipLabel">[Project 01]</div>
+    <div class="flip-ctrl">
+      <button class="icon-btn" id="flipPrev" aria-label="Previous case study">&#8592;</button>
+      <button class="icon-btn" id="flipNext" aria-label="Next case study">&#8594;</button>
     </div>
   </section>
 
@@ -525,6 +509,77 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
       <div class="mark-nums"><span id="n7"><b>7</b> abundance</span><span id="n5"><b>5</b> faith</span><span id="n12"><b>12</b> complete cycles</span></div>
       <div class="mark-cue"><span>Scroll to continue</span><i></i></div>
     </div>
+  </div>
+</div>
+
+<!-- SHEETS -->
+<div class="sheet-bg" id="sheetBg"></div>
+
+<div class="sheet story-sheet" id="storySheet" role="dialog" aria-modal="true" aria-label="The full story">
+  <button class="sheet-x" aria-label="Close">&#10005;</button>
+  <div class="sheet-in">
+    <p class="lead-p">Islamic Relief USA spent decades earning trust by responding to emergencies. Over time, its work grew into education, livelihoods and long term development, and the name no longer reflected <span class="serif">that range.</span></p>
+    <h4>Challenge</h4>
+    <p class="cs-body">The name pointed to relief, while much of the work had moved toward long term development. Changing it carried real risk to the trust donors had built over many years.</p>
+    <h4>Opportunity</h4>
+    <p class="cs-body">A new name could hold the full scope of the mission and invite supporters into what comes next, with its faith and history still in view.</p>
+    <h4>Solution</h4>
+    <p class="cs-body">Subtitle led the rebrand and the website build: the rename to IDEA, Islamic Development and Empowerment in America, a new identity system and messaging, and a site shaped around the organization's development work.</p>
+  </div>
+</div>
+
+<div class="sheet gal-sheet" id="galSheet" role="dialog" aria-modal="true" aria-label="Gallery">
+  <button class="sheet-x" aria-label="Close">&#10005;</button>
+  <div class="sheet-in wide">
+    <img id="g0" src="assets/winter-relief.jpg" alt="Winter relief distribution in a mountain village" loading="lazy">
+    <img id="g1" src="assets/shop.jpg" alt="Shop owner behind her counter" loading="lazy">
+    <img id="g2" src="assets/town.jpg" alt="A man looks out over a growing town" loading="lazy">
+    <img id="g3" src="assets/families.jpg" alt="Mother and children with an aid package" loading="lazy">
+    <img id="g4" src="assets/farm.jpg" alt="Farmers fitting drip irrigation beside a solar water tank" loading="lazy">
+    <img id="g5" src="assets/access-water.jpg" alt="Girl washing her hands at a tap" loading="lazy">
+    <img id="g6" src="assets/livelihoods.jpg" alt="Woman at her sewing machine" loading="lazy">
+    <img src="assets/relief.jpg" alt="Aid worker hands food to a mother and child" loading="lazy">
+    <img src="assets/idea-logo-dark.jpg" alt="IDEA emblem and wordmark" loading="lazy">
+    <img src="assets/emblem-system.jpg" alt="Emblem construction and color meaning" loading="lazy">
+    <img src="assets/layout-system.jpg" alt="IDEA dynamic layout system" loading="lazy">
+    <img src="assets/post-2023.jpg" alt="IDEA social post" loading="lazy">
+  </div>
+</div>
+
+<div class="sheet svc-sheet" id="rebrandSheet" role="dialog" aria-modal="true" aria-label="Rebranding">
+  <button class="sheet-x" aria-label="Close">&#10005;</button>
+  <div class="sheet-in">
+    <h2 class="cs-title">Rebranding</h2>
+    <p class="cs-body intro">A new name, an identity built on meaning, and messaging that speaks to the organization's full mission.</p>
+
+    <div class="svc-item"><h4>Naming</h4><p class="cs-body">IDEA keeps faith at the center of the name and gives the organization's development work room to grow.</p></div>
+    <div class="svc-media"><div class="acr"><span>I<small>Islamic</small></span><span>D<small>Development</small></span><span>E<small>Empowerment</small></span><span>A<small>in America</small></span></div></div>
+
+    <div class="svc-item"><h4>Identity</h4><p class="cs-body">The emblem is built on three numbers: 7, the number of abundance. 5, the structure of faith. 12, complete cycles.</p></div>
+    <div class="svc-media"><img src="assets/idea-logo-dark.jpg" alt="IDEA emblem and wordmark" loading="lazy"><img src="assets/emblem-system.jpg" alt="Emblem construction and color meaning" loading="lazy"></div>
+
+    <div class="svc-item"><h4>Visual System</h4><p class="cs-body">Light blue for relief work, dark blue for development work, held together by a flexible layout system.</p></div>
+    <div class="svc-media"><img src="assets/layout-system.jpg" alt="IDEA dynamic layout system" loading="lazy"></div>
+
+    <div class="svc-item"><h4>Messaging</h4><p class="cs-body">We wrote from the people the work serves, in plain and hopeful language. A CEO message introduced the new name to supporters.</p></div>
+    <div class="svc-media two"><a class="site-link" href="https://development.org/why-idea" target="_blank" rel="noopener" aria-label="Watch the CEO message, opens in a new tab"><img src="assets/ceo.jpg" alt="IDEA CEO video message" loading="lazy"><span class="hint"><span>Watch the CEO message &#8599;</span></span></a><img src="assets/post-2023.jpg" alt="IDEA social post" loading="lazy"></div>
+
+    <div class="svc-item"><h4>Social</h4><p class="cs-body">Social content that leads with people and lets the brand support the story.</p></div>
+    <div class="svc-media two"><img src="assets/shop.jpg" alt="Shop owner behind her counter" loading="lazy"><img src="assets/livelihoods.jpg" alt="Woman at her sewing machine" loading="lazy"></div>
+  </div>
+</div>
+
+<div class="sheet svc-sheet" id="webSheet" role="dialog" aria-modal="true" aria-label="Website Build">
+  <button class="sheet-x" aria-label="Close">&#10005;</button>
+  <div class="sheet-in">
+    <h2 class="cs-title">Website Build</h2>
+    <p class="cs-body intro">A new development.org, shaped around the organization's development work and the people it serves.</p>
+
+    <div class="svc-item"><h4>Homepage</h4><p class="cs-body">Introduces IDEA and leads with impact, with clear paths to give. Scroll inside the screen, or click to visit the live site.</p></div>
+    <div class="svc-media"><a class="site-link" href="https://development.org/" target="_blank" rel="noopener" aria-label="Visit development.org, opens in a new tab"><div class="scroll-box"><img src="assets/site-home.jpg" alt="IDEA homepage" loading="lazy"></div><span class="hint"><span>Visit development.org &#8599;</span></span></a></div>
+
+    <div class="svc-item"><h4>Why IDEA</h4><p class="cs-body">Tells the story behind the new name and the values that carry it.</p></div>
+    <div class="svc-media"><a class="site-link" href="https://development.org/why-idea" target="_blank" rel="noopener" aria-label="Visit the Why IDEA page, opens in a new tab"><div class="scroll-box"><img src="assets/site-why-idea.jpg" alt="IDEA Why IDEA page" loading="lazy"></div><span class="hint"><span>Visit development.org &#8599;</span></span></a></div>
   </div>
 </div>
 
@@ -694,63 +749,85 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   window.addEventListener('resize', function(){ lastP = -1; onScroll(); });
   render(progress()); onScroll();
 
-  /* ── RAIL DRAG ──────────────────── */
-  var rail = $('rail'), down = false, sx = 0, sl = 0, moved = 0;
-  rail.addEventListener('pointerdown', function(e){
-    if (e.pointerType !== 'mouse') return;
-    down = true; moved = 0; sx = e.clientX; sl = rail.scrollLeft;
+  /* ── SHEETS ─────────────────────── */
+  var sheetBg = $('sheetBg'), openSheetEl = null, sheetReturn = null;
+  var mainEl = document.querySelector('main');
+  function openSheet(id, anchor){
+    var s = $(id); if (!s) return;
+    if (openSheetEl) closeSheet(true);
+    sheetReturn = document.activeElement;
+    mainEl.style.transformOrigin = '50% ' + (window.scrollY + window.innerHeight / 2) + 'px';
+    document.body.classList.add('sheet-open');
+    document.documentElement.style.overflow = 'hidden';
+    s.classList.add('open'); s.scrollTop = 0; openSheetEl = s;
+    if (anchor){ var a = $(anchor); if (a) setTimeout(function(){ s.scrollTo({ top: a.offsetTop - 80, behavior: reduce ? 'auto' : 'smooth' }); }, 250); }
+    setTimeout(function(){ s.querySelector('.sheet-x').focus({ preventScroll: true }); }, 300);
+  }
+  function closeSheet(quiet){
+    if (!openSheetEl) return;
+    openSheetEl.classList.remove('open'); openSheetEl = null;
+    if (!quiet){
+      document.body.classList.remove('sheet-open');
+      document.documentElement.style.overflow = '';
+      if (sheetReturn) sheetReturn.focus({ preventScroll: true });
+    }
+  }
+  document.querySelectorAll('[data-open]').forEach(function(b){
+    b.addEventListener('click', function(){ openSheet(b.getAttribute('data-open')); });
+    b.addEventListener('keydown', function(e){ if ((e.key === 'Enter' || e.key === ' ') && b.tagName !== 'BUTTON'){ e.preventDefault(); openSheet(b.getAttribute('data-open')); } });
   });
-  window.addEventListener('pointermove', function(e){
-    if (!down) return;
-    var dx = e.clientX - sx; moved = Math.max(moved, Math.abs(dx));
-    if (moved > 6){ rail.classList.add('dragging'); rail.scrollLeft = sl - dx; }
-  });
-  window.addEventListener('pointerup', function(){
-    if (!down) return; down = false;
-    setTimeout(function(){ rail.classList.remove('dragging'); }, 0);
+  document.querySelectorAll('.sheet-x').forEach(function(x){ x.addEventListener('click', function(){ closeSheet(); }); });
+  sheetBg.addEventListener('click', function(){ closeSheet(); });
+
+  /* ── GALLERY TRACK ──────────────── */
+  var track = $('track'), down = false, sx = 0, sl = 0, moved = 0;
+  track.addEventListener('pointerdown', function(e){ if (e.pointerType !== 'mouse') return; down = true; moved = 0; sx = e.clientX; sl = track.scrollLeft; });
+  window.addEventListener('pointermove', function(e){ if (!down) return; var dx = e.clientX - sx; moved = Math.max(moved, Math.abs(dx)); if (moved > 6){ track.classList.add('dragging'); track.scrollLeft = sl - dx; } });
+  window.addEventListener('pointerup', function(){ if (!down) return; down = false; setTimeout(function(){ track.classList.remove('dragging'); }, 0); });
+  track.querySelectorAll('.cs-shot').forEach(function(c){
+    c.addEventListener('click', function(){ if (moved > 6) return; openSheet('galSheet', 'g' + c.getAttribute('data-g')); });
   });
 
-  /* ── STORY ──────────────────────── */
-  var story = $('story'), sBtn = $('storyBtn');
-  sBtn.addEventListener('click', function(){
-    var open = !story.classList.contains('open');
-    story.classList.toggle('open', open);
-    sBtn.setAttribute('aria-expanded', String(open));
-    $('storyLbl').textContent = open ? 'Close the story' : 'Read the full story';
-  });
-
-  /* ── MORE WORK STACK ────────────── */
-  var stackCards = Array.prototype.slice.call(document.querySelectorAll('.stack-card'));
-  var sIdx = 0, wm = $('wm'), lastFocus = null;
-  function layoutStack(){
-    var n = stackCards.length;
-    stackCards.forEach(function(c, i){
-      var pos = (i - sIdx + n) % n;
-      c.style.transform = 'translateX(' + (pos * 48) + 'px) scale(' + (1 - pos * 0.07) + ')';
+  /* ── CASE STUDIES FLIPBOOK ──────── */
+  var flipCards = Array.prototype.slice.call(document.querySelectorAll('.flip-card')), fIdx = 0, wm = $('wm'), lastFocus = null;
+  function layoutFlip(){
+    var n = flipCards.length;
+    flipCards.forEach(function(c, i){
+      var pos = (i - fIdx + n) % n;
+      c.style.transform = pos === 0 ? 'none' : 'translate(' + (pos * 9) + '%, ' + (pos * 3) + '%) rotate(' + (pos * 3) + 'deg) scale(' + (1 - pos * 0.06) + ')';
       c.style.zIndex = String(10 - pos);
+      c.style.opacity = pos > 2 ? '0' : '1';
       c.tabIndex = pos === 0 ? 0 : -1;
       c.setAttribute('aria-hidden', pos === 0 ? 'false' : 'true');
     });
+    $('flipLabel').textContent = flipCards[fIdx].getAttribute('data-t');
   }
-  $('stackNext').addEventListener('click', function(){ sIdx = (sIdx + 1) % stackCards.length; layoutStack(); });
-  $('stackPrev').addEventListener('click', function(){ sIdx = (sIdx - 1 + stackCards.length) % stackCards.length; layoutStack(); });
-  stackCards.forEach(function(c, i){
+  function flip(d){ fIdx = (fIdx + d + flipCards.length) % flipCards.length; layoutFlip(); }
+  $('flipNext').addEventListener('click', function(){ flip(1); });
+  $('flipPrev').addEventListener('click', function(){ flip(-1); });
+  var fx = null, fMoved = false, flipBox = $('flip');
+  flipBox.addEventListener('pointerdown', function(e){ fx = e.clientX; fMoved = false; });
+  flipBox.addEventListener('pointerup', function(e){ if (fx !== null && Math.abs(e.clientX - fx) > 40){ fMoved = true; flip(e.clientX < fx ? 1 : -1); } fx = null; });
+  flipCards.forEach(function(c, i){
     c.addEventListener('click', function(){
-      sIdx = i; layoutStack(); lastFocus = c;
-      $('wmTitle').textContent = c.querySelector('.t').textContent;
+      if (fMoved){ fMoved = false; return; }
+      if (i !== fIdx) return;
+      lastFocus = c;
+      $('wmTitle').textContent = c.getAttribute('data-t');
       wm.classList.add('open'); wm.setAttribute('aria-hidden', 'false');
       document.documentElement.style.overflow = 'hidden';
       $('wmClose').focus({ preventScroll: true });
     });
   });
   function closeWm(){
+    if (!wm.classList.contains('open')) return;
     wm.classList.remove('open'); wm.setAttribute('aria-hidden', 'true');
     document.documentElement.style.overflow = '';
     if (lastFocus) lastFocus.focus({ preventScroll: true });
   }
   $('wmClose').addEventListener('click', closeWm);
   wm.addEventListener('click', function(e){ if (e.target === wm) closeWm(); });
-  layoutStack();
+  layoutFlip();
 
   /* ── LEAD CARD (demo: no submission yet) ── */
   var lead = $('lead'), form = $('leadForm'), chips = Array.prototype.slice.call(lead.querySelectorAll('.chip'));
@@ -791,7 +868,8 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   /* ── KEYS ───────────────────────── */
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape'){
-      if (wm.classList.contains('open')) closeWm();
+      if (openSheetEl) closeSheet();
+      else if (wm.classList.contains('open')) closeWm();
       else closeMark();
     }
     if (state === 'open' && ['ArrowDown','PageDown',' ','ArrowUp','PageUp'].indexOf(e.key) > -1){ e.preventDefault(); closeMark(); }
