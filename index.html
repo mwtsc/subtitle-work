@@ -188,11 +188,44 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .work-card .icon-btn{position:absolute;top:16px;right:16px}
 
 /* ── CTA + FOOTER ──────────────── */
-.cta{background:var(--ink);color:var(--white);padding:clamp(64px,8vw,120px) var(--gutter);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:32px}
-.cta h2{margin:0;font-weight:400;font-size:clamp(44px,6vw,88px);letter-spacing:-.06em;line-height:1}
-.cta h2 .serif{font-size:1.1em}
-.cta a{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 28px;border:1px solid var(--white);border-radius:100px;text-decoration:none;font-size:16px;transition:background .25s,color .25s}
-.cta a:hover{background:var(--white);color:var(--ink)}
+.cta{background:var(--ink);color:var(--white);padding:clamp(72px,9vw,140px) var(--gutter)}
+.cta-grid{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(40px,6vw,96px);align-items:stretch}
+.cta .label{color:#A3A3A3}
+.cta h2{margin:20px 0 0;font-weight:500;font-size:clamp(56px,7.4vw,112px);letter-spacing:-.065em;line-height:.95}
+.cta h2 .serif{font-weight:400;font-size:1.08em}
+.cta-sub{font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#D4D4D4;max-width:480px;margin:28px 0 40px}
+.cta-photo{position:relative;border-radius:20px;overflow:hidden;min-height:520px;background:#171717}
+.cta-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 30%;filter:grayscale(1) contrast(1.08);transform:scale(1.04);transition:transform 1.4s var(--ease)}
+.cta-photo.in img{transform:none}
+
+.lead{background:var(--white);color:var(--ink);border-radius:20px;padding:clamp(24px,3vw,36px);max-width:620px}
+.lead-q{font-size:20px;letter-spacing:-.03em;margin:0 0 18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;border:0;padding:0;margin:0}
+.chip{min-height:44px;padding:0 18px;border-radius:100px;border:1px solid var(--grey-200);font-size:15px;transition:background .2s,border-color .2s,color .2s}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.lead-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.lead.step2 .lead-more{grid-template-rows:1fr}
+.lead-more>div{overflow:hidden}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding-top:24px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1 / -1}
+.field label{font-size:13px;color:var(--grey-600)}
+.field input,.field textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:1px solid transparent;border-radius:12px;padding:13px 14px;transition:border-color .2s,background .2s}
+.field textarea{min-height:96px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--ink);background:var(--white)}
+.send{grid-column:1 / -1;display:flex;justify-content:space-between;align-items:center;min-height:56px;padding:0 24px;margin-top:6px;border-radius:100px;background:var(--ink);color:var(--white);font-size:16px;transition:background .25s}
+.send:hover{background:var(--idea-abyss)}
+.send .arr{transition:transform .3s var(--ease)}
+.send:hover .arr{transform:translateX(4px)}
+.thanks{display:none}
+.lead.done form{display:none}
+.lead.done .thanks{display:block}
+.thanks h3{font-size:clamp(28px,3vw,40px);font-weight:400;letter-spacing:-.05em;line-height:1.05;margin:0 0 12px}
+.thanks p{font-size:16px;line-height:1.6;color:var(--grey-600);margin:0 0 24px}
+.text-btn{font-size:14px;text-decoration:underline;text-underline-offset:4px}
+@media (max-width:900px){.cta-grid{grid-template-columns:1fr}.cta-photo{min-height:300px}}
+@media (max-width:560px){.fields{grid-template-columns:1fr}}
 .footer{padding:28px var(--gutter);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;font-size:13px;color:var(--grey-600)}
 .footer img{height:28px;width:auto}
 
@@ -388,8 +421,40 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
   <!-- CTA -->
   <section class="cta" id="contact">
-    <h2>What are you <span class="serif">building?</span></h2>
-    <a href="mailto:info@wearesubtitle.com">Start a conversation &#8599;</a>
+    <div class="cta-grid">
+      <div>
+        <div class="label">Let's talk</div>
+        <h2>What are you<br><span class="serif">building?</span></h2>
+        <p class="cta-sub">Tell us what you're working on, what you're trying to solve, or what comes next.</p>
+        <div class="lead" id="lead">
+          <form id="leadForm" novalidate>
+            <p class="lead-q" id="leadQ">What are you working on?</p>
+            <fieldset class="chips" aria-labelledby="leadQ">
+              <button type="button" class="chip" aria-pressed="false">Rebrand</button>
+              <button type="button" class="chip" aria-pressed="false">Website</button>
+              <button type="button" class="chip" aria-pressed="false">Campaign</button>
+              <button type="button" class="chip" aria-pressed="false">Product</button>
+              <button type="button" class="chip" aria-pressed="false">Something else</button>
+            </fieldset>
+            <div class="lead-more"><div>
+              <div class="fields">
+                <div class="field"><label for="fName">Name</label><input id="fName" name="name" autocomplete="name" required tabindex="-1"></div>
+                <div class="field"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" autocomplete="email" required tabindex="-1"></div>
+                <div class="field full"><label for="fOrg">Organization</label><input id="fOrg" name="organization" autocomplete="organization" tabindex="-1"></div>
+                <div class="field full"><label for="fMsg">Anything we should know? <span>(optional)</span></label><textarea id="fMsg" name="message" tabindex="-1"></textarea></div>
+                <button type="submit" class="send" tabindex="-1"><span>Start the conversation</span><span class="arr" aria-hidden="true">&#8594;</span></button>
+              </div>
+            </div></div>
+          </form>
+          <div class="thanks" role="status" aria-live="polite">
+            <h3 id="thanksTitle">Thank you.</h3>
+            <p>Your note is in. We'll be in touch soon.</p>
+            <button type="button" class="text-btn" id="leadReset">Send another</button>
+          </div>
+        </div>
+      </div>
+      <div class="cta-photo reveal"><img src="assets/access-water.jpg" alt="A girl smiling as she washes her hands at a tap" loading="lazy"></div>
+    </div>
   </section>
 </main>
 
@@ -671,6 +736,42 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   $('wmClose').addEventListener('click', closeWm);
   wm.addEventListener('click', function(e){ if (e.target === wm) closeWm(); });
   layoutStack();
+
+  /* ── LEAD CARD (demo: no submission yet) ── */
+  var lead = $('lead'), form = $('leadForm'), chips = Array.prototype.slice.call(lead.querySelectorAll('.chip'));
+  var moreInputs = Array.prototype.slice.call(lead.querySelectorAll('.lead-more input, .lead-more textarea, .lead-more button'));
+  var topic = '';
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){
+      chips.forEach(function(o){ o.setAttribute('aria-pressed', String(o === c)); });
+      topic = c.textContent;
+      var first = !lead.classList.contains('step2');
+      lead.classList.add('step2');
+      moreInputs.forEach(function(i){ i.removeAttribute('tabindex'); });
+      if (first) setTimeout(function(){ $('fName').focus({ preventScroll: true }); }, 350);
+    });
+  });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = true;
+    [$('fName'), $('fEmail')].forEach(function(i){
+      var valid = i.value.trim() !== '' && (i.type !== 'email' || /.+@.+\..+/.test(i.value));
+      i.style.borderColor = valid ? '' : '#B42318';
+      i.setAttribute('aria-invalid', String(!valid));
+      if (!valid && ok){ i.focus(); ok = false; }
+    });
+    if (!ok) return;
+    var first = $('fName').value.trim().split(' ')[0];
+    $('thanksTitle').textContent = 'Thank you, ' + first + '.';
+    lead.classList.add('done');
+  });
+  $('leadReset').addEventListener('click', function(){
+    form.reset(); topic = '';
+    chips.forEach(function(o){ o.setAttribute('aria-pressed', 'false'); });
+    lead.classList.remove('done', 'step2');
+    moreInputs.forEach(function(i){ i.setAttribute('tabindex', '-1'); });
+    chips[0].focus();
+  });
 
   /* ── KEYS ───────────────────────── */
   document.addEventListener('keydown', function(e){
