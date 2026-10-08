@@ -106,7 +106,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .story-meta{flex:1 1 220px;max-width:280px;display:flex;flex-direction:column;gap:20px;font-size:14px;line-height:1.4}
 .story-meta div div:last-child{color:var(--grey-600)}
 .story-body{flex:999 1 560px;min-width:0;max-width:860px}
-.story-lede{margin:0;font-size:clamp(28px,3vw,42px);line-height:1.2;letter-spacing:-.04em;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 55%,transparent 100%);transition:-webkit-mask-image .4s}
+.story-lede{margin:0;font-size:clamp(24px,2.4vw,34px);line-height:1.2;letter-spacing:-.04em;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 55%,transparent 100%);transition:-webkit-mask-image .4s}
 .story.open .story-lede{-webkit-mask-image:none;mask-image:none}
 .story-lede .serif{font-size:1.1em}
 .story-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
@@ -121,7 +121,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
 /* ── STATEMENT ─────────────────── */
 .statement{max-width:1440px;margin:0 auto;padding:0 var(--gutter) 120px}
-.statement h2{margin:0;font-weight:400;font-size:clamp(48px,7vw,104px);line-height:1;letter-spacing:-.06em;max-width:1200px}
+.statement h2{margin:0;font-weight:400;font-size:clamp(30px,3.4vw,48px);line-height:1.1;letter-spacing:-.045em;max-width:900px}
 .statement h2 .serif{font-size:1.1em}
 .blues{display:flex;flex-wrap:wrap;margin-top:56px;border-radius:16px;overflow:hidden}
 .blues figure{flex:1 1 320px;margin:0;display:flex;flex-direction:column}
@@ -137,9 +137,18 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 /* ── CHAPTERS ──────────────────── */
 .chapters{max-width:1440px;margin:0 auto;padding:0 clamp(12px,2vw,24px) 120px;display:flex;flex-direction:column;gap:24px}
 .chapter{background:var(--white);border-radius:20px;padding:clamp(32px,6vw,96px) clamp(20px,5vw,80px)}
-.chapter h2{font-size:clamp(36px,4vw,56px);font-weight:400;letter-spacing:-.05em;line-height:1.05;margin:20px 0 16px}
-.chapter h2 .serif{font-size:1.1em}
-.chapter p.sub{font-size:16px;line-height:1.6;color:var(--grey-600);margin:0;max-width:440px}
+.ch-title{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(34px,3.4vw,48px);letter-spacing:-.01em;line-height:1.1;margin:0 0 14px}
+.service-head{padding:56px clamp(8px,2vw,24px) 8px;display:flex;flex-direction:column;gap:10px}
+.sec-title{margin:0;font-weight:400;font-size:clamp(28px,2.6vw,36px);letter-spacing:-.04em;line-height:1.15}
+.cos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;padding-top:40px}
+.cos p{margin:10px 0 0;font-size:16px;line-height:1.6;color:var(--grey-700)}
+.grid3 figure{margin:0}
+.grid3 figcaption{display:flex;align-items:baseline;gap:12px;padding-top:14px;font-size:15px;color:var(--grey-700)}
+.grid3 figcaption b{font-size:28px;font-weight:600;color:var(--idea-abyss);letter-spacing:-.04em;min-width:36px}
+.chapter .acronym{max-width:520px;margin:0 auto}
+@media (max-width:760px){.cos{grid-template-columns:1fr;gap:20px}}
+.chapter p.sub{font-size:16px;line-height:1.6;color:var(--grey-600);margin:0;max-width:520px}
+.ch-title.left{text-align:left}
 .split{display:flex;flex-wrap:wrap;gap:56px;align-items:center}
 .split>*{flex:1 1 360px;min-width:0}
 .centered{text-align:center;max-width:640px;margin:0 auto 56px}
@@ -169,7 +178,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
 /* ── MORE WORK ─────────────────── */
 .more{padding:0 var(--gutter) 140px;text-align:center}
-.more h2{font-size:clamp(36px,4vw,56px);font-weight:400;letter-spacing:-.05em;margin:0}
+.more h2{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(34px,3.4vw,48px);font-weight:400;letter-spacing:-.01em;margin:0}
 .more h2 .serif{font-size:1.1em}
 .more>p{font-size:15px;color:var(--grey-600);margin:12px 0 48px}
 .stack{position:relative;height:500px;max-width:520px;margin:0 auto}
@@ -191,7 +200,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .cta{background:var(--ink);color:var(--white);padding:clamp(72px,9vw,140px) var(--gutter)}
 .cta-grid{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(40px,6vw,96px);align-items:stretch}
 .cta .label{color:#A3A3A3}
-.cta h2{margin:20px 0 0;font-weight:500;font-size:clamp(56px,7.4vw,112px);letter-spacing:-.065em;line-height:.95}
+.cta h2{margin:20px 0 0;font-weight:400;font-size:clamp(40px,4.4vw,64px);letter-spacing:-.05em;line-height:1}
 .cta h2 .serif{font-weight:400;font-size:1.08em}
 .cta-sub{font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#D4D4D4;max-width:480px;margin:28px 0 40px}
 .cta-photo{position:relative;border-radius:20px;overflow:hidden;min-height:520px;background:#171717}
@@ -311,16 +320,18 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   <!-- STORY -->
   <section class="story" id="story">
     <div class="story-meta reveal">
-      <div><div>Program</div><div>Rename, Identity, Messaging, Web, Campaign</div></div>
+      <div><div>Services</div><div>Rebranding, Website Build</div></div>
       <div><div>Sector</div><div>Nonprofit, humanitarian and development</div></div>
       <div><div>Stage</div><div>Established organization, new chapter</div></div>
     </div>
     <div class="story-body reveal">
-      <p class="story-lede">For three decades, Islamic Relief USA answered the world's emergencies. But the work had already moved past them, into schools, livelihoods and long term development. The name hadn't. It still said relief, and <span class="serif">only relief.</span></p>
+      <p class="story-lede">Islamic Relief USA spent decades earning trust by responding to emergencies. Over time, its work grew into education, livelihoods and long term development, and the name no longer reflected that range.</p>
       <div class="story-more" id="storyMore"><div>
-        <p>The brief came down to one line: give the organization a name that matches the work it actually does, without putting three decades of donor trust at risk.</p>
-        <p>We led the rename from strategy to launch. IDEA, Islamic Development and Empowerment in America, keeps the faith in the name and makes room for everything the organization had grown into.</p>
-        <p>Then we built everything the name needed to live: the identity system, the messaging, the website and the launch campaign. One brief. One shot. No soft rollout.</p>
+        <div class="cos">
+          <div><span class="label">Challenge</span><p>The name pointed to relief, while much of the work had moved toward long term development. Changing it carried real risk to the trust donors had built over many years.</p></div>
+          <div><span class="label">Opportunity</span><p>A new name could hold the full scope of the mission and invite supporters into what comes next, with its faith and history still in view.</p></div>
+          <div><span class="label">Solution</span><p>Subtitle led the rebrand and the website build: the rename to IDEA, Islamic Development and Empowerment in America, a new identity system and messaging, and a site shaped around the organization's development work.</p></div>
+        </div>
       </div></div>
       <button class="pill-btn" id="storyBtn" aria-expanded="false" aria-controls="storyMore"><span id="storyLbl">Read the full story</span> <span class="arr" aria-hidden="true">&#8595;</span></button>
     </div>
@@ -328,21 +339,25 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
   <!-- STATEMENT -->
   <section class="statement">
-    <h2 class="reveal">Relief is a response.<br>Development is <span class="serif">a promise.</span></h2>
+    <h2 class="reveal">Relief responds. <span class="serif">Development endures.</span></h2>
     <div class="blues reveal">
       <figure class="relief"><img src="assets/relief.jpg" alt="Aid worker hands food to a mother and child in a camp" loading="lazy"><figcaption><span>Light blue</span><strong>Relief work</strong></figcaption></figure>
       <figure class="dev"><img src="assets/farm.jpg" alt="Farmers fitting drip irrigation beside a solar powered water tank" loading="lazy"><figcaption><span>Dark blue</span><strong>Development work</strong></figcaption></figure>
     </div>
-    <p class="reveal">The shift the organization made is built straight into the palette. Two blues, one direction.</p>
+    <p class="reveal">The palette carries the shift the organization made. Two blues, one direction.</p>
   </section>
 
-  <!-- CHAPTERS -->
+  <!-- SERVICES -->
   <section class="chapters" aria-label="The work">
-    <article class="chapter split reveal">
-      <div>
-        <div class="label">01 Strategy</div>
-        <h2>A name that holds <span class="serif">the whole mission.</span></h2>
-        <p class="sub">Rename strategy, narrative and rollout plan. Faith stays in the name. The scope finally fits it.</p>
+    <div class="service-head reveal">
+      <span class="label">Service 01</span>
+      <h2 class="sec-title">Rebranding</h2>
+    </div>
+
+    <article class="chapter reveal">
+      <div class="centered">
+        <h3 class="ch-title">Naming</h3>
+        <p class="sub">IDEA keeps faith at the center of the name and gives the organization's development work room to grow.</p>
       </div>
       <div class="acronym">
         <div><b>I</b><span>Islamic</span></div>
@@ -354,22 +369,20 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
     <article class="chapter reveal">
       <div class="centered">
-        <div class="label">02 Identity</div>
-        <h2>Every number <span class="serif">means something.</span></h2>
-        <p class="sub">The emblem is built from 7, the number of abundance, 5, the structure of faith, and 12, complete cycles.</p>
+        <h3 class="ch-title">Identity</h3>
+        <p class="sub">The emblem is built on three numbers.</p>
       </div>
       <div class="grid3 brand">
-        <img class="dark" src="assets/idea-logo-dark.jpg" alt="IDEA emblem and wordmark" loading="lazy">
-        <img src="assets/emblem-system.jpg" alt="Emblem construction and color meaning" loading="lazy">
-        <img src="assets/layout-system.jpg" alt="IDEA dynamic layout system" loading="lazy">
+        <figure><img class="dark" src="assets/idea-logo-dark.jpg" alt="IDEA emblem and wordmark" loading="lazy"><figcaption><b>7</b>The number of abundance</figcaption></figure>
+        <figure><img src="assets/emblem-system.jpg" alt="Emblem construction and color meaning" loading="lazy"><figcaption><b>5</b>The structure of faith</figcaption></figure>
+        <figure><img src="assets/layout-system.jpg" alt="IDEA dynamic layout system" loading="lazy"><figcaption><b>12</b>Complete cycles</figcaption></figure>
       </div>
     </article>
 
     <article class="chapter split reveal">
       <div>
-        <div class="label">03 Messaging</div>
-        <h2>Read in a second. <span class="serif">Felt for longer.</span></h2>
-        <p class="sub">Brand story, voice, and the CEO announcement that introduced IDEA to supporters.</p>
+        <h3 class="ch-title left">Messaging</h3>
+        <p class="sub">We wrote from the people the work serves, in plain and hopeful language. A CEO message introduced the new name to supporters in the organization's own voice.</p>
       </div>
       <div class="grid2">
         <a class="site-link" href="https://development.org/why-idea" target="_blank" rel="noopener" aria-label="Watch the CEO message on development.org, opens in a new tab"><img class="tall" src="assets/ceo.jpg" alt="IDEA CEO video message" loading="lazy"><span class="hint"><span>Watch the CEO message &#8599;</span></span></a>
@@ -378,23 +391,9 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     </article>
 
     <article class="chapter reveal">
-      <div class="web-head">
-        <div style="max-width:640px">
-          <div class="label">04 Web</div>
-          <h2>A front door <span class="serif">for the new name.</span></h2>
-        </div>
-        <p>Scroll inside each screen. Click to visit the live site.</p>
-      </div>
-      <div class="screens">
-        <a class="site-link" href="https://development.org/" target="_blank" rel="noopener" aria-label="Visit the live IDEA homepage, opens in a new tab"><div class="scroll-box"><img src="assets/site-home.jpg" alt="IDEA homepage" loading="lazy"></div><span class="hint"><span>Visit development.org &#8599;</span></span></a>
-        <a class="site-link" href="https://development.org/why-idea" target="_blank" rel="noopener" aria-label="Visit the Why IDEA page, opens in a new tab"><div class="scroll-box"><img src="assets/site-why-idea.jpg" alt="IDEA Why IDEA page" loading="lazy"></div><span class="hint"><span>Visit development.org &#8599;</span></span></a>
-      </div>
-    </article>
-
-    <article class="chapter reveal">
       <div class="centered">
-        <div class="label">05 Campaign</div>
-        <h2>People first. <span class="serif">Logo second.</span></h2>
+        <h3 class="ch-title">Social</h3>
+        <p class="sub">Social content that leads with people and lets the brand support the story.</p>
       </div>
       <div class="grid3">
         <img src="assets/shop.jpg" alt="Shop owner behind her counter" loading="lazy">
@@ -402,12 +401,28 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
         <img src="assets/livelihoods.jpg" alt="Woman at her sewing machine" loading="lazy">
       </div>
     </article>
+
+    <div class="service-head reveal">
+      <span class="label">Service 02</span>
+      <h2 class="sec-title">Website Build</h2>
+    </div>
+
+    <article class="chapter reveal">
+      <div class="centered">
+        <h3 class="ch-title">development.org</h3>
+        <p class="sub">A site shaped around development work, with clear paths to give and to see where support goes. Scroll inside each screen, or click to visit the live site.</p>
+      </div>
+      <div class="screens">
+        <a class="site-link" href="https://development.org/" target="_blank" rel="noopener" aria-label="Visit the live IDEA homepage, opens in a new tab"><div class="scroll-box"><img src="assets/site-home.jpg" alt="IDEA homepage" loading="lazy"></div><span class="hint"><span>Visit development.org &#8599;</span></span></a>
+        <a class="site-link" href="https://development.org/why-idea" target="_blank" rel="noopener" aria-label="Visit the Why IDEA page, opens in a new tab"><div class="scroll-box"><img src="assets/site-why-idea.jpg" alt="IDEA Why IDEA page" loading="lazy"></div><span class="hint"><span>Visit development.org &#8599;</span></span></a>
+      </div>
+    </article>
   </section>
 
-  <!-- MORE WORK -->
-  <section class="more" aria-label="More work">
-    <h2 class="reveal">More <span class="serif">work.</span></h2>
-    <p class="reveal">Click the card to open it.</p>
+  <!-- CASE STUDIES -->
+  <section class="more" aria-label="Case studies">
+    <h2 class="reveal">Case Studies</h2>
+    <p class="reveal">See other work from subtitle.</p>
     <div class="stack" id="stack">
       <button class="stack-card" data-i="0"><span class="ph">[Project image]</span><span class="t">[Project 01]</span></button>
       <button class="stack-card" data-i="1"><span class="ph">[Project image]</span><span class="t">[Project 02]</span></button>
