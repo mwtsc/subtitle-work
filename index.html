@@ -28,18 +28,15 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 :focus-visible{outline:2px solid var(--idea-abyss);outline-offset:3px}
 
-/* ── NAV ───────────────────────── */
-.nav{position:fixed;top:0;left:0;right:0;height:72px;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;z-index:40;pointer-events:none;transition:color .4s var(--ease)}
-.nav>*{pointer-events:auto}
-.nav-logo{position:relative;height:34px;width:66px}
-.nav-logo img{position:absolute;inset:0;height:34px;width:auto;transition:opacity .4s var(--ease)}
-.nav-logo .on-dark{opacity:0}
-.nav.on-blue .nav-logo .on-dark{opacity:1}
-.nav.on-blue .nav-logo .on-light{opacity:0}
-.nav-crumb{font-size:14px;color:var(--grey-600);transition:color .4s var(--ease)}
-.nav.on-blue .nav-crumb{color:var(--idea-frost)}
-.nav.hidden{opacity:0;pointer-events:none}
-.nav{transition:opacity .4s var(--ease)}
+/* ── NAV (matches wearesubtitle.com) ── */
+.nav{position:fixed;top:0;left:0;right:0;height:66px;z-index:50;background:rgba(255,255,255,.4);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,0,0,.07);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.nav-inner{max-width:1536px;height:100%;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:32px;width:auto}
+.nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:14px;color:#000;text-decoration:none}
+.nav-links a:hover{text-decoration:underline;text-underline-offset:4px}
+.nav.hidden{opacity:0;transform:translateY(-100%);pointer-events:none}
+@media (max-width:560px){.nav-inner{padding:0 20px}.nav-links{gap:16px}.nav-links a{font-size:13px}}
 
 /* ── HERO ──────────────────────── */
 .hero{position:relative;height:330vh;background:var(--paper)}
@@ -52,7 +49,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .ceil.m{left:46vw;width:8vw}
 .old{position:absolute;top:calc(26vh + 4px);left:0;right:0;height:42vh;overflow:hidden}
 .old-word{display:flex;padding-left:2.4vw;margin-top:-9vw;font-size:27vw;font-weight:600;letter-spacing:-.07em;line-height:1;color:var(--idea-midnight);white-space:nowrap}
-.old-word span{display:inline-block;will-change:transform,opacity,filter}
+.old-word span{display:inline-block;will-change:transform,opacity}
 .beam{position:absolute;top:0;left:44vw;width:12vw;height:62vh;background:var(--idea-sky);opacity:0;clip-path:polygon(44% 0,56% 0,100% 100%,0 100%);pointer-events:none}
 .pressed-copy{position:absolute;left:var(--gutter);bottom:8vh;font-size:clamp(26px,2.8vw,40px);line-height:1.1;letter-spacing:-.04em;max-width:640px}
 .pressed-copy .serif{font-size:1.15em}
@@ -100,23 +97,9 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .rail::-webkit-scrollbar{display:none}
 .rail.dragging{cursor:grabbing;scroll-snap-type:none}
 .rail.dragging .card{pointer-events:none}
-.card{position:relative;flex:0 0 auto;height:min(560px,62vw);border-radius:16px;overflow:hidden;background:var(--grey-200);scroll-snap-align:start;cursor:zoom-in}
+.card{position:relative;flex:0 0 auto;height:min(560px,62vw);margin:0;border-radius:16px;overflow:hidden;background:var(--grey-200);scroll-snap-align:start}
 .card img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.card:hover img{transform:scale(1.03)}
 .pill{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.92);color:var(--ink);font-size:13px;padding:8px 14px;border-radius:100px}
-.card .plus{position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;font-size:18px;opacity:0;transform:scale(.85);transition:opacity .3s var(--ease),transform .3s var(--ease)}
-.card:hover .plus,.card:focus-visible .plus{opacity:1;transform:none}
-
-/* ── LIGHTBOX ──────────────────── */
-.lightbox{position:fixed;inset:0;z-index:80;background:rgba(10,10,10,.94);display:flex;align-items:center;justify-content:center;padding:72px 24px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
-.lightbox.open{opacity:1;pointer-events:auto}
-.lightbox img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;transform:scale(.97);transition:transform .45s var(--ease)}
-.lightbox.open img{transform:none}
-.lb-close{position:absolute;top:20px;right:20px;width:48px;height:48px;border-radius:50%;background:var(--white);color:var(--ink);font-size:20px}
-.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.14);color:var(--white);font-size:20px}
-.lb-nav:hover{background:rgba(255,255,255,.26)}
-.lb-prev{left:20px}.lb-next{right:20px}
-.lb-cap{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:#D4D4D4;font-size:14px}
 
 /* ── STORY ─────────────────────── */
 .story{max-width:1440px;margin:0 auto;padding:120px var(--gutter);display:flex;flex-wrap:wrap;gap:64px}
@@ -239,11 +222,15 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 <body>
 
 <header class="nav" id="nav">
-  <a class="nav-logo" href="https://wearesubtitle.com" aria-label="subtitle home">
-    <img class="on-light" src="assets/subtitle-logo-black.svg" alt="">
-    <img class="on-dark" src="assets/subtitle-logo-white.svg" alt="">
-  </a>
-  <span class="nav-crumb">Case Study / IDEA</span>
+  <div class="nav-inner">
+    <a class="nav-logo" href="https://wearesubtitle.com/#top" aria-label="subtitle home"><img src="assets/subtitle-logo-black.svg" alt="subtitle"></a>
+    <nav aria-label="Main"><ul class="nav-links">
+      <li><a href="https://wearesubtitle.com/#offerings">Services</a></li>
+      <li><a href="https://wearesubtitle.com/#clients">Clients</a></li>
+      <li><a href="https://wearesubtitle.com/#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+  </div>
 </header>
 
 <main>
@@ -276,18 +263,15 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   <section class="rail-wrap" aria-label="Explore the work">
     <div class="rail-head reveal">
       <span class="label">Explore the work</span>
-      <p>Drag to scroll. Click any card to open it.</p>
+      <p>Drag to scroll.</p>
     </div>
     <div class="rail" id="rail">
-      <button class="card" style="width:min(860px,82vw)" data-cap="Winter relief"><img src="assets/winter-relief.jpg" alt="Winter relief distribution in a mountain village" loading="lazy"><span class="pill">Winter relief</span><span class="plus" aria-hidden="true">+</span></button>
-      <button class="card" style="width:min(760px,82vw)" data-cap="Her own shop"><img src="assets/shop.jpg" alt="Shop owner behind her counter" loading="lazy"><span class="pill">Her own shop</span><span class="plus" aria-hidden="true">+</span></button>
-      <button class="card" style="width:min(860px,82vw)" data-cap="Room to grow"><img src="assets/town.jpg" alt="A man looks out over a growing town with a school and market" loading="lazy"><span class="pill">Room to grow</span><span class="plus" aria-hidden="true">+</span></button>
-      <button class="card" style="width:min(420px,82vw)" data-cap="Families first"><img src="assets/families.jpg" alt="Mother and children with an aid package" loading="lazy"><span class="pill">Families first</span><span class="plus" aria-hidden="true">+</span></button>
-      <button class="card" style="width:min(760px,82vw)" data-cap="Water for a village"><img src="assets/water-village.jpg" alt="Solar powered water point on a hillside" loading="lazy"><span class="pill">Water for a village</span><span class="plus" aria-hidden="true">+</span></button>
-      <button class="card" style="width:min(740px,82vw)" data-cap="Clean water"><img src="assets/clean-water.jpg" alt="Children laughing under a water tap" loading="lazy"><span class="pill">Clean water</span><span class="plus" aria-hidden="true">+</span></button>
-      <button class="card" style="width:min(760px,82vw)" data-cap="Back to school"><img src="assets/school.jpg" alt="Children reading together" loading="lazy"><span class="pill">Back to school</span><span class="plus" aria-hidden="true">+</span></button>
-      <button class="card" style="width:min(680px,82vw)" data-cap="Livelihoods"><img src="assets/livelihoods.jpg" alt="Woman at her sewing machine" loading="lazy"><span class="pill">Livelihoods</span><span class="plus" aria-hidden="true">+</span></button>
-      <button class="card" style="width:min(560px,82vw)" data-cap="Access to water"><img src="assets/access-water.jpg" alt="Girl washing her hands at a tap" loading="lazy"><span class="pill">Access to water</span><span class="plus" aria-hidden="true">+</span></button>
+      <figure class="card" style="width:min(860px,82vw)"><img src="assets/winter-relief.jpg" alt="Winter relief distribution in a mountain village" loading="lazy"><span class="pill">Winter relief</span></figure>
+      <figure class="card" style="width:min(760px,82vw)"><img src="assets/shop.jpg" alt="Shop owner behind her counter" loading="lazy"><span class="pill">Her own shop</span></figure>
+      <figure class="card" style="width:min(860px,82vw)"><img src="assets/town.jpg" alt="A man looks out over a growing town with a school and market" loading="lazy"><span class="pill">Development</span></figure>
+      <figure class="card" style="width:min(420px,82vw)"><img src="assets/families.jpg" alt="Mother and children with an aid package" loading="lazy"><span class="pill">Families first</span></figure>
+      <figure class="card" style="width:min(680px,82vw)"><img src="assets/livelihoods.jpg" alt="Woman at her sewing machine" loading="lazy"><span class="pill">Livelihoods</span></figure>
+      <figure class="card" style="width:min(560px,82vw)"><img src="assets/access-water.jpg" alt="Girl washing her hands at a tap" loading="lazy"><span class="pill">Access to water</span></figure>
     </div>
   </section>
 
@@ -464,15 +448,6 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   </div>
 </div>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
-  <img id="lbImg" alt="">
-  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous image">&#8592;</button>
-  <button class="lb-nav lb-next" id="lbNext" aria-label="Next image">&#8594;</button>
-  <button class="lb-close" id="lbClose" aria-label="Close image">&#10005;</button>
-  <div class="lb-cap" id="lbCap"></div>
-</div>
-
 <!-- WORK MODAL -->
 <div class="work-modal" id="wm" role="dialog" aria-modal="true" aria-label="Project" aria-hidden="true">
   <div class="work-card">
@@ -515,7 +490,6 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     [[el.R, .55, 1], [el.U, .75, 1.5], [el.S, .88, 2]].forEach(function(a){
       a[0].style.opacity = String(1 - t1 * a[1]);
       a[0].style.transform = 'translateY(' + (t1 * 3 * a[2]) + 'vh)';
-      a[0].style.filter = 'blur(' + (t1 * a[2] * 1.5) + 'px)';
     });
 
     el.beam.style.opacity = String(0.22 * t1 * (1 - t2));
@@ -537,7 +511,6 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
     el.count.textContent = t2 > 0.95 ? '03 / 03' : t1 > 0.15 ? '02 / 03' : '01 / 03';
     el.count.style.color = t2 > 0.6 ? '#D8EFFF' : '';
-    nav.classList.toggle('on-blue', t2 > 0.55 && heroVisible());
   }
 
   function heroVisible(){
@@ -635,7 +608,6 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
       var p = progress();
       if (p !== lastP){ render(p); lastP = p; }
       updatePeek(p);
-      if (!heroVisible()) nav.classList.remove('on-blue');
     });
   }
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -658,34 +630,6 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     setTimeout(function(){ rail.classList.remove('dragging'); }, 0);
   });
 
-  /* ── LIGHTBOX ───────────────────── */
-  var cards = Array.prototype.slice.call(rail.querySelectorAll('.card'));
-  var lb = $('lb'), lbImg = $('lbImg'), lbCap = $('lbCap'), lbIdx = 0, lastFocus = null;
-  function showLb(i){
-    lbIdx = (i + cards.length) % cards.length;
-    var img = cards[lbIdx].querySelector('img');
-    lbImg.src = img.getAttribute('src'); lbImg.alt = img.alt;
-    lbCap.textContent = cards[lbIdx].getAttribute('data-cap');
-  }
-  cards.forEach(function(c, i){
-    c.addEventListener('click', function(){
-      if (moved > 6) return;
-      lastFocus = c; showLb(i);
-      lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false');
-      document.documentElement.style.overflow = 'hidden';
-      $('lbClose').focus({ preventScroll: true });
-    });
-  });
-  function closeLb(){
-    lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true');
-    document.documentElement.style.overflow = '';
-    if (lastFocus) lastFocus.focus({ preventScroll: true });
-  }
-  $('lbClose').addEventListener('click', closeLb);
-  $('lbPrev').addEventListener('click', function(){ showLb(lbIdx - 1); });
-  $('lbNext').addEventListener('click', function(){ showLb(lbIdx + 1); });
-  lb.addEventListener('click', function(e){ if (e.target === lb) closeLb(); });
-
   /* ── STORY ──────────────────────── */
   var story = $('story'), sBtn = $('storyBtn');
   sBtn.addEventListener('click', function(){
@@ -697,7 +641,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
   /* ── MORE WORK STACK ────────────── */
   var stackCards = Array.prototype.slice.call(document.querySelectorAll('.stack-card'));
-  var sIdx = 0, wm = $('wm');
+  var sIdx = 0, wm = $('wm'), lastFocus = null;
   function layoutStack(){
     var n = stackCards.length;
     stackCards.forEach(function(c, i){
@@ -731,13 +675,8 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   /* ── KEYS ───────────────────────── */
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape'){
-      if (lb.classList.contains('open')) closeLb();
-      else if (wm.classList.contains('open')) closeWm();
+      if (wm.classList.contains('open')) closeWm();
       else closeMark();
-    }
-    if (lb.classList.contains('open')){
-      if (e.key === 'ArrowLeft') showLb(lbIdx - 1);
-      if (e.key === 'ArrowRight') showLb(lbIdx + 1);
     }
     if (state === 'open' && ['ArrowDown','PageDown',' ','ArrowUp','PageUp'].indexOf(e.key) > -1){ e.preventDefault(); closeMark(); }
   });
