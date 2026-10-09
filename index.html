@@ -42,7 +42,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .hero{position:relative;height:330vh;background:var(--paper)}
 .hero-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;transition:transform .8s var(--ease)}
 .hero-stage.shift{transform:translateX(-6vw)}
-.hero-count{position:absolute;top:22vh;left:var(--gutter);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey-600)}
+.hero-count{position:absolute;z-index:2;top:22vh;left:var(--gutter);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey-600)}
 .ceil{position:absolute;top:26vh;height:4px;background:var(--idea-midnight);will-change:transform}
 .ceil.l{left:-1vw;width:47vw;transform-origin:right center}
 .ceil.r{right:-1vw;width:47vw;transform-origin:left center}
@@ -286,14 +286,12 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
     <h1 class="sr-only">IRUSA became IDEA. A name that reflects a mission for a better world.</h1>
     <div class="hero-stage" id="stage" aria-hidden="true">
       <div class="hero-count" id="count">01 / 03</div>
-      <div class="beam" id="beam"></div>
       <div class="old"><div class="old-word"><span>I</span><span id="oR">R</span><span id="oU">U</span><span id="oS">S</span><span>A</span></div></div>
       <div class="ceil l" id="ceilL"></div>
       <div class="ceil m" id="ceilM"></div>
       <div class="ceil r" id="ceilR"></div>
       <div class="pressed-copy" id="pressed">Three decades of trust.<br>One name holding it <span class="serif">down.</span></div>
       <div class="scroll-cue" id="cue"><span>Scroll to break through</span><i></i></div>
-      <div class="blue" id="blue"></div>
       <div class="clear" id="clear"></div>
       <div class="hero-logo" id="heroLogo"><svg viewBox="0 0 499 229" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 <path class="wm" d="M275.78 171.32H257.16V57.7197H275.78V171.32Z" fill="#2B01BE"/>
@@ -574,17 +572,17 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
 
   /* ── HERO SCRUB ─────────────────── */
   var hero = $('hero'), stage = $('stage'), nav = $('nav');
-  var el = { R:$('oR'), U:$('oU'), S:$('oS'), L:$('ceilL'), M:$('ceilM'), Rr:$('ceilR'), beam:$('beam'),
-    pressed:$('pressed'), clear:$('clear'), cue:$('cue'), blue:$('blue'), logo:$('heroLogo'), floor:$('floor'),
+  var el = { R:$('oR'), U:$('oU'), S:$('oS'), L:$('ceilL'), M:$('ceilM'), Rr:$('ceilR'), 
+    pressed:$('pressed'), clear:$('clear'), cue:$('cue'),  logo:$('heroLogo'), floor:$('floor'),
     value:$('value'), meta:$('meta'), count:$('count') };
   var lastP = -1, ticking = false;
 
   function render(p){
     var t1 = clamp((p - 0.03) / 0.35);          // crack
-    var t2 = ease(clamp((p - 0.18) / 0.30));    // blue floods up
-    var tc = ease(clamp((p - 0.44) / 0.12));    // blue clears to light
-    var tb = clamp((p - 0.50) / 0.28);          // emblem builds piece by piece
-    var t3 = ease(clamp((p - 0.76) / 0.14));    // wordmark, line and details settle
+    var t2 = ease(clamp((p - 0.28) / 0.16));    // the old name and ceiling clear away
+    var tc = t2;
+    var tb = clamp((p - 0.40) / 0.32);          // emblem builds piece by piece
+    var t3 = ease(clamp((p - 0.70) / 0.16));    // wordmark, line and details settle
 
     // ceiling splits
     el.L.style.transform = 'translateX(' + (-3 * t1) + 'vw) rotate(' + (-3 * t1) + 'deg)';
@@ -598,18 +596,12 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
       a[0].style.transform = 'translateY(' + (t1 * 3 * a[2]) + 'vh)';
     });
 
-    el.beam.style.opacity = String(0.22 * t1 * (1 - t2));
     var fade = String(1 - clamp(t1 * 2.5));
     el.pressed.style.opacity = fade; el.cue.style.opacity = fade;
 
-    // blue floods up through the crack
-    var side = 100 - 14 * t1 - 86 * t2;
-    var peak = Math.max(0, side - 22 * (1 - t2) * clamp(t1 * 2));
-    var edge = side + 4 * (1 - t2), sh = edge + (peak - edge) * 0.4;
-    if (t1 === 0) { edge = sh = peak = 101; }
-    el.blue.style.clipPath = 'polygon(0% ' + edge + '%, 30% ' + sh + '%, 46% ' + peak + '%, 54% ' + peak + '%, 70% ' + sh + '%, 100% ' + edge + '%, 100% 100%, 0% 100%)';
 
     el.clear.style.opacity = String(tc);
+    el.count.style.opacity = String(1 - t3);
     buildLogo(tb, t3);
     el.floor.style.transform = 'scaleX(' + t3 + ')';
     el.value.style.opacity = String(t3);
@@ -617,7 +609,6 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
     el.meta.style.opacity = String(t3);
 
     el.count.textContent = tc > 0.5 ? '03 / 03' : t1 > 0.15 ? '02 / 03' : '01 / 03';
-    el.count.style.color = (t2 > 0.6 && tc < 0.5) ? '#D8EFFF' : '';
   }
 
   function heroVisible(){
