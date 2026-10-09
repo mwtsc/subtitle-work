@@ -58,13 +58,13 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .blue{position:absolute;inset:0;background:var(--idea-abyss);clip-path:polygon(0 100%,46% 100%,54% 100%,100% 100%,100% 100%,0 100%);will-change:clip-path}
 .hero-logo{position:absolute;left:var(--gutter);bottom:25vh;width:min(1040px,64vw)}
 .hero-logo svg{display:block;width:100%;height:auto;overflow:visible}
-.hero-logo path[fill="#2B01BE"]{fill:#FFFFFF}
+.clear{position:absolute;inset:0;background:var(--paper);opacity:0;pointer-events:none}
 .hero-logo .em,.hero-logo .wm{opacity:0;will-change:transform,opacity}
-.floor{position:absolute;left:0;right:0;bottom:19vh;height:2px;background:var(--white);transform:scaleX(0);transform-origin:left center}
-.value{position:absolute;top:18vh;right:var(--gutter);text-align:right;color:var(--white);font-size:clamp(30px,3.6vw,52px);line-height:1.05;letter-spacing:-.045em;max-width:860px;opacity:0}
+.floor{position:absolute;left:0;right:0;bottom:19vh;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left center}
+.value{position:absolute;top:18vh;right:var(--gutter);text-align:right;color:var(--ink);font-size:clamp(30px,3.6vw,52px);line-height:1.05;letter-spacing:-.045em;max-width:860px;opacity:0}
 .value .serif{font-size:1.15em}
-.meta{position:absolute;left:var(--gutter);right:var(--gutter);bottom:5vh;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;color:var(--white);font-size:14px;line-height:1.4;opacity:0}
-.meta b{display:block;font-weight:400;color:var(--idea-frost);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.meta{position:absolute;left:var(--gutter);right:var(--gutter);bottom:5vh;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;color:var(--ink);font-size:14px;line-height:1.4;opacity:0}
+.meta b{display:block;font-weight:400;color:var(--grey-600);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
 
 .icon-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--ink);display:inline-flex;align-items:center;justify-content:center;font-size:18px;background:var(--white);transition:background .2s,color .2s}
 .icon-btn:hover{background:var(--ink);color:var(--white)}
@@ -294,6 +294,7 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
       <div class="pressed-copy" id="pressed">Three decades of trust.<br>One name holding it <span class="serif">down.</span></div>
       <div class="scroll-cue" id="cue"><span>Scroll to break through</span><i></i></div>
       <div class="blue" id="blue"></div>
+      <div class="clear" id="clear"></div>
       <div class="hero-logo" id="heroLogo"><svg viewBox="0 0 499 229" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 <path class="wm" d="M275.78 171.32H257.16V57.7197H275.78V171.32Z" fill="#2B01BE"/>
 <path class="wm" d="M321.2 171.32H289.22V57.7197H321.36C332.97 57.7197 341.38 59.8397 346.58 64.0797C351.78 68.3197 354.48 75.2697 354.69 84.9197C355.01 95.4697 355.17 105.3 355.17 114.39C355.17 123.48 355.01 133.34 354.69 143.94C354.48 153.7 351.77 160.7 346.58 164.94C341.38 169.18 332.92 171.3 321.2 171.3V171.32ZM307.84 74.5897V154.46H321.2C330.96 154.46 335.92 151.7 336.08 146.19C336.77 125.08 336.77 103.92 336.08 82.7097C335.92 77.2997 331.02 74.5997 321.36 74.5997H307.84V74.5897Z" fill="#2B01BE"/>
@@ -574,15 +575,16 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
   /* ── HERO SCRUB ─────────────────── */
   var hero = $('hero'), stage = $('stage'), nav = $('nav');
   var el = { R:$('oR'), U:$('oU'), S:$('oS'), L:$('ceilL'), M:$('ceilM'), Rr:$('ceilR'), beam:$('beam'),
-    pressed:$('pressed'), cue:$('cue'), blue:$('blue'), logo:$('heroLogo'), floor:$('floor'),
+    pressed:$('pressed'), clear:$('clear'), cue:$('cue'), blue:$('blue'), logo:$('heroLogo'), floor:$('floor'),
     value:$('value'), meta:$('meta'), count:$('count') };
   var lastP = -1, ticking = false;
 
   function render(p){
     var t1 = clamp((p - 0.03) / 0.35);          // crack
-    var t2 = ease(clamp((p - 0.20) / 0.34));    // blue floods up
-    var tb = clamp((p - 0.42) / 0.32);          // emblem builds piece by piece
-    var t3 = ease(clamp((p - 0.70) / 0.16));    // wordmark, line and details settle
+    var t2 = ease(clamp((p - 0.18) / 0.30));    // blue floods up
+    var tc = ease(clamp((p - 0.44) / 0.12));    // blue clears to light
+    var tb = clamp((p - 0.50) / 0.28);          // emblem builds piece by piece
+    var t3 = ease(clamp((p - 0.76) / 0.14));    // wordmark, line and details settle
 
     // ceiling splits
     el.L.style.transform = 'translateX(' + (-3 * t1) + 'vw) rotate(' + (-3 * t1) + 'deg)';
@@ -607,14 +609,15 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
     if (t1 === 0) { edge = sh = peak = 101; }
     el.blue.style.clipPath = 'polygon(0% ' + edge + '%, 30% ' + sh + '%, 46% ' + peak + '%, 54% ' + peak + '%, 70% ' + sh + '%, 100% ' + edge + '%, 100% 100%, 0% 100%)';
 
+    el.clear.style.opacity = String(tc);
     buildLogo(tb, t3);
     el.floor.style.transform = 'scaleX(' + t3 + ')';
     el.value.style.opacity = String(t3);
     el.value.style.transform = 'translateY(' + ((1 - t3) * 16) + 'px)';
     el.meta.style.opacity = String(t3);
 
-    el.count.textContent = t2 > 0.95 ? '03 / 03' : t1 > 0.15 ? '02 / 03' : '01 / 03';
-    el.count.style.color = t2 > 0.6 ? '#D8EFFF' : '';
+    el.count.textContent = tc > 0.5 ? '03 / 03' : t1 > 0.15 ? '02 / 03' : '01 / 03';
+    el.count.style.color = (t2 > 0.6 && tc < 0.5) ? '#D8EFFF' : '';
   }
 
   function heroVisible(){
