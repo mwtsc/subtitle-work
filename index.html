@@ -145,6 +145,12 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .deck>.cs-card.lift{animation:deckLift .75s var(--ease)}
 @keyframes deckLift{0%{transform:translateY(-14px) scale(.965)}40%{transform:translateY(-60px) scale(.985) rotate(-1deg)}100%{transform:none}}
 .svc-media video{width:100%;display:block;border-radius:8px}
+.svc-media.ig-media{padding:clamp(20px,4vw,40px) 0;overflow:hidden}
+.ig-row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 clamp(20px,4vw,40px);scrollbar-width:none}
+.ig-row::-webkit-scrollbar{display:none}
+.ig-item{flex:0 0 330px;scroll-snap-align:center}
+.ig-item .instagram-media{margin:0!important;min-width:0!important;width:100%!important;border-radius:12px!important;box-shadow:none!important;border:1px solid rgba(0,0,0,.08)!important}
+.ig-item blockquote.instagram-media{background:var(--white);padding:24px;font-size:14px}
 .cs-card{width:min(1002px,calc(100vw - 2 * var(--gutter)));margin:0 auto;background:var(--white);border-radius:16px;padding:80px 24px 64px;text-align:center}
 .cs-card .cs-body{max-width:330px;margin:20px auto 0}
 .fan{position:relative;width:min(540px,80vw);aspect-ratio:540/360;margin:56px auto 48px;cursor:pointer}
@@ -568,8 +574,8 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
     <div class="svc-item"><h4>Messaging</h4><p class="cs-body">We wrote from the people the work serves, in plain and hopeful language. A CEO message introduced the new name to supporters. <a class="inline-link" href="https://www.youtube.com/watch?v=hYVtED7Yjqo" target="_blank" rel="noopener">Watch the launch video &#8599;</a></p></div>
     <div class="svc-media two"><a class="site-link" href="https://development.org/why-idea" target="_blank" rel="noopener" aria-label="Watch the CEO message, opens in a new tab"><img src="assets/ceo.jpg" alt="IDEA CEO video message" loading="lazy"><span class="hint"><span>Watch the CEO message &#8599;</span></span></a><img src="assets/post-2023.jpg" alt="IDEA social post" loading="lazy"></div>
 
-    <div class="svc-item"><h4>Social</h4><p class="cs-body">Social content that leads with people and lets the brand support the story.</p></div>
-    <div class="svc-media two"><img src="assets/shop.jpg" alt="Shop owner behind her counter" loading="lazy"><img src="assets/livelihoods.jpg" alt="Woman at her sewing machine" loading="lazy"></div>
+    <div class="svc-item"><h4>Social</h4><p class="cs-body">Social content that leads with people and lets the brand support the story. <a class="inline-link" href="https://www.instagram.com/developedbyidea/" target="_blank" rel="noopener">See more on Instagram &#8599;</a></p></div>
+    <div class="svc-media ig-media"><div class="ig-row"><div class="ig-item"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DdUED9BjG6Z/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DdUED9BjG6Z/" target="_blank" rel="noopener">A new name. A continued commitment. (view on Instagram)</a></blockquote></div><div class="ig-item"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Deh9H4gDNr7/" data-instgrm-version="14"><a href="https://www.instagram.com/p/Deh9H4gDNr7/" target="_blank" rel="noopener">International Day of Rural Women (view on Instagram)</a></blockquote></div><div class="ig-item"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DekQggbEZYQ/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DekQggbEZYQ/" target="_blank" rel="noopener">World Food Day: your support helped grow these crops (view on Instagram)</a></blockquote></div><div class="ig-item"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DdgoORiDOaw/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DdgoORiDOaw/" target="_blank" rel="noopener">IDEA, formerly Islamic Relief USA: Rebrand FAQ (view on Instagram)</a></blockquote></div></div></div>
   </div>
 </div>
 
@@ -877,5 +883,6 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
   }
 })();
 </script>
+<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
