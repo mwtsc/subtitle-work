@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Instrument+Serif:ital@1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Instrument+Serif:ital@1&display=swap">
 <style>
 :root{
   --ink:#0A0A0A; --grey-700:#404040; --grey-600:#525252; --grey-200:#E5E5E5;
@@ -185,7 +185,13 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .cs-more .cs-body{margin:16px 0 48px}
 .flip{position:relative;width:min(326px,72vw);aspect-ratio:326/435;margin:0 auto;touch-action:pan-y}
 .flip-card{position:absolute;inset:0;border-radius:12px;overflow:hidden;background:#E9E8E5;box-shadow:0 16px 40px rgba(0,0,0,.12);transition:transform .7s var(--ease),opacity .5s var(--ease);display:flex;align-items:center;justify-content:center;color:var(--cs-grey);font-size:14px;cursor:pointer;padding:0}
-.flip-card img{width:100%;height:100%;object-fit:cover;display:block}
+.flip-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.15) brightness(.78);transition:transform .9s var(--ease)}
+.flip-card:hover img{transform:scale(1.03)}
+.flip-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.28));pointer-events:none}
+.flip-mark{position:relative;z-index:1;color:#fff;font-family:'Be Vietnam Pro',sans-serif;font-weight:700;font-size:clamp(30px,3vw,40px);line-height:.92;letter-spacing:-.03em;text-align:center;text-transform:uppercase}
+.flip-card.tone-a{background:#140700}.flip-card.tone-b{background:#C9C4BA}
+.flip-card.tone-a::after,.flip-card.tone-b::after{display:none}
+.flip-card.tone-b .flip-mark{color:#140700}
 .work-card .ph.has-img{overflow:hidden;min-height:0}.work-card .ph.has-img img{width:100%;height:100%;object-fit:cover;display:block}
 .flip-label{margin-top:30px;font-size:16px;color:#140700;letter-spacing:-.01em}
 .flip-ctrl{display:flex;gap:10px;justify-content:center;margin-top:20px}
@@ -469,9 +475,9 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
     <h2 class="cs-title">Case Studies</h2>
     <p class="cs-body">See others we've helped.</p>
     <div class="flip" id="flip">
-      <button class="flip-card" data-t="SXSW London" data-img="https://images.ctfassets.net/ncjvo7rlyfez/bzMeIE7NRul6E0bUDCexp/57a3efb393eb9eb62ca89957403a7200/SW2_1395_btLUSY7L_20260604041902__1_.jpg?w=1400&amp;fm=webp" data-desc="A festival this big needs a site that keeps up. We built the official home of SXSW London." data-url="https://www.sxswlondon.com/"><img src="https://images.ctfassets.net/ncjvo7rlyfez/bzMeIE7NRul6E0bUDCexp/57a3efb393eb9eb62ca89957403a7200/SW2_1395_btLUSY7L_20260604041902__1_.jpg?w=652&amp;h=870&amp;fit=fill&amp;fm=webp" alt="Festival goers outside an SXSW London venue in Shoreditch" loading="lazy"></button>
-      <button class="flip-card" data-t="[Project 02]">[Project image]</button>
-      <button class="flip-card" data-t="[Project 03]">[Project image]</button>
+      <button class="flip-card" data-t="SXSW London" data-img="https://images.ctfassets.net/ncjvo7rlyfez/bzMeIE7NRul6E0bUDCexp/57a3efb393eb9eb62ca89957403a7200/SW2_1395_btLUSY7L_20260604041902__1_.jpg?w=1400&amp;fm=webp" data-desc="A festival this big needs a site that keeps up. We built the official home of SXSW London." data-url="https://www.sxswlondon.com/"><img src="https://images.ctfassets.net/ncjvo7rlyfez/bzMeIE7NRul6E0bUDCexp/57a3efb393eb9eb62ca89957403a7200/SW2_1395_btLUSY7L_20260604041902__1_.jpg?w=652&amp;h=870&amp;fit=fill&amp;fm=webp" alt="Festival goers outside an SXSW London venue in Shoreditch" loading="lazy"><span class="flip-mark" aria-hidden="true">SXSW<br>LONDON</span></button>
+      <button class="flip-card tone-a" data-t="[Project 02]"><span class="flip-mark" aria-hidden="true">Project 02</span></button>
+      <button class="flip-card tone-b" data-t="[Project 03]"><span class="flip-mark" aria-hidden="true">Project 03</span></button>
     </div>
     <div class="flip-label" id="flipLabel">SXSW London</div>
     <div class="flip-ctrl">
