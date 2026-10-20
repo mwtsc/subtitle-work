@@ -117,8 +117,8 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .cs-track.dragging .cs-shot{pointer-events:none}
 .cs-shot{flex:0 0 auto;height:clamp(300px,29vw,560px);border-radius:12px;overflow:hidden;background:var(--grey-200);scroll-snap-align:start;padding:0;cursor:pointer}
 .cs-shot.wide{aspect-ratio:3/2}.cs-shot.tall{aspect-ratio:3/4}
-.cs-shot img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
-.cs-shot:hover img{transform:scale(1.025)}
+.cs-shot img,.cs-shot video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s var(--ease)}
+.cs-shot:hover img,.cs-shot:hover video{transform:scale(1.025)}
 .cs-gallery-cta{width:var(--w);margin:24px auto 0}
 
 .cs-grid{display:grid;grid-template-columns:40% 60%;padding:120px 0}
@@ -178,7 +178,7 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
 .story-sheet .lead-p{font-size:clamp(26px,2.4vw,34px);line-height:1.08;letter-spacing:-.035em;color:#000;margin:0 0 48px}
 .story-sheet h4{font-size:16px;font-weight:500;color:#140700;margin:36px 0 8px;letter-spacing:-.01em}
 .story-sheet p.cs-body{margin:0}
-.gal-sheet img{width:100%;border-radius:12px;margin-bottom:16px;background:var(--grey-200)}
+.gal-sheet img,.gal-sheet video{width:100%;display:block;border-radius:12px;margin-bottom:16px;background:var(--grey-200)}
 .svc-sheet .cs-body.intro{margin:20px 0 80px;max-width:330px}
 .svc-item{display:grid;grid-template-columns:34% 66%;gap:0;margin-bottom:28px}
 .svc-item h4{font-size:15px;font-weight:500;margin:0;color:#140700;letter-spacing:-.01em}
@@ -347,7 +347,7 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
   <!-- GALLERY -->
   <section class="cs-gallery" aria-label="Gallery">
     <div class="cs-track" id="track">
-      <button class="cs-shot wide" data-g="0"><img src="assets/winter-relief.jpg" alt="Winter relief distribution in a mountain village" loading="lazy"></button>
+      <button class="cs-shot wide" data-g="0"><video  src="assets/site-tablet.mp4" poster="assets/site-tablet-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="The new IDEA website scrolling on a tablet"></video></button>
       <button class="cs-shot tall" data-g="1"><img src="assets/shop.jpg" alt="Shop owner behind her counter" loading="lazy"></button>
       <button class="cs-shot wide" data-g="2"><img src="assets/town.jpg" alt="A man looks out over a growing town" loading="lazy"></button>
       <button class="cs-shot tall" data-g="3"><img src="assets/families.jpg" alt="Mother and children with an aid package" loading="lazy"></button>
@@ -497,7 +497,7 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
 <div class="sheet gal-sheet" id="galSheet" role="dialog" aria-modal="true" aria-label="Gallery">
   <button class="sheet-x" aria-label="Close">&#10005;</button>
   <div class="sheet-in wide">
-    <img id="g0" src="assets/winter-relief.jpg" alt="Winter relief distribution in a mountain village" loading="lazy">
+    <video id="g0" src="assets/site-tablet.mp4" poster="assets/site-tablet-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="The new IDEA website scrolling on a tablet"></video>
     <img id="g1" src="assets/shop.jpg" alt="Shop owner behind her counter" loading="lazy">
     <img id="g2" src="assets/town.jpg" alt="A man looks out over a growing town" loading="lazy">
     <img id="g3" src="assets/families.jpg" alt="Mother and children with an aid package" loading="lazy">
