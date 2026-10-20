@@ -156,6 +156,8 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .press-card .tile{height:197px;border-radius:12px;background:var(--white);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:600;letter-spacing:-.03em;color:#9e9e9e}
 .press-card .pt{display:flex;justify-content:space-between;align-items:center;margin:14px 4px 10px;font-size:18px;font-weight:500;letter-spacing:-.01em;color:#140700}
 .press-card p{margin:0 4px}
+.press-card .tile img{display:block;height:auto}.press-card .tile .logo-yf{width:62%}.press-card .tile .logo-unhcr{width:58%}
+.inline-link{color:#140700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}.inline-link:hover{color:var(--idea-abyss)}
 
 .cs-more{padding:140px 0 160px;text-align:center}
 .cs-more .cs-body{margin:16px 0 48px}
@@ -411,9 +413,8 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
   <section class="cs-row-sec" aria-label="Press">
     <h2 class="cs-title reveal">Press</h2>
     <div class="cs-row">
-      <a class="press-card" href="https://finance.yahoo.com/small-business/articles/islamic-relief-usa-announces-rebrand-155700607.html" target="_blank" rel="noopener"><div class="tile">Yahoo Finance</div><div class="pt">Yahoo Finance <span aria-hidden="true">&#8599;</span></div><p class="cs-body">Islamic Relief USA Announces Rebrand to IDEA</p></a>
-      <a class="press-card" href="https://www.unrefugees.org/news/2026/9/faith-in-action-partners-in-a-shared-vision/" target="_blank" rel="noopener"><div class="tile">USA for UNHCR</div><div class="pt">USA for UNHCR <span aria-hidden="true">&#8599;</span></div><p class="cs-body">Faith in Action: Partners in a Shared Vision</p></a>
-      <a class="press-card" href="https://www.youtube.com/watch?v=hYVtED7Yjqo" target="_blank" rel="noopener"><div class="tile">YouTube</div><div class="pt">YouTube <span aria-hidden="true">&#8599;</span></div><p class="cs-body">Introducing IDEA: Islamic Development and Empowerment in America</p></a>
+      <a class="press-card" href="https://finance.yahoo.com/small-business/articles/islamic-relief-usa-announces-rebrand-155700607.html" target="_blank" rel="noopener"><div class="tile"><img src="assets/logo-yahoo-finance.svg" alt="Yahoo Finance" class="logo-yf"></div><div class="pt">Yahoo Finance <span aria-hidden="true">&#8599;</span></div><p class="cs-body">Islamic Relief USA Announces Rebrand to IDEA</p></a>
+      <a class="press-card" href="https://www.unrefugees.org/news/2026/9/faith-in-action-partners-in-a-shared-vision/" target="_blank" rel="noopener"><div class="tile"><img src="assets/logo-usa-for-unhcr.svg" alt="USA for UNHCR" class="logo-unhcr"></div><div class="pt">USA for UNHCR <span aria-hidden="true">&#8599;</span></div><p class="cs-body">Faith in Action: Partners in a Shared Vision</p></a>
     </div>
   </section>
 
@@ -526,7 +527,7 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
     <div class="svc-item"><h4>Visual System</h4><p class="cs-body">Light blue for relief work, dark blue for development work, held together by a flexible layout system.</p></div>
     <div class="svc-media"><img src="assets/layout-system.jpg" alt="IDEA dynamic layout system" loading="lazy"></div>
 
-    <div class="svc-item"><h4>Messaging</h4><p class="cs-body">We wrote from the people the work serves, in plain and hopeful language. A CEO message introduced the new name to supporters.</p></div>
+    <div class="svc-item"><h4>Messaging</h4><p class="cs-body">We wrote from the people the work serves, in plain and hopeful language. A CEO message introduced the new name to supporters. <a class="inline-link" href="https://www.youtube.com/watch?v=hYVtED7Yjqo" target="_blank" rel="noopener">Watch the launch video &#8599;</a></p></div>
     <div class="svc-media two"><a class="site-link" href="https://development.org/why-idea" target="_blank" rel="noopener" aria-label="Watch the CEO message, opens in a new tab"><img src="assets/ceo.jpg" alt="IDEA CEO video message" loading="lazy"><span class="hint"><span>Watch the CEO message &#8599;</span></span></a><img src="assets/post-2023.jpg" alt="IDEA social post" loading="lazy"></div>
 
     <div class="svc-item"><h4>Social</h4><p class="cs-body">Social content that leads with people and lets the brand support the story.</p></div>
