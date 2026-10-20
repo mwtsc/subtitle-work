@@ -185,6 +185,8 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .cs-more .cs-body{margin:16px 0 48px}
 .flip{position:relative;width:min(326px,72vw);aspect-ratio:326/435;margin:0 auto;touch-action:pan-y}
 .flip-card{position:absolute;inset:0;border-radius:12px;overflow:hidden;background:#E9E8E5;box-shadow:0 16px 40px rgba(0,0,0,.12);transition:transform .7s var(--ease),opacity .5s var(--ease);display:flex;align-items:center;justify-content:center;color:var(--cs-grey);font-size:14px;cursor:pointer;padding:0}
+.flip-card img{width:100%;height:100%;object-fit:cover;display:block}
+.work-card .ph.has-img{overflow:hidden;min-height:0}.work-card .ph.has-img img{width:100%;height:100%;object-fit:cover;display:block}
 .flip-label{margin-top:30px;font-size:16px;color:#140700;letter-spacing:-.01em}
 .flip-ctrl{display:flex;gap:10px;justify-content:center;margin-top:20px}
 
@@ -467,11 +469,11 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
     <h2 class="cs-title">Case Studies</h2>
     <p class="cs-body">See others we've helped.</p>
     <div class="flip" id="flip">
-      <button class="flip-card" data-t="[Project 01]">[Project image]</button>
+      <button class="flip-card" data-t="SXSW London" data-img="https://images.ctfassets.net/ncjvo7rlyfez/2CY4vYYvLFQGVvR98JvkIR/49cd430bea860e92611d6e9559716204/SXSW_London__3_.png?w=1400&amp;fm=webp" data-desc="A festival this big needs a site that keeps up. We built the official home of SXSW London." data-url="https://www.sxswlondon.com/"><img src="https://images.ctfassets.net/ncjvo7rlyfez/2CY4vYYvLFQGVvR98JvkIR/49cd430bea860e92611d6e9559716204/SXSW_London__3_.png?w=900&amp;fm=webp" alt="SXSW London" loading="lazy"></button>
       <button class="flip-card" data-t="[Project 02]">[Project image]</button>
       <button class="flip-card" data-t="[Project 03]">[Project image]</button>
     </div>
-    <div class="flip-label" id="flipLabel">[Project 01]</div>
+    <div class="flip-label" id="flipLabel">SXSW London</div>
     <div class="flip-ctrl">
       <button class="icon-btn" id="flipPrev" aria-label="Previous case study">&#8592;</button>
       <button class="icon-btn" id="flipNext" aria-label="Next case study">&#8594;</button>
@@ -610,11 +612,12 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
 <!-- WORK MODAL -->
 <div class="work-modal" id="wm" role="dialog" aria-modal="true" aria-label="Project" aria-hidden="true">
   <div class="work-card">
-    <div class="ph">[Project image or video]</div>
+    <div class="ph" id="wmPh">[Project image or video]</div>
     <div class="info">
       <span class="label">Case study</span>
       <h3 id="wmTitle">[Project 01]</h3>
-      <p>[One or two lines on what subtitle did and why it mattered]</p>
+      <p id="wmDesc">[One or two lines on what subtitle did and why it mattered]</p>
+      <a class="inline-link" id="wmLink" href="#" target="_blank" rel="noopener" hidden>Visit the site &#8599;</a>
     </div>
     <button class="icon-btn" id="wmClose" aria-label="Close project">&#10005;</button>
   </div>
@@ -778,6 +781,11 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
       if (i !== fIdx) return;
       lastFocus = c;
       $('wmTitle').textContent = c.getAttribute('data-t');
+      var img = c.getAttribute('data-img'), desc = c.getAttribute('data-desc'), url = c.getAttribute('data-url');
+      $('wmPh').innerHTML = img ? '<img src="' + img + '" alt="' + c.getAttribute('data-t') + '">' : '[Project image or video]';
+      $('wmPh').classList.toggle('has-img', !!img);
+      $('wmDesc').textContent = desc || '[One or two lines on what subtitle did and why it mattered]';
+      if (url){ $('wmLink').href = url; $('wmLink').hidden = false; } else { $('wmLink').hidden = true; }
       wm.classList.add('open'); wm.setAttribute('aria-hidden', 'false');
       document.documentElement.style.overflow = 'hidden';
       $('wmClose').focus({ preventScroll: true });
