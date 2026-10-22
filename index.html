@@ -39,26 +39,15 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 @media (max-width:560px){.nav-inner{padding:0 20px}.nav-links{gap:16px}.nav-links a{font-size:13px}}
 
 /* ── HERO ──────────────────────── */
-.hero{position:relative;height:330vh;background:var(--paper)}
+.hero{position:relative;height:220vh;background:var(--paper)}
 .hero-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;transition:transform .8s var(--ease)}
 .hero-stage.shift{transform:translateX(-6vw)}
-.hero-count{position:absolute;z-index:2;top:22vh;left:var(--gutter);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey-600)}
-.ceil{position:absolute;top:26vh;height:4px;background:var(--idea-midnight);will-change:transform}
-.ceil.l{left:-1vw;width:47vw;transform-origin:right center}
-.ceil.r{right:-1vw;width:47vw;transform-origin:left center}
-.ceil.m{left:46vw;width:8vw}
-.old{position:absolute;top:calc(26vh + 4px);left:0;right:0;height:42vh;overflow:hidden}
-.old-word{display:flex;padding-left:2.4vw;margin-top:-9vw;font-size:27vw;font-weight:600;letter-spacing:-.07em;line-height:1;color:var(--idea-midnight);white-space:nowrap}
-.old-word span{display:inline-block;will-change:transform,opacity}
 .beam{position:absolute;top:0;left:44vw;width:12vw;height:62vh;background:var(--idea-sky);opacity:0;clip-path:polygon(44% 0,56% 0,100% 100%,0 100%);pointer-events:none}
-.pressed-copy{position:absolute;left:var(--gutter);bottom:8vh;font-size:clamp(26px,2.8vw,40px);line-height:1.1;letter-spacing:-.04em;max-width:640px}
-.pressed-copy .serif{font-size:1.15em}
 .scroll-cue{position:absolute;right:var(--gutter);bottom:8vh;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--grey-600)}
 .scroll-cue i{display:block;width:1px;height:48px;background:var(--ink)}
 .blue{position:absolute;inset:0;background:var(--idea-abyss);clip-path:polygon(0 100%,46% 100%,54% 100%,100% 100%,100% 100%,0 100%);will-change:clip-path}
 .hero-logo{position:absolute;left:var(--gutter);bottom:25vh;width:min(1040px,64vw)}
 .hero-logo svg{display:block;width:100%;height:auto;overflow:visible}
-.clear{position:absolute;inset:0;background:var(--paper);opacity:0;pointer-events:none}
 .hero-logo .em,.hero-logo .wm{opacity:0;will-change:transform,opacity}
 .floor{position:absolute;left:0;right:0;bottom:19vh;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left center}
 .value{position:absolute;top:18vh;right:var(--gutter);text-align:right;color:var(--ink);font-size:clamp(30px,3.6vw,52px);line-height:1.05;letter-spacing:-.045em;max-width:860px;opacity:0}
@@ -318,18 +307,11 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
 </header>
 
 <main>
-  <!-- HERO: Breaking the ceiling -->
-  <section class="hero" id="hero" aria-label="IRUSA became IDEA">
-    <h1 class="sr-only">IRUSA became IDEA. A name that reflects a mission for a better world.</h1>
+  <!-- HERO: The mark builds -->
+  <section class="hero" id="hero" aria-label="IDEA">
+    <h1 class="sr-only">IDEA. A name that reflects a mission for a better world.</h1>
     <div class="hero-stage" id="stage" aria-hidden="true">
-      <div class="hero-count" id="count">01 / 03</div>
-      <div class="old"><div class="old-word"><span>I</span><span id="oR">R</span><span id="oU">U</span><span id="oS">S</span><span>A</span></div></div>
-      <div class="ceil l" id="ceilL"></div>
-      <div class="ceil m" id="ceilM"></div>
-      <div class="ceil r" id="ceilR"></div>
-      <div class="pressed-copy" id="pressed">Three decades of trust.<br>Ready for <span class="serif">what comes next.</span></div>
-      <div class="scroll-cue" id="cue"><span>Scroll to break through</span><i></i></div>
-      <div class="clear" id="clear"></div>
+      <div class="scroll-cue" id="cue"><span>Scroll</span><i></i></div>
       <div class="hero-logo" id="heroLogo"><svg viewBox="0 0 499 229" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 <path class="wm" d="M275.78 171.32H257.16V57.7197H275.78V171.32Z" fill="#2B01BE"/>
 <path class="wm" d="M321.2 171.32H289.22V57.7197H321.36C332.97 57.7197 341.38 59.8397 346.58 64.0797C351.78 68.3197 354.48 75.2697 354.69 84.9197C355.01 95.4697 355.17 105.3 355.17 114.39C355.17 123.48 355.01 133.34 354.69 143.94C354.48 153.7 351.77 160.7 346.58 164.94C341.38 169.18 332.92 171.3 321.2 171.3V171.32ZM307.84 74.5897V154.46H321.2C330.96 154.46 335.92 151.7 336.08 146.19C336.77 125.08 336.77 103.92 336.08 82.7097C335.92 77.2997 331.02 74.5997 321.36 74.5997H307.84V74.5897Z" fill="#2B01BE"/>
@@ -403,7 +385,7 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
       <div><dt>Stage</dt><dd>Established organization</dd></div>
     </dl>
     <div class="cs-story reveal">
-      <p>Islamic Relief USA spent decades earning trust by responding to emergencies. Over time, its work grew into education, livelihoods and long term development, and it was ready for a name that reflects <span class="serif">that full range.</span></p>
+      <p>For decades, the organization earned trust by responding to emergencies. Over time, its work grew into education, livelihoods and long term development, and it was ready for a name that reflects <span class="serif">that full range.</span></p>
       <button class="cs-pill" data-open="storySheet">Read the full story <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M7 1h4v4M11 1 7 5M5 11H1V7M1 11l4-4"/></svg></button>
     </div>
   </div>
@@ -466,7 +448,6 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
   <section class="cs-row-sec" aria-label="Press">
     <h2 class="cs-title reveal">Press</h2>
     <div class="cs-row">
-      <a class="press-card" href="https://finance.yahoo.com/small-business/articles/islamic-relief-usa-announces-rebrand-155700607.html" target="_blank" rel="noopener"><div class="tile"><img src="assets/logo-yahoo-finance.svg" alt="Yahoo Finance" class="logo-yf"></div><div class="pt">Yahoo Finance <span aria-hidden="true">&#8599;</span></div><p class="cs-body">Islamic Relief USA Announces Rebrand to IDEA</p></a>
       <a class="press-card" href="https://www.unrefugees.org/news/2026/9/faith-in-action-partners-in-a-shared-vision/" target="_blank" rel="noopener"><div class="tile"><img src="assets/logo-usa-for-unhcr.svg" alt="USA for UNHCR" class="logo-unhcr"></div><div class="pt">USA for UNHCR <span aria-hidden="true">&#8599;</span></div><p class="cs-body">Faith in Action: Partners in a Shared Vision</p></a>
     </div>
   </section>
@@ -537,7 +518,7 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
 <div class="sheet story-sheet" id="storySheet" role="dialog" aria-modal="true" aria-label="The full story">
   <button class="sheet-x" aria-label="Close">&#10005;</button>
   <div class="sheet-in">
-    <p class="lead-p">Islamic Relief USA spent decades earning trust by responding to emergencies. Over time, its work grew into education, livelihoods and long term development, and it was ready for a name that reflects <span class="serif">that full range.</span></p>
+    <p class="lead-p">For decades, the organization earned trust by responding to emergencies. Over time, its work grew into education, livelihoods and long term development, and it was ready for a name that reflects <span class="serif">that full range.</span></p>
     <p class="cs-body">The task was to name that growth without asking a single donor to start over.</p>
     <p class="cs-body">IDEA, Islamic Development and Empowerment in America, keeps faith at the center and gives the development work room to grow. One name for the first response and everything that follows.</p>
     <p class="cs-body">Subtitle led the rename, the identity system and messaging, the new website, and the reveal night where supporters met IDEA together.</p>
@@ -582,7 +563,7 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
     <div class="svc-media two"><a class="site-link" href="https://development.org/why-idea" target="_blank" rel="noopener" aria-label="Watch the CEO message, opens in a new tab"><img src="assets/ceo.jpg" alt="IDEA CEO video message" loading="lazy"><span class="hint"><span>Watch the CEO message &#8599;</span></span></a><img src="assets/post-2023.jpg" alt="IDEA social post" loading="lazy"></div>
 
     <div class="svc-item"><h4>Social</h4><p class="cs-body">Social content that leads with people and lets the brand support the story. <a class="inline-link" href="https://www.instagram.com/developedbyidea/" target="_blank" rel="noopener">See more on Instagram &#8599;</a></p></div>
-    <div class="svc-media ig-media"><div class="ig-row"><div class="ig-item"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DdUED9BjG6Z/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DdUED9BjG6Z/" target="_blank" rel="noopener">A new name. A continued commitment. (view on Instagram)</a></blockquote></div><div class="ig-item"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Deh9H4gDNr7/" data-instgrm-version="14"><a href="https://www.instagram.com/p/Deh9H4gDNr7/" target="_blank" rel="noopener">International Day of Rural Women (view on Instagram)</a></blockquote></div><div class="ig-item"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DekQggbEZYQ/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DekQggbEZYQ/" target="_blank" rel="noopener">World Food Day: your support helped grow these crops (view on Instagram)</a></blockquote></div><div class="ig-item"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DdgoORiDOaw/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DdgoORiDOaw/" target="_blank" rel="noopener">IDEA, formerly Islamic Relief USA: Rebrand FAQ (view on Instagram)</a></blockquote></div></div></div>
+    <div class="svc-media ig-media"><div class="ig-row"><div class="ig-item"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Deh9H4gDNr7/" data-instgrm-version="14"><a href="https://www.instagram.com/p/Deh9H4gDNr7/" target="_blank" rel="noopener">International Day of Rural Women (view on Instagram)</a></blockquote></div><div class="ig-item"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DekQggbEZYQ/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DekQggbEZYQ/" target="_blank" rel="noopener">World Food Day: your support helped grow these crops (view on Instagram)</a></blockquote></div><div class="ig-item"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DeiBpGeDF5w/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DeiBpGeDF5w/" target="_blank" rel="noopener">Home is a tent (view on Instagram)</a></blockquote></div></div></div>
   </div>
 </div>
 
@@ -639,43 +620,18 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
 
   /* ── HERO SCRUB ─────────────────── */
   var hero = $('hero'), stage = $('stage'), nav = $('nav');
-  var el = { R:$('oR'), U:$('oU'), S:$('oS'), L:$('ceilL'), M:$('ceilM'), Rr:$('ceilR'), 
-    pressed:$('pressed'), clear:$('clear'), cue:$('cue'),  logo:$('heroLogo'), floor:$('floor'),
-    value:$('value'), meta:$('meta'), count:$('count') };
+  var el = { cue:$('cue'), logo:$('heroLogo'), floor:$('floor'), value:$('value'), meta:$('meta') };
   var lastP = -1, ticking = false;
 
   function render(p){
-    var t1 = clamp((p - 0.03) / 0.35);          // crack
-    var t2 = ease(clamp((p - 0.28) / 0.16));    // the old name and ceiling clear away
-    var tc = t2;
-    var tb = clamp((p - 0.40) / 0.32);          // emblem builds piece by piece
-    var t3 = ease(clamp((p - 0.70) / 0.16));    // wordmark, line and details settle
-
-    // ceiling splits
-    el.L.style.transform = 'translateX(' + (-3 * t1) + 'vw) rotate(' + (-3 * t1) + 'deg)';
-    el.Rr.style.transform = 'translateX(' + (3 * t1) + 'vw) rotate(' + (4 * t1) + 'deg)';
-    el.M.style.opacity = String(1 - clamp(t1 * 4));
-    el.L.style.opacity = el.Rr.style.opacity = String(1 - t2);
-
-    // R, U, S soften, fade and drift gently down
-    [[el.R, .55, 1], [el.U, .75, 1.5], [el.S, .88, 2]].forEach(function(a){
-      a[0].style.opacity = String(1 - t1 * a[1]);
-      a[0].style.transform = 'translateY(' + (t1 * 3 * a[2]) + 'vh)';
-    });
-
-    var fade = String(1 - clamp(t1 * 2.5));
-    el.pressed.style.opacity = fade; el.cue.style.opacity = fade;
-
-
-    el.clear.style.opacity = String(tc);
-    el.count.style.opacity = String(1 - t3);
+    var tb = 0.08 + 0.92 * clamp(p / 0.55);     // emblem builds piece by piece
+    var t3 = ease(clamp((p - 0.5) / 0.3));      // wordmark, line and details settle
+    el.cue.style.opacity = String(1 - clamp(p * 5));
     buildLogo(tb, t3);
     el.floor.style.transform = 'scaleX(' + t3 + ')';
     el.value.style.opacity = String(t3);
     el.value.style.transform = 'translateY(' + ((1 - t3) * 16) + 'px)';
     el.meta.style.opacity = String(t3);
-
-    el.count.textContent = tc > 0.5 ? '03 / 03' : t1 > 0.15 ? '02 / 03' : '01 / 03';
   }
 
   function heroVisible(){
