@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Instrument+Serif:ital@1&display=swap">
+<link rel="stylesheet" href="assets/tiles.css">
 <style>
 :root{
   --ink:#0A0A0A; --grey-700:#404040; --grey-600:#525252; --grey-200:#E5E5E5;
@@ -76,15 +77,6 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .site-link:hover .hint span,.site-link:focus-visible .hint span{transform:none}
 @media (hover:none){.hint{opacity:1;background:transparent;align-items:flex-end;padding-bottom:16px}}
 .site-link .scroll-box{overflow-y:auto}
-.work-modal{position:fixed;inset:0;z-index:80;background:rgba(10,10,10,.5);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
-.work-modal.open{opacity:1;pointer-events:auto}
-.work-card{position:relative;width:min(1100px,100%);max-height:100%;overflow-y:auto;background:var(--white);border-radius:20px;padding:clamp(24px,4vw,56px);display:flex;flex-wrap:wrap;gap:40px;text-align:left;transform:translateY(24px) scale(.98);transition:transform .5s var(--ease)}
-.work-modal.open .work-card{transform:none}
-.work-card .ph{flex:1 1 420px;min-height:360px;background:var(--grey-200);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--grey-600);font-size:14px}
-.work-card .info{flex:1 1 300px;display:flex;flex-direction:column;gap:16px}
-.work-card .info h3{font-size:40px;font-weight:400;letter-spacing:-.05em;line-height:1.05;margin:0}
-.work-card .info p{font-size:16px;line-height:1.6;color:var(--grey-600);margin:0}
-.work-card .icon-btn{position:absolute;top:16px;right:16px}
 /* ── CASE STUDY (Collins / Bose structure) ── */
 :root{--w:min(1230px,calc(100vw - 2 * var(--gutter)));--edge:calc((100vw - var(--w)) / 2);--cs-grey:#5E5855}
 .cs-wrap{width:var(--w);margin:0 auto}
@@ -170,21 +162,9 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .press-card .tile img{display:block;height:auto}.press-card .tile .logo-yf{width:62%}.press-card .tile .logo-unhcr{width:58%}
 .inline-link{color:#140700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}.inline-link:hover{color:var(--idea-abyss)}
 
-.cs-more{padding:140px 0 160px;text-align:center}
-.cs-more .cs-body{margin:16px 0 48px}
-.flip{position:relative;width:min(326px,72vw);aspect-ratio:326/435;margin:0 auto;touch-action:pan-y}
-.flip-card{position:absolute;inset:0;border-radius:12px;overflow:hidden;background:#E9E8E5;box-shadow:0 16px 40px rgba(0,0,0,.12);transition:transform .7s var(--ease),opacity .5s var(--ease);display:flex;align-items:center;justify-content:center;color:var(--cs-grey);font-size:14px;cursor:pointer;padding:0}
-.flip-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.15) brightness(.78);transition:transform .9s var(--ease)}
-.flip-card:hover img{transform:scale(1.03)}
-.flip-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.28));pointer-events:none}
-.flip-mark{position:relative;z-index:1;color:#fff;font-family:'Be Vietnam Pro',sans-serif;font-weight:700;font-size:clamp(30px,3vw,40px);line-height:.92;letter-spacing:-.03em;text-align:center;text-transform:uppercase}
-.flip-card.cover-sxsw{background:#2a2a8a url('https://images.ctfassets.net/ncjvo7rlyfez/2CY4vYYvLFQGVvR98JvkIR/49cd430bea860e92611d6e9559716204/SXSW_London__3_.png') right top/auto 175% no-repeat}
-.flip-card.tone-a{background:#140700}.flip-card.tone-b{background:#C9C4BA}
-.flip-card.tone-a::after,.flip-card.tone-b::after{display:none}
-.flip-card.tone-b .flip-mark{color:#140700}
-.work-card .ph.has-img{overflow:hidden;min-height:0}.work-card .ph.has-img img{width:100%;height:100%;object-fit:cover;display:block}
-.flip-label{margin-top:30px;font-size:16px;color:#140700;letter-spacing:-.01em}
-.flip-ctrl{display:flex;gap:10px;justify-content:center;margin-top:20px}
+.cs-more{padding:140px 0 160px}
+.more-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.more-head .cs-body{margin:12px 0 0}
 
 /* ── SHEETS ── */
 .sheet-bg{position:fixed;inset:0;z-index:85;background:rgba(10,10,10,.35);opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}
@@ -454,18 +434,14 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
 
   <!-- CASE STUDIES -->
   <section class="cs-more" aria-label="Case studies">
-    <h2 class="cs-title">Case Studies</h2>
-    <p class="cs-body">See others we've helped.</p>
-    <div class="flip" id="flip">
-      <button class="flip-card cover-sxsw" data-t="SXSW London" data-img="https://images.ctfassets.net/ncjvo7rlyfez/2CY4vYYvLFQGVvR98JvkIR/49cd430bea860e92611d6e9559716204/SXSW_London__3_.png" data-desc="A festival this big needs a site that keeps up. We built the official home of SXSW London." data-url="https://www.sxswlondon.com/"><span class="flip-mark" aria-hidden="true">SXSW<br>London</span></button>
-      <button class="flip-card tone-a" data-t="[Project 02]"><span class="flip-mark" aria-hidden="true">Project 02</span></button>
-      <button class="flip-card tone-b" data-t="[Project 03]"><span class="flip-mark" aria-hidden="true">Project 03</span></button>
+    <div class="cs-wrap more-head">
+      <div>
+        <h2 class="cs-title">Case Studies</h2>
+        <p class="cs-body">See others we've helped.</p>
+      </div>
+      <a class="cs-pill" href="case-studies.html">View all case studies <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
     </div>
-    <div class="flip-label" id="flipLabel">SXSW London</div>
-    <div class="flip-ctrl">
-      <button class="icon-btn" id="flipPrev" aria-label="Previous case study">&#8592;</button>
-      <button class="icon-btn" id="flipNext" aria-label="Next case study">&#8594;</button>
-    </div>
+    <div class="cs-wrap tiles" id="moreTiles"></div>
   </section>
 
   <!-- CTA -->
@@ -597,20 +573,7 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
   </div>
 </div>
 
-<!-- WORK MODAL -->
-<div class="work-modal" id="wm" role="dialog" aria-modal="true" aria-label="Project" aria-hidden="true">
-  <div class="work-card">
-    <div class="ph" id="wmPh">[Project image or video]</div>
-    <div class="info">
-      <span class="label">Case study</span>
-      <h3 id="wmTitle">[Project 01]</h3>
-      <p id="wmDesc">[One or two lines on what subtitle did and why it mattered]</p>
-      <a class="inline-link" id="wmLink" href="#" target="_blank" rel="noopener" hidden>Visit the site &#8599;</a>
-    </div>
-    <button class="icon-btn" id="wmClose" aria-label="Close project">&#10005;</button>
-  </div>
-</div>
-
+<script src="assets/cases.js"></script>
 <script>
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -718,51 +681,8 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
     c.addEventListener('click', function(){ if (moved > 6) return; openSheet('galSheet', 'g' + c.getAttribute('data-g')); });
   });
 
-  /* ── CASE STUDIES FLIPBOOK ──────── */
-  var flipCards = Array.prototype.slice.call(document.querySelectorAll('.flip-card')), fIdx = 0, wm = $('wm'), lastFocus = null;
-  function layoutFlip(){
-    var n = flipCards.length;
-    flipCards.forEach(function(c, i){
-      var pos = (i - fIdx + n) % n;
-      c.style.transform = pos === 0 ? 'none' : 'translate(' + (pos * 9) + '%, ' + (pos * 3) + '%) rotate(' + (pos * 3) + 'deg) scale(' + (1 - pos * 0.06) + ')';
-      c.style.zIndex = String(10 - pos);
-      c.style.opacity = pos > 2 ? '0' : '1';
-      c.tabIndex = pos === 0 ? 0 : -1;
-      c.setAttribute('aria-hidden', pos === 0 ? 'false' : 'true');
-    });
-    $('flipLabel').textContent = flipCards[fIdx].getAttribute('data-t');
-  }
-  function flip(d){ fIdx = (fIdx + d + flipCards.length) % flipCards.length; layoutFlip(); }
-  $('flipNext').addEventListener('click', function(){ flip(1); });
-  $('flipPrev').addEventListener('click', function(){ flip(-1); });
-  var fx = null, fMoved = false, flipBox = $('flip');
-  flipBox.addEventListener('pointerdown', function(e){ fx = e.clientX; fMoved = false; });
-  flipBox.addEventListener('pointerup', function(e){ if (fx !== null && Math.abs(e.clientX - fx) > 40){ fMoved = true; flip(e.clientX < fx ? 1 : -1); } fx = null; });
-  flipCards.forEach(function(c, i){
-    c.addEventListener('click', function(){
-      if (fMoved){ fMoved = false; return; }
-      if (i !== fIdx) return;
-      lastFocus = c;
-      $('wmTitle').textContent = c.getAttribute('data-t');
-      var img = c.getAttribute('data-img'), desc = c.getAttribute('data-desc'), url = c.getAttribute('data-url');
-      $('wmPh').innerHTML = img ? '<img src="' + img + '" alt="' + c.getAttribute('data-t') + '">' : '[Project image or video]';
-      $('wmPh').classList.toggle('has-img', !!img);
-      $('wmDesc').textContent = desc || '[One or two lines on what subtitle did and why it mattered]';
-      if (url){ $('wmLink').href = url; $('wmLink').hidden = false; } else { $('wmLink').hidden = true; }
-      wm.classList.add('open'); wm.setAttribute('aria-hidden', 'false');
-      document.documentElement.style.overflow = 'hidden';
-      $('wmClose').focus({ preventScroll: true });
-    });
-  });
-  function closeWm(){
-    if (!wm.classList.contains('open')) return;
-    wm.classList.remove('open'); wm.setAttribute('aria-hidden', 'true');
-    document.documentElement.style.overflow = '';
-    if (lastFocus) lastFocus.focus({ preventScroll: true });
-  }
-  $('wmClose').addEventListener('click', closeWm);
-  wm.addEventListener('click', function(e){ if (e.target === wm) closeWm(); });
-  layoutFlip();
+  /* ── MORE CASE STUDIES ─────────── */
+  if (window.renderCaseTiles) renderCaseTiles($('moreTiles'), { exclude: 'idea', limit: 3 });
 
   /* ── LEAD CARD (demo: no submission yet) ── */
   var lead = $('lead'), form = $('leadForm'), chips = Array.prototype.slice.call(lead.querySelectorAll('.chip'));
@@ -804,7 +724,6 @@ body.sheet-open .nav{opacity:0;pointer-events:none}
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape'){
       if (openSheetEl) closeSheet();
-      else if (wm.classList.contains('open')) closeWm();
     }
   });
 

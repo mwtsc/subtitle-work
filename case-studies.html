@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies / subtitle</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Instrument+Serif:ital@1&display=swap">
+<link rel="stylesheet" href="assets/tiles.css">
+<style>
+:root{--ink:#0A0A0A;--grey-600:#525252;--paper:#F7F7F5;--white:#FFFFFF;--cs-grey:#5E5855;--gutter:clamp(20px,3.4vw,48px);--w:min(1230px,calc(100vw - 2 * var(--gutter)))}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Be Vietnam Pro',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.serif{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+:focus-visible{outline:2px solid #2B01BE;outline-offset:3px}
+.nav{position:fixed;top:0;left:0;right:0;height:66px;z-index:50;background:rgba(255,255,255,.4);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,0,0,.07)}
+.nav-inner{max-width:1536px;height:100%;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:32px;width:auto}
+.nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:14px;color:#000;text-decoration:none}
+.nav-links a:hover{text-decoration:underline;text-underline-offset:4px}
+@media (max-width:560px){.nav-inner{padding:0 20px}.nav-links{gap:16px}.nav-links a{font-size:13px}}
+.wrap{width:var(--w);margin:0 auto}
+.head{display:grid;grid-template-columns:40% 60%;align-items:end;padding:180px 0 72px}
+.head small{font-size:18px;color:var(--cs-grey);padding-bottom:6px}
+.head h1{margin:0;font-weight:400;font-size:clamp(40px,4.6vw,64px);line-height:1.04;letter-spacing:-.05em;color:#140700}
+.head h1 .serif{font-size:1.12em}
+.head p{margin:20px 0 0;font-size:18px;line-height:1.4;color:var(--cs-grey);max-width:460px}
+.grid-sec{padding-bottom:140px}
+.cta{background:#140700;color:var(--white);padding:clamp(72px,9vw,128px) 0}
+.cta-in{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.cta h2{margin:0;font-weight:400;font-size:clamp(32px,4vw,56px);line-height:1.05;letter-spacing:-.05em;max-width:760px}
+.cta h2 .serif{font-size:1.12em}
+.cta a{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;border:1px solid var(--white);border-radius:100px;font-size:15px;text-decoration:none;transition:background .25s,color .25s}
+.cta a:hover{background:var(--white);color:#140700}
+.footer{padding:28px var(--gutter);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;font-size:13px;color:var(--grey-600)}
+.footer img{height:28px;width:auto}
+@media (max-width:860px){.head{grid-template-columns:1fr;gap:20px;padding-top:130px}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="https://wearesubtitle.com/#top" aria-label="subtitle home"><img src="assets/subtitle-logo-black.svg" alt="subtitle"></a>
+    <nav aria-label="Main"><ul class="nav-links">
+      <li><a href="https://wearesubtitle.com/#offerings">Services</a></li>
+      <li><a href="https://wearesubtitle.com/#clients">Clients</a></li>
+      <li><a href="https://wearesubtitle.com/#work">Work</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap head">
+    <small>Case Studies</small>
+    <div>
+      <h1>Work that makes people <span class="serif">look twice.</span></h1>
+      <p>Brands, institutions and live moments, built as one story from the name to the room.</p>
+    </div>
+  </div>
+
+  <section class="wrap grid-sec" aria-label="All case studies">
+    <div class="tiles" id="allTiles"></div>
+  </section>
+
+  <section class="cta" aria-label="Start a project">
+    <div class="wrap cta-in">
+      <h2>Your story could be <span class="serif">the next one here.</span></h2>
+      <a href="index.html#contact">Start a project <span aria-hidden="true">&#8594;</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <img src="assets/subtitle-logo-black.svg" alt="subtitle">
+  <span>Creative digital innovation company</span>
+</footer>
+
+<script src="assets/cases.js"></script>
+<script>renderCaseTiles(document.getElementById('allTiles'));</script>
+</body>
+</html>
