@@ -5,7 +5,7 @@ window.SUBTITLE_CASES = [
     line: 'Helping a trusted name grow into its mission.', href: 'index.html', status: 'live',
     img: 'assets/event-hall.jpg' },
   { id: 'sxsw', name: 'SXSW London', mark: 'SXSW<br>London', tags: ['Website Build', 'Maintenance', 'Roadmap'],
-    line: 'Giving a festival this big a home that keeps up.', href: 'sxsw-london.html', status: 'live',
+    line: 'Six days, hundreds of sessions, one clear way in.', href: 'sxsw-london.html', status: 'live',
     bg: "#2a2a8a url('https://images.ctfassets.net/ncjvo7rlyfez/2CY4vYYvLFQGVvR98JvkIR/49cd430bea860e92611d6e9559716204/SXSW_London__3_.png') right top/auto 175% no-repeat" },
   { id: 'sportico', name: 'Sportico World Summit', mark: 'Sportico<br>World Summit', tags: [], status: 'soon', bg: '#140700' },
   { id: 'fifa', name: 'FIFA World Cup Qatar 2022', mark: 'FIFA World Cup<br>Qatar 2022', tags: [], status: 'soon', bg: '#5B1F2A' },
